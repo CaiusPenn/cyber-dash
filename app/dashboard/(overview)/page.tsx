@@ -14,7 +14,7 @@ export default async function Page() {
             await signOut();
             }}
         >
-            <button className="flex h-[48px] w-[100px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium text-black hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
+            <button  className="flex h-[48px] w-[100px] rounded-md bg-gray-50 p-3 text-sm font-medium text-black hover:bg-sky-100 hover:text-blue-600">
                 <div className="hidden md:block">Sign Out</div>
             </button>
         </form>
