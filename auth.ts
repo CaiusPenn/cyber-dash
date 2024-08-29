@@ -8,7 +8,7 @@ import bcrypt from 'bcrypt';
  
 async function getUser(username: string): Promise<User | undefined> {
   try {
-    // Querying by username instead of email
+    
     const user = await sql<User>`SELECT * FROM users WHERE username=${username}`;
     return user.rows[0];
   } catch (error) {
@@ -22,7 +22,7 @@ export const { auth, signIn, signOut } = NextAuth({
   providers: [
     Credentials({
       async authorize(credentials) {
-        // Update schema to use username and password
+      
         const parsedCredentials = z
           .object({ username: z.string(), password: z.string().min(5) })
           .safeParse(credentials);
