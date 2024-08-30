@@ -2,6 +2,7 @@
 
 import { useActionState } from 'react';
 import { authenticate } from '@/app/lib/actions';
+import { Button } from './button';
 
 export default function LoginForm() {
   const [errorMessage, formAction, isPending] = useActionState(
@@ -56,9 +57,9 @@ export default function LoginForm() {
                 </div>
               </div>
             </div>
-            <button aria-disabled={isPending} type="submit" style={{ width: '100%', padding: '10px', background: '#0070f3', color: '#fff', border: 'none', borderRadius: '4px' }}>
-                    Login
-            </button>
+            <Button aria-disabled={isPending} type="submit" style={{ width: '100%', padding: '10px', background: '#0070f3', color: '#fff', border: 'none', borderRadius: '4px' }}>
+                    Login 
+            </Button>
             <div
             className="flex h-8 items-end space-x-1"
             aria-live="polite"
