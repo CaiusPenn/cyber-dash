@@ -1,0 +1,65 @@
+.shape {
+    height: 0;
+    width: 0;
+    border-bottom: 30px solid black;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+  }
+
+  .login {
+    padding: 12px;
+    margin: 30px auto 15px; /* Center horizontally with auto margin */
+    width: 100%; /* Take full width of its container */
+    border: none;
+    box-sizing: border-box; /* Include padding in the width calculation */
+  }
+
+.heading {
+    font-size: 50px;
+    font-weight: 900px;
+    text-align: center;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-bottom: 0px;
+}
+
+.description {
+    text-align: center;
+    color: #7D9CB7;
+    margin-top: 0;
+}
+
+.loginButton {
+    padding: 12px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: #8ca4ac;
+    color: white;
+    width: 100%;
+}
+
+.rememberMe {
+    color: #8ca4ac
+    
+}
+
+/* styles.module.css */
+.rememberMeContainer {
+    display: flex; /* Enable Flexbox */
+    align-items: center; /* Vertically center the items */
+    justify-content: space-between; /* Space between items */
+  }
+  
+  .rememberMeContainer input[type="checkbox"] {
+    margin-right: 5px; /* Optional: Space between checkbox and label */
+  }
+  
+  .rememberMeContainer a {
+    margin-left: auto; /* Pushes the link to the far right */
+    text-decoration: none; /* Optional: Remove underline from link */
+    color: #DD6E42;
+  }
+
+.rememberMeContainer label {
+    color: #7D9CB7
+}
+

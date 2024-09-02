@@ -5,17 +5,16 @@ import "bootstrap/dist/css/bootstrap.css";
 import { zodResolver } from "@hookform/resolvers/zod/dist/zod.js";
 
 import { useForm, FieldValues } from "react-hook-form";
-import Link from "next/link";
-import { LoginData, logInSchema } from "../lib/login-data";
+import { emailData, emailSchema } from "@/app/lib/login-data";
 
-const LoginForm = () => {
+const ResetPassword = () => {
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm<LoginData>({ resolver: zodResolver(logInSchema) });
+  } = useForm<emailData>({ resolver: zodResolver(emailSchema) });
 
-  const submitFormData = (data: LoginData) => console.log(data);
+  const submitFormData = (data: emailData) => console.log(data);
 
   return (
     <main className="flex min-h-screen flex-col">
@@ -30,8 +29,8 @@ const LoginForm = () => {
           style={{ backgroundColor: "#EEEEEE" }}
         >
           <div>
-            <p className={styles.heading}> Log in </p>
-            <p className={styles.description}> company name </p>
+            <p className={styles.heading}> Reset Password </p>
+            <p className={styles.description}> organisation </p>
           </div>
 
           <form onSubmit={handleSubmit(submitFormData)}>
@@ -51,25 +50,6 @@ const LoginForm = () => {
               )}
             </div>
             <div>
-              <label htmlFor="password"></label>
-              <input
-                {...register("password")}
-                type="password"
-                id="password"
-                name="password"
-                placeholder="password"
-                className={styles.login}
-                style={{ fontSize: "20px" }}
-              />
-            </div>
-
-            <div className={styles.rememberMeContainer}>
-              <input type="checkbox" id="rememberMe" />
-              <label htmlFor="rememberMe"> remember me </label>
-              <Link href="/reset-pass/reset-request">reset password</Link>
-            </div>
-
-            <div>
               <button type="submit" className={styles.loginButton}>
                 LOG IN
               </button>
@@ -81,4 +61,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default ResetPassword;
