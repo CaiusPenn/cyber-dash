@@ -15,7 +15,7 @@ export default function SideNav() {
       {/* Button to Toggle Sidebar */}
       
       <button
-        className={`absolute top-4 right-2 p-2 rounded ${isOpen ? 'bg-[#7D9CB7]' : 'bg-[#7D9CB7]'} `}
+        className={`absolute top-0 right-2 p-2 rounded ${isOpen ? 'bg-[#7D9CB7]' : 'bg-[#7D9CB7]'} `}
         onClick={toggleSidebar}
       >
         <div className="relative w-8 h-1 bg-white my-2"></div>
