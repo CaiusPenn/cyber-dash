@@ -21,22 +21,20 @@ export default function Survey() {
   const handleAnswerSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    // Update answers state
+   
     const newAnswers = [...answers, currentAnswer];
     setAnswers(newAnswers);
 
     try {
-      // Send answer to API route
       await fetch('/api/submit-survey', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId, question: questions[currentQuestionIndex], answer: currentAnswer }),
       });
 
-      // Move to the next question or finish the survey
       if (currentQuestionIndex < questions.length - 1) {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
-        setCurrentAnswer(''); // Clear the input field for the next question
+        setCurrentAnswer('');
       } else {
         alert('Survey complete! Thank you for your answers.');
       }
@@ -49,7 +47,7 @@ export default function Survey() {
   const handlePrevious = () => {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
-      setCurrentAnswer(answers[currentQuestionIndex - 1] || ''); // Restore previous answer
+      setCurrentAnswer(answers[currentQuestionIndex - 1] || ''); 
     }
   };
 
