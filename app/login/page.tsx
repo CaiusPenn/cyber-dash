@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import styles from "@/app/ui/home.module.css";
 import { zodResolver } from "@hookform/resolvers/zod/dist/zod.js";
 
 import { useForm, FieldValues } from "react-hook-form";
@@ -50,13 +49,15 @@ const LoginForm = () => {
           </Stack>
 
           <form onSubmit={handleSubmit(submitFormData)}>
-            <Stack paddingLeft={200} maxWidth={700} spacing={4}>
+            <Stack paddingLeft={200} maxWidth={700} spacing={10}>
               <FormControl>
                 <Input
                   id="email"
                   placeholder="email"
                   bg="white"
-                  size="lg"
+                  height="60px"
+                  fontSize="24px"
+                  borderRadius="none"
                   {...register("email")}
                 />
               </FormControl>
@@ -67,7 +68,10 @@ const LoginForm = () => {
                   placeholder="password"
                   type="password"
                   bg="white"
-                  size="lg"
+                  height="60px"
+                  fontSize="24px"
+                  borderRadius="none"
+                  {...register("password")}
                 />
               </FormControl>
             </Stack>
@@ -79,23 +83,25 @@ const LoginForm = () => {
               paddingTop={2}
               paddingBottom={5}
             >
-              <Checkbox>Remember Me</Checkbox>
+              <Checkbox {...register("rememberMe")} color={"#8CA4AC"}>
+                Remember Me
+              </Checkbox>
               <Text color="red">
-                <Link href="/reset-pass/reset-request" color="#7D9CB7">
-                  reset password
-                </Link>
+                <Link href="/reset-pass/reset-request">reset password</Link>
               </Text>
             </HStack>
 
-            <Stack paddingLeft={200} maxWidth={700}>
+            <Stack paddingLeft={200} maxWidth={700} paddingTop={5}>
               <Button
+                borderRadius="none"
                 mt={4}
-                bg="#7D9CB7"
-                isLoading={isSubmitting}
+                bg="#8CA4AC"
                 type="submit"
                 textColor="white"
+                height="60px"
+                fontSize="24px"
               >
-                Log in
+                LOG IN
               </Button>
             </Stack>
           </form>
