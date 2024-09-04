@@ -1,83 +1,107 @@
 "use client";
 import React from "react";
 import styles from "@/app/ui/home.module.css";
-import "bootstrap/dist/css/bootstrap.css";
 import { zodResolver } from "@hookform/resolvers/zod/dist/zod.js";
 
 import { useForm, FieldValues } from "react-hook-form";
 import Link from "next/link";
 import { LoginData, logInSchema } from "../lib/login-data";
+import {
+  Grid,
+  GridItem,
+  Text,
+  Stack,
+  HStack,
+  Button,
+  Checkbox,
+  Input,
+} from "@chakra-ui/react";
+import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+} from "@chakra-ui/react";
 
 const LoginForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors, isValid, isSubmitting },
   } = useForm<LoginData>({ resolver: zodResolver(logInSchema) });
 
   const submitFormData = (data: LoginData) => console.log(data);
 
   return (
-    <main className="flex min-h-screen flex-col">
-      <div className="flex grow flex-col md:flex-row w-full h-full">
-        <div
-          className="flex items-center justify-center w-full md:w-1/2 bg-[#7D9CB7] md:py-12"
-          style={{ backgroundColor: "#7D9CB7" }}
-        ></div>
+    <Grid
+      h="3000px"
+      templateRows="repeat(4, 1fr)"
+      templateColumns="repeat(2, 1fr)"
+      gap={0}
+    >
+      <GridItem rowSpan={4} colSpan={1} bg="#7D9CB7"></GridItem>
 
-        <div
-          className="flex flex-col justify-center gap-6 rounded-lg bg-gray-50 px-6 py-10 md:w-1/2 md:px-20"
-          style={{ backgroundColor: "#EEEEEE" }}
-        >
-          <div>
-            <p className={styles.heading}> Log in </p>
-            <p className={styles.description}> company name </p>
-          </div>
+      <GridItem rowSpan={4} colSpan={1} bg="#EEEEEE">
+        <Stack paddingTop={200}>
+          <Stack paddingLeft={375} paddingBottom={10}>
+            <Text fontSize="6xl" fontWeight={600}>
+              Log in
+            </Text>
+          </Stack>
 
           <form onSubmit={handleSubmit(submitFormData)}>
-            <div>
-              <label htmlFor="email"> </label>
-              <input
-                {...register("email")}
-                type="text"
-                id="email"
-                name="email"
-                placeholder="email"
-                className={styles.login}
-                style={{ fontSize: "20px" }}
-              />
-              {errors.email && (
-                <p className="text-danger"> {errors.email.message}</p>
-              )}
-            </div>
-            <div>
-              <label htmlFor="password"></label>
-              <input
-                {...register("password")}
-                type="password"
-                id="password"
-                name="password"
-                placeholder="password"
-                className={styles.login}
-                style={{ fontSize: "20px" }}
-              />
-            </div>
+            <Stack paddingLeft={200} maxWidth={700} spacing={4}>
+              <FormControl>
+                <Input
+                  id="email"
+                  placeholder="email"
+                  bg="white"
+                  size="lg"
+                  {...register("email")}
+                />
+              </FormControl>
 
-            <div className={styles.rememberMeContainer}>
-              <input type="checkbox" id="rememberMe" />
-              <label htmlFor="rememberMe"> remember me </label>
-              <Link href="/reset-pass/reset-request">reset password</Link>
-            </div>
+              <FormControl>
+                <Input
+                  id="password"
+                  placeholder="password"
+                  type="password"
+                  bg="white"
+                  size="lg"
+                />
+              </FormControl>
+            </Stack>
 
-            <div>
-              <button type="submit" className={styles.loginButton}>
-                LOG IN
-              </button>
-            </div>
+            <HStack
+              justifyContent="space-between"
+              maxWidth={700}
+              paddingLeft={200}
+              paddingTop={2}
+              paddingBottom={5}
+            >
+              <Checkbox>Remember Me</Checkbox>
+              <Text color="red">
+                <Link href="/reset-pass/reset-request" color="#7D9CB7">
+                  reset password
+                </Link>
+              </Text>
+            </HStack>
+
+            <Stack paddingLeft={200} maxWidth={700}>
+              <Button
+                mt={4}
+                bg="#7D9CB7"
+                isLoading={isSubmitting}
+                type="submit"
+                textColor="white"
+              >
+                Log in
+              </Button>
+            </Stack>
           </form>
-        </div>
-      </div>
-    </main>
+        </Stack>
+      </GridItem>
+    </Grid>
   );
 };
 
