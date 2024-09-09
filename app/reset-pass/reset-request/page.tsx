@@ -6,6 +6,18 @@ import { zodResolver } from "@hookform/resolvers/zod/dist/zod.js";
 
 import { useForm, FieldValues } from "react-hook-form";
 import { emailData, emailSchema } from "@/app/lib/login-data";
+import {
+  Grid,
+  GridItem,
+  Stack,
+  FormControl,
+  Input,
+  HStack,
+  Checkbox,
+  Button,
+  Text,
+} from "@chakra-ui/react";
+import Link from "next/link";
 
 const ResetPassword = () => {
   const {
@@ -17,47 +29,60 @@ const ResetPassword = () => {
   const submitFormData = (data: emailData) => console.log(data);
 
   return (
-    <main className="flex min-h-screen flex-col">
-      <div className="flex grow flex-col md:flex-row w-full h-full">
-        <div
-          className="flex items-center justify-center w-full md:w-1/2 bg-[#7D9CB7] md:py-12"
-          style={{ backgroundColor: "#7D9CB7" }}
-        ></div>
+    <Grid
+      h="3000px"
+      templateRows="repeat(4, 1fr)"
+      templateColumns="repeat(2, 1fr)"
+      gap={0}
+    >
+      <GridItem rowSpan={4} colSpan={1} bg="#7D9CB7"></GridItem>
 
-        <div
-          className="flex flex-col justify-center gap-6 rounded-lg bg-gray-50 px-6 py-10 md:w-1/2 md:px-20"
-          style={{ backgroundColor: "#EEEEEE" }}
-        >
-          <div>
-            <p className={styles.heading}> Reset Password </p>
-            <p className={styles.description}> organisation </p>
-          </div>
+      <GridItem rowSpan={4} colSpan={1} bg="#EEEEEE">
+        <Stack paddingTop={200}>
+          <Stack align="center" paddingBottom={50}>
+            <Text fontSize="6xl" fontWeight={600} paddingLeft={9} margin={0}>
+              Reset Password
+            </Text>
+            <Text color="#DD6E42">
+              We will send a new password to the given email{" "}
+            </Text>
+          </Stack>
 
           <form onSubmit={handleSubmit(submitFormData)}>
-            <div>
-              <label htmlFor="email"> </label>
-              <input
-                {...register("email")}
-                type="text"
-                id="email"
-                name="email"
-                placeholder="email"
-                className={styles.login}
-                style={{ fontSize: "20px" }}
-              />
-              {errors.email && (
-                <p className="text-danger"> {errors.email.message}</p>
-              )}
-            </div>
-            <div>
-              <button type="submit" className={styles.loginButton}>
-                LOG IN
-              </button>
-            </div>
+            <Stack
+              align="center"
+              paddingLeft={200}
+              maxWidth={700}
+              paddingBottom={6}
+            >
+              <FormControl>
+                <Input
+                  id="email"
+                  placeholder="email"
+                  bg="white"
+                  {...register("email")}
+                  height="60px"
+                  fontSize="24px"
+                  borderRadius="none"
+                />
+              </FormControl>
+            </Stack>
+
+            <Stack paddingLeft={200} maxWidth={700} paddingTop={5}>
+              <Button
+                borderRadius="none"
+                mt={4}
+                bg="#8CA4AC"
+                type="submit"
+                textColor="white"
+              >
+                RESET
+              </Button>
+            </Stack>
           </form>
-        </div>
-      </div>
-    </main>
+        </Stack>
+      </GridItem>
+    </Grid>
   );
 };
 

@@ -1,4 +1,4 @@
-import '@/app/ui/global.css';
+import { ChakraProvider } from "@chakra-ui/react";
 
 export default function RootLayout({
   children,
@@ -7,8 +7,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>{children}</body> 
-      {/* <body>{children}</body> */}
+      <body className="antialiased">
+        <ChakraProvider>{children}</ChakraProvider>
+      </body>
     </html>
   );
 }
