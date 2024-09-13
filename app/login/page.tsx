@@ -1,5 +1,5 @@
 import LoginForm from '@/app/ui/login/login-form';
-
+//zooming in and out causes formatting issues with the login form
 export default function LoginPage() {
   return (
     <main className="flex items-center justify-center h-screen">
@@ -13,4 +13,4 @@ export default function LoginPage() {
     </main>
   );
 }
-                                                                                                    
+
