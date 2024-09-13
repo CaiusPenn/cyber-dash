@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ChakraProvider } from "@chakra-ui/react";
+import "@/global.css"
 
 export default function Home() {
   return (
