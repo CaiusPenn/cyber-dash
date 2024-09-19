@@ -1,16 +1,22 @@
 import LoginForm from '@/app/ui/login-form';
-
- 
+import '@/global.css'
+import Image from 'next/image';
 export default function LoginPage() {
   return (
-    <main className="flex items-center justify-center md:h-screen">
-      <div className="relative mx-auto flex w-full max-w-[400px] flex-col space-y-2.5 p-4 md:-mt-32">
-        <div className="flex h-20 w-full items-end rounded-lg bg-blue-500 p-3 md:h-36">
-          <div className="w-32 text-white md:w-36">
-          </div>
-        </div>
-        <LoginForm />
-      </div>
-    </main>
+      <main className="flex h-screen items-center justify-center">
+       <div className='hidden w-fit bg-blue-500 h-screen md:block'>
+       <Image
+          src="/hero-desktop.png"
+        width={800}
+        height={560}
+        className="hidden md:block"
+        alt="Screenshots of the dashboard project showing desktop version"
+      />
+       </div>
+       <div className="w-8/12 flex-col items-center rounded-lg">
+          <LoginForm/>
+       </div>
+      </main>
+
   );
 }
