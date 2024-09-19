@@ -5,6 +5,7 @@ import { z } from 'zod';
 import { sql } from '@vercel/postgres';
 import type { User } from '@/app/lib/definitions';
 import bcrypt from 'bcrypt';
+import { createSession } from './app/lib/session';
 
 async function getUser(email: string): Promise<User | undefined> {
     try {
@@ -31,7 +32,10 @@ async function getUser(email: string): Promise<User | undefined> {
             if (!user) return null;
             const passwordsMatch = await bcrypt.compare(password, user.password);
 
-            if (passwordsMatch) return user as any;
+            if (passwordsMatch) {
+              //await createSession(user.name,user.job_type);
+              return user as any;
+            }
           }
           return null;
         },
