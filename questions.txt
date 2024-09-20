@@ -1,0 +1,85 @@
+INSERT INTO questions (question, category)
+VALUES
+  ('It’s acceptable to use my social media passwords on my work accounts', 'Password Management'),
+  ('I am allowed to share my work passwords with colleagues', 'Password Management'),
+  ('A mixture of letters, numbers, and symbols is necessary for work passwords', 'Password Management'),
+  
+  ('It’s safe to use the same password for social media and work accounts', 'Password Management'),
+  ('It’s a bad idea to share my work passwords, even if a colleague asks for it', 'Password Management'),
+  ('It’s safe to have a work password with just letters', 'Password Management'),
+  
+  ('I use a different password for my social media and work accounts', 'Password Management'),
+  ('I share my work passwords with colleagues', 'Password Management'),
+  ('I use a combination of letters, numbers, and symbols in my work passwords', 'Password Management'),
+  
+  ('I am allowed to click on any links in emails from people I know', 'Email Use'),
+  ('I am not permitted to click on a link in an email from an unknown sender', 'Email Use'),
+  ('I am allowed to open email attachments from unknown senders', 'Email Use'),
+
+  ('It’s always safe to click on links in emails from people I know', 'Email Use'),
+  ('Nothing bad can happen if I click on a link in an email from an unknown sender', 'Email Use'),
+  ('It’s risky to open an email attachment from an unknown sender', 'Email Use'),
+
+  ('I don’t always click on links in emails just because they come from someone I know', 'Email Use'),
+  ('If an email from an unknown sender looks interesting, I click on a link within it', 'Email Use'),
+  ('I don’t open email attachments if the sender is unknown to me', 'Email Use'),
+
+  ('I am allowed to download any files onto my work computer if they help me to do my job', 'Internet Use'),
+  ('While I am at work, I shouldn’t access certain websites', 'Internet Use'),
+  ('I am allowed to enter any information on any website if it helps me do my job', 'Internet Use'),
+
+  ('It can be risky to download files on my work computer', 'Internet Use'),
+  ('Just because I can access a website at work, doesn’t mean that it’s safe', 'Internet Use'),
+  ('If it helps me to do my job, it doesn’t matter what information I put on a website', 'Internet Use'),
+
+  ('I download any files onto my work computer that will help me get the job done', 'Internet Use'),
+  ('When accessing the internet at work, I visit any website that I want to', 'Internet Use'),
+  ('I assess the safety of websites before entering information', 'Internet Use'),
+
+  ('I must periodically review the privacy settings on my social media accounts', 'Social Media Use'),
+  ('I can’t be fired for something I post on social media', 'Social Media Use'),
+  ('I can post what I want about work on social media', 'Social Media Use'),
+
+  ('It’s a good idea to regularly review my social media privacy settings', 'Social Media Use'),
+  ('It doesn’t matter if I post things on social media that I wouldn’t normally say in public', 'Social Media Use'),
+  ('It’s risky to post certain information about my work on social media', 'Social Media Use'),
+
+  ('I don’t regularly review my social media privacy settings', 'Social Media Use'),
+  ('I don’t post anything on social media before considering any negative consequences', 'Social Media Use'),
+  ('I post whatever I want about my work on social media', 'Social Media Use'),
+
+  ('When working in a public place, I have to keep my laptop with me at all times', 'Mobile Devices'),
+  ('I am allowed to send sensitive work files via a public Wi-Fi network', 'Mobile Devices'),
+  ('When working on a sensitive document, I must ensure that strangers can’t see my laptop screen', 'Mobile Devices'),
+
+  ('When working in a cafe, it’s safe to leave my laptop unattended for a minute', 'Mobile Devices'),
+  ('It’s risky to send sensitive work files using a public Wi-Fi network', 'Mobile Devices'),
+  ('It’s risky to access sensitive work files on a laptop if strangers can see my screen', 'Mobile Devices'),
+
+  ('When working in a public place, I leave my laptop unattended', 'Mobile Devices'),
+  ('I send sensitive work files using a public Wi-Fi network', 'Mobile Devices'),
+  ('I check that strangers can’t see my laptop screen if I’m working on a sensitive document', 'Mobile Devices'),
+
+  ('Sensitive print-outs can be disposed of in the same way as non-sensitive ones', 'Information Handling'),
+  ('If I find a USB stick in a public place, I shouldn’t plug it into my work computer', 'Information Handling'),
+  ('I am allowed to leave print-outs containing sensitive information on my desk overnight', 'Information Handling'),
+
+  ('Disposing of sensitive print-outs by putting them in the rubbish bin is safe', 'Information Handling'),
+  ('If I find a USB stick in a public place, nothing bad can happen if I plug it into my work computer', 'Information Handling'),
+  ('It’s risky to leave print-outs that contain sensitive information on my desk overnight', 'Information Handling'),
+
+  ('When sensitive print-outs need to be disposed of, I ensure that they are shredded or destroyed', 'Information Handling'),
+  ('I wouldn’t plug a USB stick found in a public place into my work computer', 'Information Handling'),
+  ('I leave print-outs that contain sensitive information on my desk when I’m not there', 'Information Handling'),
+
+  ('If I see someone acting suspiciously in my workplace, I should report it', 'Incident Reporting'),
+  ('I must not ignore poor security behavior by my colleagues', 'Incident Reporting'),
+  ('It’s optional to report security incidents', 'Incident Reporting'),
+
+  ('If I ignore someone acting suspiciously in my workplace, nothing bad can happen', 'Incident Reporting'),
+  ('Nothing bad can happen if I ignore poor security behavior by a colleague', 'Incident Reporting'),
+  ('It’s risky to ignore security incidents, even if I think they’re not significant', 'Incident Reporting'),
+
+  ('If I saw someone acting suspiciously in my workplace, I would do something about it', 'Incident Reporting'),
+  ('If I noticed my colleague ignoring security rules, I wouldn’t take any action', 'Incident Reporting'),
+  ('If I noticed a security incident, I would report it', 'Incident Reporting');
