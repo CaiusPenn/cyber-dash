@@ -38,9 +38,10 @@ export default function Survey() {
         body: JSON.stringify({ userId, question: questions[currentQuestionIndex], answer: selectedAnswer }),
       });
 
+      // Move to the next question
       if (currentQuestionIndex < questions.length - 1) {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
-        setSelectedAnswer('');
+        setSelectedAnswer(''); // Reset selected answer for the next question
       } else {
         alert('Survey complete! Thank you for your answers.');
       }
