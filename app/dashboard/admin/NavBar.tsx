@@ -1,25 +1,21 @@
 import React from "react";
 import Logo from "../../assets/1.svg";
 import { BsFileBarGraph } from "react-icons/bs";
-import { Stack } from "@chakra-ui/react";
+import { Flex, Stack } from "@chakra-ui/react";
 import { MdPeopleAlt } from "react-icons/md";
 import { RiFolder6Fill } from "react-icons/ri";
 import { RxDashboard } from "react-icons/rx";
 
 const NavBar = () => {
   return (
-    <Stack
-      spacing="50px"
-      justifyContent="center"
-      paddingLeft="20px"
-      color="black"
-    >
-      <RxDashboard size="48px" />
-
-      <MdPeopleAlt size="48px" />
-      <BsFileBarGraph size="48px" />
-      <RiFolder6Fill size="48px" />
-    </Stack>
+    <Flex justifyContent="center" paddingTop="50px">
+      <Stack spacing="50px" color="black">
+        <RxDashboard size="38px" />
+        <MdPeopleAlt size="38px" />
+        <BsFileBarGraph size="38px" />
+        <RiFolder6Fill size="38px" />
+      </Stack>
+    </Flex>
   );
 };
 
