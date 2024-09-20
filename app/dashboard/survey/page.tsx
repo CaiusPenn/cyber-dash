@@ -11,7 +11,7 @@ export default function Survey() {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await fetch('/api/questions');
+        const response = await fetch('/api/questions/questions');
         const data = await response.json();
         setQuestions(data);
       } catch (error) {
