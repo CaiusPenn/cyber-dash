@@ -17,6 +17,11 @@ const Overview = () => {
         <Select placeholder="Date Range" size="lg" maxWidth={300} />
         <Select placeholder="Category" size="lg" maxWidth={300} />
       </HStack>
+
+      <HStack paddingTop={10} paddingLeft={3}>
+        <Select placeholder="Date Range" size="lg" maxWidth={300} />
+        <Select placeholder="Category" size="lg" maxWidth={300} />
+      </HStack>
     </>
   );
 };

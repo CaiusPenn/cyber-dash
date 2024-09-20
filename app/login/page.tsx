@@ -55,8 +55,8 @@ const LoginForm = () => {
                   id="email"
                   placeholder="email"
                   bg="white"
-                  height="60px"
-                  fontSize="24px"
+                  height={["40px", "50px", "60px"]} // Responsive height
+                  fontSize={["16px", "20px", "24px"]} // Responsive font size
                   borderRadius="none"
                   {...register("email")}
                 />
@@ -68,8 +68,8 @@ const LoginForm = () => {
                   placeholder="password"
                   type="password"
                   bg="white"
-                  height="60px"
-                  fontSize="24px"
+                  height={["40px", "50px", "60px"]} // Responsive height
+                  fontSize={["16px", "20px", "24px"]} // Responsive font size
                   borderRadius="none"
                   {...register("password")}
                 />
@@ -98,8 +98,8 @@ const LoginForm = () => {
                 bg="#8CA4AC"
                 type="submit"
                 textColor="white"
-                height="60px"
-                fontSize="24px"
+                height={["40px", "50px", "60px"]} // Responsive height
+                fontSize={["16px", "20px", "24px"]} // Responsive font size
               >
                 LOG IN
               </Button>
