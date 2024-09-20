@@ -79,6 +79,7 @@ export default function Survey() {
                     ? 'bg-blue-600 text-white'
                     : 'bg-gray-300 text-gray-800'
                 }`}
+                style={{ margin: '0 5px' }} // Add spacing between buttons
               >
                 {answer}
               </button>
