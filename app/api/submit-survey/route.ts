@@ -6,33 +6,35 @@ const pool = new Pool({
 });
 
 export async function POST(request: Request) {
-  const { userId, question, answer } = await request.json();
-  
-  const client = await pool.connect(); 
+  const { userId, questionId, answer } = await request.json(); // Update to match your data structure
+
+  const client = await pool.connect();
 
   try {
-    await client.query('BEGIN'); 
+    await client.query('BEGIN');
 
+    // Update existing answer if it exists
     const updateResult = await client.query(
-      'UPDATE survey SET answer = $1 WHERE user_id = $2 AND question = $3',
-      [answer, userId, question]
+      'UPDATE answers SET answer = $1 WHERE u_id = $2 AND q_id = $3',
+      [answer, userId, questionId]
     );
 
+    // If no row was updated, insert a new answer
     if (updateResult.rowCount === 0) {
       await client.query(
-        'INSERT INTO survey (user_id, question, answer) VALUES ($1, $2, $3)',
-        [userId, question, answer]
+        'INSERT INTO answers (answer, u_id, q_id) VALUES ($1, $2, $3)',
+        [answer, userId, questionId]
       );
     }
 
-    await client.query('COMMIT'); 
+    await client.query('COMMIT');
 
     return NextResponse.json({ message: 'Survey submitted successfully!' });
   } catch (error) {
-    await client.query('ROLLBACK'); 
+    await client.query('ROLLBACK');
     console.error('Database error:', error);
     return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
   } finally {
-    client.release(); 
+    client.release();
   }
 }

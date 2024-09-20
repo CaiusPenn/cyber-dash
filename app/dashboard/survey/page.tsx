@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 
 export default function Survey() {
-  const [questions, setQuestions] = useState<string[]>([]);
+  const [questions, setQuestions] = useState<any[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
   const [selectedAnswer, setSelectedAnswer] = useState<string>('');
@@ -11,7 +11,7 @@ export default function Survey() {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await fetch('/api/questions/questions');
+        const response = await fetch('/api/questions'); // Adjust API endpoint as needed
         const data = await response.json();
         setQuestions(data);
       } catch (error) {
@@ -28,20 +28,22 @@ export default function Survey() {
 
   const handleAnswerSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const newAnswers = [...answers, selectedAnswer];
-    setAnswers(newAnswers);
+    
+    const questionId = questions[currentQuestionIndex].id; // Assuming each question has an ID
 
     try {
       await fetch('/api/submit-survey', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userId, question: questions[currentQuestionIndex], answer: selectedAnswer }),
+        body: JSON.stringify({ userId, questionId, answer: selectedAnswer }),
       });
 
-      // Move to the next question
+      const newAnswers = [...answers, selectedAnswer];
+      setAnswers(newAnswers);
+
       if (currentQuestionIndex < questions.length - 1) {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
-        setSelectedAnswer(''); // Reset selected answer for the next question
+        setSelectedAnswer('');
       } else {
         alert('Survey complete! Thank you for your answers.');
       }
@@ -54,7 +56,7 @@ export default function Survey() {
   const handlePrevious = () => {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
-      setSelectedAnswer(answers[currentQuestionIndex - 1] || ''); 
+      setSelectedAnswer(answers[currentQuestionIndex - 1] || '');
     }
   };
 
@@ -64,7 +66,7 @@ export default function Survey() {
       {questions.length > 0 && currentQuestionIndex < questions.length ? (
         <form onSubmit={handleAnswerSubmit}>
           <label>
-            {questions[currentQuestionIndex]}
+            {questions[currentQuestionIndex].question} {/* Adjust property based on your data */}
           </label>
           <div className="button-group mt-4">
             {['Strongly Agree', 'Agree', 'Neutral', 'Disagree', 'Strongly Disagree'].map(answer => (
@@ -92,7 +94,11 @@ export default function Survey() {
                 Previous
               </button>
             )}
-            <button type="submit" disabled={!selectedAnswer} className="next-button p-2 rounded bg-blue-600 text-white">
+            <button
+              type="submit"
+              disabled={!selectedAnswer}
+              className="next-button p-2 rounded bg-blue-600 text-white"
+            >
               {currentQuestionIndex < questions.length - 1 ? 'Next' : 'Finish'}
             </button>
           </div>
