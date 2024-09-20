@@ -1,9 +1,6 @@
 import { Grid, GridItem, HStack, Text } from "@chakra-ui/react";
-import { IoIosNotifications } from "react-icons/io";
-
-import NavBar from "./admin/NavBar";
-import { Children } from "react";
-import Header from "./admin/Header";
+import NavBar from "./NavBar";
+import Header from "./Header";
 
 interface Props {
   children: React.ReactNode;
@@ -19,8 +16,6 @@ export default function Dashboard({ children }: Props) {
       gridTemplateColumns={"100px 1fr"}
       h="200px"
       gap="1"
-      color="blackAlpha.700"
-      fontWeight="bold"
     >
       <GridItem
         pl="2"
@@ -31,10 +26,11 @@ export default function Dashboard({ children }: Props) {
       >
         <Header></Header>
       </GridItem>
+
       <GridItem pl="2" bg="#FFFFFF" area={"nav"}>
         <NavBar></NavBar>
       </GridItem>
-      <GridItem pl="2" bg="#F7F9FA" area={"main"}>
+      <GridItem pl="2" bg="#F7F9FA" area={"main"} paddingLeft="30px">
         {children}
       </GridItem>
     </Grid>

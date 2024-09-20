@@ -18,7 +18,6 @@ const Header = () => {
         <IoMdNotifications size="48px" />
         <Text>Hello, Name</Text>
         <IoMdNotifications size="48px" />
-        <Button> New Project</Button>
       </HStack>
     </Flex>
   );
