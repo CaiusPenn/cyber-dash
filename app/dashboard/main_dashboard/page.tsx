@@ -1,6 +1,8 @@
+"use client";
 import { Flex, Grid, GridItem, HStack, Text } from "@chakra-ui/react";
 import React from "react";
-import styles from "./Styles.module.css";
+import styles from "../Styles.module.css";
+import { LineGraph } from "../LineGraph";
 
 const Page = () => {
   return (
@@ -10,8 +12,8 @@ const Page = () => {
                       "incidents threats maturity"
                       "scores week week"`}
       h="full"
-      gap="10"
-      gridTemplateRows={"100px 20px 1fr 2fr "}
+      gap="30"
+      gridTemplateRows={"150px 20px 242px 500px "}
       color={"#334681"}
       fontWeight={"bold"}
       gridTemplateColumns={"repeat(3, 1fr)"}
@@ -25,12 +27,14 @@ const Page = () => {
         borderRadius={"10px"}
         width={"98%"}
       >
-        <Text>Views Overview</Text>
+        <Text color={"#FFFFFF"} padding="24px" fontSize={"20px"}>
+          Views Overview
+        </Text>
       </GridItem>
 
       <GridItem area={"info"} width={"98%"}>
         <Flex justify={"space-between"}>
-          <Text> Program Traffic Tracking </Text>
+          <Text fontSize="20px"> Program Traffic Tracking </Text>
           <HStack>
             <Text> Refresh </Text>
             <Text> Refresh Icon </Text>
@@ -45,6 +49,8 @@ const Page = () => {
         paddingLeft="100x"
       >
         <Text className={styles.customText}>Cyber Security Incidents</Text>
+
+        <LineGraph />
       </GridItem>
 
       <GridItem area={"threats"} bg="#FFFFFF" borderRadius="15px">

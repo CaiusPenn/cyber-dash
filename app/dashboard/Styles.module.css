@@ -1,0 +1,27 @@
+/* styles.module.css */
+.customText {
+    padding-top: 40px;
+    padding-left:40px;
+    padding-bottom: 10px;
+    font-size: 15px;
+  }
+
+.customBox {
+  background-color: #FFFFFF;
+  box-shadow: "";
+  border-radius: 20px;
+  box-shadow: 1px 1px 1px grey;
+     }
+
+.CompletionRateText {
+    padding-left: 40px;
+    padding-top:40px;
+    color: #FFFFFF;
+    font-size: 24px;
+}
+
+.dateText {
+  color: #8590B3;
+  font-size: 12px;
+  padding-left: 40px;
+}
