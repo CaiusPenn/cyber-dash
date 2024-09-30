@@ -4,6 +4,7 @@ import React from "react";
 import styles from "../Styles.module.css";
 import { LineGraph } from "../LineGraph";
 import SmallStats from "./SmallStats";
+import Scores from "./Scores";
 
 const Page = () => {
   return (
@@ -91,7 +92,7 @@ const Page = () => {
       </GridItem>
 
       <GridItem area={"scores"} bg="#FFFFFF" borderRadius="15px" height="90%">
-        <Text className={styles.customText}>Scores for company</Text>
+        <Scores />
       </GridItem>
 
       <GridItem
