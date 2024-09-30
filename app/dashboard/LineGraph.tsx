@@ -51,5 +51,9 @@ export const LineGraph = () => {
     },
   };
 
-  return <Line options={options} data={lineChartData} />;
+  return (
+    <div style={{ width: "200px", height: "80px" }}>
+      <Line options={options} data={lineChartData} />
+    </div>
+  );
 };

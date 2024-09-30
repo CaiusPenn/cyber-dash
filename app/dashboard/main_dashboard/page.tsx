@@ -1,5 +1,5 @@
 "use client";
-import { Flex, Grid, GridItem, HStack, Text } from "@chakra-ui/react";
+import { Flex, Grid, GridItem, HStack, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 import styles from "../Styles.module.css";
 import { LineGraph } from "../LineGraph";
@@ -48,9 +48,21 @@ const Page = () => {
         borderRadius="15px"
         paddingLeft="100x"
       >
-        <Text className={styles.customText}>Cyber Security Incidents</Text>
+        <Stack spacing="0">
+          <Text className={styles.customText}>Cyber Security Incidents</Text>
+          <HStack>
+            <Text className={styles.dateText}> Ring ratio </Text>
+            <Text className={styles.dateText}> Year on year </Text>
+          </HStack>
 
-        <LineGraph />
+          <Text className={styles.viewsOverviewToday}> today </Text>
+          <HStack spacing="30">
+            <Text className={styles.viewsOverviewStat} color="#387DFF">
+              32,021
+            </Text>
+            <LineGraph />
+          </HStack>
+        </Stack>
       </GridItem>
 
       <GridItem area={"threats"} bg="#FFFFFF" borderRadius="15px">

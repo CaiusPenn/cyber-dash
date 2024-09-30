@@ -3,7 +3,7 @@
     padding-top: 40px;
     padding-left:40px;
     padding-bottom: 10px;
-    font-size: 15px;
+    font-size: 16px;
   }
 
 .customBox {
@@ -24,4 +24,19 @@
   color: #8590B3;
   font-size: 12px;
   padding-left: 40px;
+  font-weight: 600;
+}
+
+.viewsOverviewToday{
+  color: #334681;
+  font-size: 12px; 
+  padding-left: 40px;
+  padding-top: 40px;
+}
+
+.viewsOverviewStat {
+  font-size: #387DFF;
+  padding-left: 40px;
+  font-size: 26px;
+
 }

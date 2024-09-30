@@ -12,7 +12,7 @@ const page = () => {
                   "info info info phishing phishing"
                   "workload workload workload stress stress"`}
       h="full"
-      gap="40"
+      gap="10"
       gridTemplateRows={"25px 275px 600px"}
       color={"#334681"}
       fontWeight={"bold"}
@@ -49,9 +49,9 @@ const page = () => {
         <Text className={styles.dateText}>
           2024-08-13 ~ 2024-09-13 | Last 7 days{" "}
         </Text>
-        <Flex justifyContent="center" alignContent="center" paddingTop="80px">
-          {/* <Doughnut h={225} w={225} /> */}
-        </Flex>
+        {/* <Flex justifyContent="center" alignContent="center" paddingTop="80px"> */}
+        {/* <Doughnut h={225} w={225} /> */}
+        {/* </Flex> */}
       </GridItem>
     </Grid>
   );
