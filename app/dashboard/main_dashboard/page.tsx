@@ -3,6 +3,7 @@ import { Flex, Grid, GridItem, HStack, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 import styles from "../Styles.module.css";
 import { LineGraph } from "../LineGraph";
+import SmallStats from "./SmallStats";
 
 const Page = () => {
   return (
@@ -48,29 +49,45 @@ const Page = () => {
         borderRadius="15px"
         paddingLeft="100x"
       >
-        <Stack spacing="0">
-          <Text className={styles.customText}>Cyber Security Incidents</Text>
-          <HStack>
-            <Text className={styles.dateText}> Ring ratio </Text>
-            <Text className={styles.dateText}> Year on year </Text>
-          </HStack>
-
-          <Text className={styles.viewsOverviewToday}> today </Text>
-          <HStack spacing="30">
-            <Text className={styles.viewsOverviewStat} color="#387DFF">
-              32,021
-            </Text>
-            <LineGraph />
-          </HStack>
-        </Stack>
+        <SmallStats
+          stats="32,021"
+          graph={
+            <LineGraph
+              color="#387DFF"
+              gradient={["#A7C5FF", "#D3E2FF", "#FFFFFF"]}
+            />
+          }
+          title="Cyber Security Incidents"
+          color="#387DFF"
+        />
       </GridItem>
 
       <GridItem area={"threats"} bg="#FFFFFF" borderRadius="15px">
-        <Text className={styles.customText}>Threats Detected</Text>
+        <SmallStats
+          stats="429"
+          graph={
+            <LineGraph
+              color="#6DD230"
+              gradient={["#A7C5FF", "#D3E2FF", "#FFFFFF"]}
+            />
+          }
+          title="Threats Detected"
+          color="#6DD230"
+        />
       </GridItem>
 
       <GridItem area={"maturity"} bg="#FFFFFF" borderRadius="15px" width="95%">
-        <Text className={styles.customText}>Current Maturity Level</Text>
+        <SmallStats
+          stats="Level 4"
+          graph={
+            <LineGraph
+              color="#FE7C4B"
+              gradient={["#A7C5FF", "#D3E2FF", "#FFFFFF"]}
+            />
+          }
+          title="Current Maturity Level"
+          color="#FE7C4B"
+        />
       </GridItem>
 
       <GridItem area={"scores"} bg="#FFFFFF" borderRadius="15px" height="90%">
