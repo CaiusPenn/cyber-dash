@@ -54,7 +54,7 @@ const Page = () => {
           graph={
             <LineGraph
               color="#387DFF"
-              gradient={["#A7C5FF", "#D3E2FF", "#FFFFFF"]}
+              grad={["#A7C5FF", "#D3E2FF", "#FFFFFF"]}
             />
           }
           title="Cyber Security Incidents"
@@ -68,7 +68,7 @@ const Page = () => {
           graph={
             <LineGraph
               color="#6DD230"
-              gradient={["#A7C5FF", "#D3E2FF", "#FFFFFF"]}
+              grad={["#B6E998", "#DBF4CB", "#FFFFFF"]}
             />
           }
           title="Threats Detected"
@@ -82,7 +82,7 @@ const Page = () => {
           graph={
             <LineGraph
               color="#FE7C4B"
-              gradient={["#A7C5FF", "#D3E2FF", "#FFFFFF"]}
+              grad={["#FFBEA5", "#FFDED2", "#FFFFFF"]}
             />
           }
           title="Current Maturity Level"

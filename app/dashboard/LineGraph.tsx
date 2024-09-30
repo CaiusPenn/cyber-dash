@@ -27,10 +27,10 @@ ChartJS.register(
 
 interface Props {
   color: string;
-  gradient: string[];
+  grad: string[];
 }
 
-export const LineGraph = ({ color, gradient }: Props) => {
+export const LineGraph = ({ color, grad }: Props) => {
   const data = {
     labels: [
       "Jan",
@@ -53,9 +53,10 @@ export const LineGraph = ({ color, gradient }: Props) => {
         backgroundColor: (context: ScriptableContext<"line">) => {
           const ctx = context.chart.ctx;
           const gradient = ctx.createLinearGradient(0, 0, 0, 200);
-          gradient.addColorStop(0, "#A7C5FF");
-          gradient.addColorStop(0.4, "#D3E2FF");
-          gradient.addColorStop(0.6, "#FFFFFF");
+          gradient.addColorStop(0, grad[0]);
+          gradient.addColorStop(0.2, grad[1]);
+          gradient.addColorStop(0.6, grad[2]);
+
           return gradient;
         },
 
