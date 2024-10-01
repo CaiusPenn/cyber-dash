@@ -5,6 +5,7 @@ import styles from "../Styles.module.css";
 import { LineGraph } from "../LineGraph";
 import SmallStats from "./SmallStats";
 import Scores from "./Scores";
+import WeeklyIncidents from "./WeeklyIncidents";
 
 const Page = () => {
   return (
@@ -102,7 +103,7 @@ const Page = () => {
         width="98%"
         height="90%"
       >
-        <Text className={styles.customText}>Incidents per week</Text>
+        <WeeklyIncidents />
       </GridItem>
     </Grid>
   );

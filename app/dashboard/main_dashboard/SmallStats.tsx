@@ -33,7 +33,7 @@ const SmallStats = ({ graph, stats, title, color }: Props) => {
       </GridItem>
 
       <GridItem area={"stat"}>
-        <Stack spacing="1">
+        <Stack spacing="3">
           <Text className={styles.viewsOverviewToday}> today </Text>
           <Text className={styles.viewsOverviewStat} color={color}>
             {stats}
