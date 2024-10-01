@@ -1,4 +1,26 @@
+import React from "react";
 import { Line } from "react-chartjs-2";
+import {
+  Chart,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend,
+} from "chart.js";
+
+// Register the required components
+Chart.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend
+);
 
 const labels = [
   "Monday",
@@ -11,6 +33,11 @@ const labels = [
 ];
 
 const colorScheme = ["#387DFF", "#EAD656", "#FE7C4B", "#23B899"];
+
+interface Props {
+  w: string;
+  h: string;
+}
 
 export const MultipleLineGraph = () => {
   const options = {
@@ -70,7 +97,7 @@ export const MultipleLineGraph = () => {
   };
 
   return (
-    <div style={{ width: "95%", height: "275px" }}>
+    <div style={{ width: "95%", height: "100%" }}>
       <Line data={data} options={options} />
     </div>
   );

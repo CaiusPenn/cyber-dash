@@ -4,6 +4,8 @@ import React from "react";
 import styles from "../Styles.module.css";
 import CompletionRate from "./CompletionRate";
 import PhishingResults from "./PhishingResults";
+import WorkloadData from "./WorkloadData";
+import Stress from "./Stress";
 
 const page = () => {
   return (
@@ -36,16 +38,10 @@ const page = () => {
         <PhishingResults />
       </GridItem>
       <GridItem area={"workload"} className={styles.customBox}>
-        <Text className={styles.customText}>Employee Workload Data</Text>
+        <WorkloadData />
       </GridItem>
       <GridItem area={"stress"} className={styles.customBox} width="95%">
-        <Text className={styles.customText}>Employee Stress Chart</Text>
-        <Text className={styles.dateText}>
-          2024-08-13 ~ 2024-09-13 | Last 7 days{" "}
-        </Text>
-        {/* <Flex justifyContent="center" alignContent="center" paddingTop="80px"> */}
-        {/* <Doughnut h={225} w={225} /> */}
-        {/* </Flex> */}
+        <Stress />
       </GridItem>
     </Grid>
   );

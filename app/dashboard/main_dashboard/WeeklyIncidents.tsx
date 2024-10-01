@@ -10,7 +10,7 @@ const WeeklyIncidents = () => {
       "info "`}
       h="full"
       gap="10"
-      gridTemplateRows={"60px 240px"}
+      gridTemplateRows={"60px 300px"}
       color={"#334681"}
       fontWeight={"bold"}
     >
