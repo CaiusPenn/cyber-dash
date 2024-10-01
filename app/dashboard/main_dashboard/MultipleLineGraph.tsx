@@ -17,8 +17,10 @@ export const MultipleLineGraph = () => {
     scales: {
       x: {
         grid: {
-          color: "#EAEBF0", // Color of the x-axis gridlines
-          borderDash: [5, 5], // Make the gridlines dashed (5px dash, 5px gap)
+          drawOnChartArea: true, // Ensure grid lines are drawn
+          drawBorder: true, // Draw the border around the chart
+          borderDash: [5, 5], // Apply dashed lines
+          color: "#EAEBF0", // Gridline color
         },
       },
       y: {

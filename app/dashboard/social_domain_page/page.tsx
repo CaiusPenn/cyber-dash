@@ -1,9 +1,9 @@
 "use client";
-import { Center, Flex, Grid, GridItem, Text } from "@chakra-ui/react";
+import { Grid, GridItem, Text } from "@chakra-ui/react";
 import React from "react";
 import styles from "../Styles.module.css";
-// import Doughnut from "../Doughnut";
-import { LineGraph } from "../LineGraph";
+import CompletionRate from "./CompletionRate";
+import PhishingResults from "./PhishingResults";
 
 const page = () => {
   return (
@@ -30,16 +30,10 @@ const page = () => {
       </GridItem>
 
       <GridItem area={"info"} className={styles.customBox} bg="#387DFF">
-        <Text className={styles.CompletionRateText}>
-          Employee Training Completion Rate
-        </Text>
-        <Text padding="40px" textColor="#FFFFFF" fontWeight="100px" width="40%">
-          The small program starts at 10.663 people and the overall conversion
-          rate is 91.54%
-        </Text>
+        <CompletionRate />
       </GridItem>
       <GridItem area={"phishing"} className={styles.customBox} width="95%">
-        <Text className={styles.customText}>Phishing Simulation Results</Text>
+        <PhishingResults />
       </GridItem>
       <GridItem area={"workload"} className={styles.customBox}>
         <Text className={styles.customText}>Employee Workload Data</Text>

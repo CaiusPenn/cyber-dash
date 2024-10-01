@@ -8,7 +8,6 @@
 
 .customBox {
   background-color: #FFFFFF;
-  box-shadow: "";
   border-radius: 20px;
   box-shadow: 1px 1px 1px grey;
      }
@@ -39,4 +38,10 @@
   padding-left: 40px;
   font-size: 26px;
 
+}
+
+.simulationResultsText {
+  color: #334681;
+  font-size: 12px;
+  font-weight: 500;
 }
