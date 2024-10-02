@@ -45,3 +45,11 @@
   font-size: 12px;
   font-weight: 500;
 }
+
+
+.statsBox {
+  border-radius: 5%;
+  /* width: "95%"; */
+  height:"98%";
+  background: #FFFFFF;
+}

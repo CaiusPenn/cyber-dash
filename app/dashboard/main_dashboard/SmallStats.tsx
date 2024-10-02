@@ -17,10 +17,10 @@ const SmallStats = ({ graph, stats, title, color }: Props) => {
       "stat graph graph "`}
       h="full"
       gap="5"
-      gridTemplateRows={"60px 60px"}
-      color={"#334681"}
+      gridTemplateRows={"15% 85%"}
       fontWeight={"bold"}
       gridTemplateColumns={"repeat(3, 1fr)"}
+      boxShadow={"md"}
     >
       <GridItem area={"des"}>
         <Stack spacing="0">
@@ -32,8 +32,8 @@ const SmallStats = ({ graph, stats, title, color }: Props) => {
         </Stack>
       </GridItem>
 
-      <GridItem area={"stat"}>
-        <Stack spacing="3">
+      <GridItem area={"stat"} paddingTop={"25px"} colSpan={1}>
+        <Stack spacing="2">
           <Text className={styles.viewsOverviewToday}> today </Text>
           <Text className={styles.viewsOverviewStat} color={color}>
             {stats}

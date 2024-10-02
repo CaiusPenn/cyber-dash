@@ -16,7 +16,7 @@ const Page = () => {
                       "scores week week"`}
       h="full"
       gap="30"
-      gridTemplateRows={"150px 20px 242px 500px "}
+      gridTemplateRows={"150px 20px 240px 500px "}
       color={"#334681"}
       fontWeight={"bold"}
       gridTemplateColumns={"repeat(3, 1fr)"}
