@@ -3,7 +3,6 @@ import { Grid, GridItem, Text } from "@chakra-ui/react";
 import React from "react";
 import styles from "../Styles.module.css";
 import Stats from "./Stats";
-import { Gi3dGlasses } from "react-icons/gi";
 import SmallStats from "../main_dashboard/SmallStats";
 import { LineGraph } from "../LineGraph";
 
