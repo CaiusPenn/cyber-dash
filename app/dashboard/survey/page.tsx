@@ -14,31 +14,71 @@ import {
 import ProgressBar from "./ProgressBar";
 import Options from "./options";
 
-const Page = () => {
-  const [question, setQuestion] = useState("");
-  const [currentQuestionId, setCurrentQuestionId] = useState(23); // Example question ID
+export default function Survey() {
+  const [questions, setQuestions] = useState<any[]>([]);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [answers, setAnswers] = useState<string[]>([]);
+  const [selectedAnswer, setSelectedAnswer] = useState<string>('');
+  const [userId, setUserId] = useState<number>(1);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Fetch question from database based on the currentQuestionId
-    const fetchQuestion = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch(`/api/questions/${currentQuestionId}`);
-        const data = await response.json();
-        setQuestion(data.question); // Assuming the response has a `question_text` field
-      } catch (error) {
-        console.error("Error fetching the question:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchQuestion();
-  }, [currentQuestionId]);
+      const fetchQuestions = async () => {
+        try {
+          const response = await fetch('/api/questions'); // Adjust API endpoint as needed
+          const data = await response.json();
+          setQuestions(data);
+        } catch (error) {
+          console.error('Error fetching questions:', error);
+        }
+      };
+  
+      fetchQuestions();
+    }, []);
 
   if (loading) {
     return <Text>Loading...</Text>;
   }
+
+  const handleAnswerSelect = (answer: string) => {
+    setSelectedAnswer(answer);
+  };
+
+  const handleAnswerSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    
+    const questionId = questions[currentQuestionIndex].id; // Assuming each question has an ID
+
+    try {
+      await fetch('/api/submit-survey', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId, questionId, answer: selectedAnswer }),
+      });
+
+      const newAnswers = [...answers, selectedAnswer];
+      setAnswers(newAnswers);
+
+      if (currentQuestionIndex < questions.length - 1) {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+        setSelectedAnswer('');
+      } else {
+        alert('Survey complete! Thank you for your answers.');
+      }
+    } catch (error) {
+      console.error('Error submitting survey:', error);
+      alert('Error submitting survey. Please try again.');
+    }
+  };
+
+
+const handlePrevious = () => {
+  if (currentQuestionIndex > 0) {
+    setCurrentQuestionIndex(currentQuestionIndex - 1);
+    setSelectedAnswer(answers[currentQuestionIndex - 1] || '');
+  }
+};
 
   return (
     <Stack mt="10" spacing="10">
@@ -47,12 +87,12 @@ const Page = () => {
       </Flex>
       <Flex justifyContent="center" alignContent="center">
         <Text textColor="#4F6D7A" fontSize="2xl">
-          Question {currentQuestionId}:
+          Questions
         </Text>
       </Flex>
       <Flex justifyContent="center" alignContent="center">
         <Text fontSize="2xl" width="60%">
-          {question}
+          {questions[currentQuestionIndex].question}
         </Text>
       </Flex>
       <Options />
@@ -60,4 +100,3 @@ const Page = () => {
   );
 };
 
-export default Page;
