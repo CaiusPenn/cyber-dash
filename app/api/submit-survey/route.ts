@@ -16,14 +16,14 @@ export async function POST(request: Request) {
 
     // Update existing answer if it exists
     const updateResult = await client.query(
-      'UPDATE answers SET answer = $1 WHERE u_id = $2 AND q_id = $3',
+      'UPDATE answers SET answer = $1 WHERE user_id = $2 AND q_id = $3',
       [answer, userId, questionId]
     );
 
     // If no row was updated, insert a new answer
     if (updateResult.rowCount === 0) {
       await client.query(
-        'INSERT INTO answers (answer, u_id, q_id) VALUES ($1, $2, $3)',
+        'INSERT INTO answers (answer, user_id, q_id) VALUES ($1, $2, $3)',
         [answer, userId, questionId]
       );
     }
