@@ -19,7 +19,7 @@ const page = () => {
       h="full"
       gap="10"
       width="98%"
-      gridTemplateRows={"35px 125px 250px 400px"}
+      gridTemplateRows={"35px 125px 300px 400px"}
       color={"#334681"}
       fontWeight={"bold"}
       gridTemplateColumns={"repeat(3, 1fr)"}
