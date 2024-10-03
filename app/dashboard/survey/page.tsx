@@ -1,6 +1,5 @@
 'use client';
 import { useState, useEffect } from 'react';
-import Page from "./ui"
 
 export default function Survey() {
   const [questions, setQuestions] = useState<any[]>([]);
@@ -66,8 +65,44 @@ export default function Survey() {
       <h1>Survey</h1>
       {questions.length > 0 && currentQuestionIndex < questions.length ? (
         <form onSubmit={handleAnswerSubmit}>
-          
-          <Page/>
+          <label>
+            {questions[currentQuestionIndex].question} {/* Adjust property based on your data */}
+          </label>
+          <div className="button-group mt-4">
+            {['Strongly Agree', 'Agree', 'Neutral', 'Disagree', 'Strongly Disagree'].map(answer => (
+              <button
+                key={answer}
+                type="button"
+                onClick={() => handleAnswerSelect(answer)}
+                className={`p-2 rounded ${
+                  selectedAnswer === answer
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-gray-300 text-gray-800'
+                }`}
+                style={{ margin: '0 5px' }} // Add spacing between buttons
+              >
+                {answer}
+              </button>
+            ))}
+          </div>
+          <div className="mt-4">
+            {currentQuestionIndex > 0 && (
+              <button
+                type="button"
+                onClick={handlePrevious}
+                className="previous-button mr-2 p-2 rounded bg-gray-300 text-gray-800"
+              >
+                Previous
+              </button>
+            )}
+            <button
+              type="submit"
+              disabled={!selectedAnswer}
+              className="next-button p-2 rounded bg-blue-600 text-white"
+            >
+              {currentQuestionIndex < questions.length - 1 ? 'Next' : 'Finish'}
+            </button>
+          </div>
         </form>
       ) : (
         <div>
