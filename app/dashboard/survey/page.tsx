@@ -25,6 +25,7 @@ export default function Survey() {
   useEffect(() => {
     // Fetch question from database based on the currentQuestionId
       const fetchQuestions = async () => {
+        setLoading(true);
         try {
           const response = await fetch('/api/questions'); // Adjust API endpoint as needed
           const data = await response.json();
@@ -32,7 +33,11 @@ export default function Survey() {
         } catch (error) {
           console.error('Error fetching questions:', error);
         }
+         finally {
+          setLoading(false);
+        }
       };
+      
   
       fetchQuestions();
     }, []);
