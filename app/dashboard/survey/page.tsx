@@ -50,8 +50,7 @@ export default function Survey() {
     setSelectedAnswer(answer);
   };
 
-  const handleAnswerSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleAnswerSubmit = async () => {
     
     const questionId = questions[currentQuestionIndex].id; // Assuming each question has an ID
 
@@ -97,10 +96,15 @@ const handlePrevious = () => {
       </Flex>
       <Flex justifyContent="center" alignContent="center">
         <Text fontSize="2xl" width="60%">
-          {questions[currentQuestionIndex].question}
+         {questions[currentQuestionIndex].question + "."}
         </Text>
       </Flex>
-      <Options />
+      <Options
+        selectedAnswer={selectedAnswer}
+        onAnswerSelect={handleAnswerSelect}
+        onSubmit={handleAnswerSubmit}
+        onPrevious={handlePrevious}
+      />
     </Stack>
   );
 };
