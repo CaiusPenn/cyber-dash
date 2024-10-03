@@ -7,11 +7,12 @@ import {
   Text,
   Button,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React from "react";
 import styles from "./styles.module.css";
+
 interface OptionsProps {
-  selectedAnswer: string;
-  onAnswerSelect: (answer: string) => void;
+  selectedAnswer: number; // Keep this as number
+  onAnswerSelect: (answer: number) => void; // Function now takes a number
   onSubmit: () => void;
   onPrevious: () => void;
 }
@@ -31,8 +32,8 @@ const Options: React.FC<OptionsProps> = ({
       textColor="#928C8C"
     >
       <RadioGroup
-        value={selectedAnswer}
-        onChange={(value) => onAnswerSelect(value)}
+        value={selectedAnswer.toString()} // Convert number to string for controlled input
+        onChange={(value) => onAnswerSelect(parseInt(value, 10))} // Convert string to integer
       >
         <HStack spacing="50px">
           <Text>Disagree</Text>

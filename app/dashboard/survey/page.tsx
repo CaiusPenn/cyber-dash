@@ -17,8 +17,8 @@ import Options from "./options";
 export default function Survey() {
   const [questions, setQuestions] = useState<any[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [answers, setAnswers] = useState<string[]>([]);
-  const [selectedAnswer, setSelectedAnswer] = useState<string>('');
+  const [answers, setAnswers] = useState<number[]>([]);
+  const [selectedAnswer, setSelectedAnswer] = useState<number>(0);
   const [userId, setUserId] = useState<number>(1);
   const [loading, setLoading] = useState(true);
 
@@ -46,7 +46,7 @@ export default function Survey() {
     return <Text>Loading...</Text>;
   }
 
-  const handleAnswerSelect = (answer: string) => {
+  const handleAnswerSelect = (answer: number) => {
     setSelectedAnswer(answer);
   };
 
@@ -66,7 +66,7 @@ export default function Survey() {
 
       if (currentQuestionIndex < questions.length - 1) {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
-        setSelectedAnswer('');
+        setSelectedAnswer(0);
       } else {
         alert('Survey complete! Thank you for your answers.');
       }
@@ -80,7 +80,7 @@ export default function Survey() {
 const handlePrevious = () => {
   if (currentQuestionIndex > 0) {
     setCurrentQuestionIndex(currentQuestionIndex - 1);
-    setSelectedAnswer(answers[currentQuestionIndex - 1] || '');
+    setSelectedAnswer(answers[currentQuestionIndex - 1] || 0);
   }
 };
 
