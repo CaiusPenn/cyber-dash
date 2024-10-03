@@ -4,9 +4,25 @@ import React from "react";
 import styles from "../Styles.module.css";
 import Stats from "./Stats";
 import SmallStats from "../main_dashboard/SmallStats";
+import { fetchTechnicalData } from "@/app/lib/data";
 import { LineGraph } from "../LineGraph";
+export default async function page() {
+  const {
+    patchCoverage,
+    patchDeployment,
+    pendingPatch,
+    osPatchCoverage,
+    osPatchDeployment,
+    osPendingPatch,
+  } = await fetchTechnicalData();
+  const stringPatchCoverage = String(patchCoverage)+'%';
+  const stringPatchDeployment = String (patchDeployment)+'hrs';
+  const stringPendingPatch = String(pendingPatch);
+  const stringOsPatchCoverage = String(osPatchCoverage)+'%';
+  const stringOsPatchDeployment = String(osPatchDeployment)+'hrs';
+  const stringOsPendingPatch = String(osPendingPatch);
+  
 
-const page = () => {
   return (
     <Grid
       templateAreas={`"title title title"
@@ -35,7 +51,7 @@ const page = () => {
       <GridItem area={"a"} className={styles.statsBox}>
         <Stats
           title="Patch coverage ratio"
-          stats="88.32"
+          stats={stringPatchCoverage}
           color="#387DFF"
           icon="icon"
         ></Stats>
@@ -43,7 +59,7 @@ const page = () => {
       <GridItem area={"b"} className={styles.statsBox}>
         <Stats
           title="Patch Deployment Time"
-          stats="88.32"
+          stats={stringPatchDeployment}
           color="#6DD230"
           icon="icon"
         ></Stats>
@@ -51,7 +67,7 @@ const page = () => {
       <GridItem area={"c"} className={styles.statsBox}>
         <Stats
           title="Pending Patches Count"
-          stats="88.32"
+          stats={stringPendingPatch}
           color="#FE7C4B"
           icon="icon"
         ></Stats>
@@ -59,7 +75,7 @@ const page = () => {
       <GridItem area={"d"} className={styles.statsBox}>
         <Stats
           title="OS Patch Coverage Ratio"
-          stats="88.32"
+          stats={stringOsPatchCoverage}
           color="#23B899"
           icon="icon"
         ></Stats>
@@ -67,7 +83,7 @@ const page = () => {
       <GridItem area={"e"} className={styles.statsBox}>
         <Stats
           title="OS Patch Deployment Time"
-          stats="88.32"
+          stats={stringOsPatchDeployment}
           color="#8978FF"
           icon="icon"
         ></Stats>
@@ -75,7 +91,7 @@ const page = () => {
       <GridItem area={"f"} className={styles.statsBox}>
         <Stats
           title="OS Pending Patches Count"
-          stats="88.32"
+          stats={stringOsPendingPatch}
           color="#D5698A"
           icon="icon"
         ></Stats>
@@ -123,4 +139,3 @@ const page = () => {
   );
 };
 
-export default page;

@@ -30,7 +30,7 @@ const Stats = ({ stats, title, icon, color }: Props) => {
 
       <GridItem area={"stat"}>
         <Text className={styles.viewsOverviewStat} color={color}>
-          {stats}%
+          {stats}
         </Text>
       </GridItem>
 
