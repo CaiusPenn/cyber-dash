@@ -16,10 +16,7 @@ export async function POST(request: Request) {
     await client.query('BEGIN');
 
     await client.query(
-      `INSERT INTO answers (question_id, user_id, answer) 
-       VALUES ($1, $2, $3) 
-       ON CONFLICT (user_id, question_id) 
-       DO UPDATE SET answer = EXCLUDED.answer`,
+      'INSERT INTO answers (question_id, user_id, answer) VALUES ($1, $2, $3)',
       [q_id, user_id, answer]
     );
     
