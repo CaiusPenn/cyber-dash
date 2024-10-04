@@ -53,3 +53,12 @@
   background: #FFFFFF;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
+
+/* styles.css */
+.table-row {
+  border-bottom: 2px solid #E0E0E0; /* Change this color to your desired row color */
+}
+
+.table-row:hover {
+  background-color: #F0F0F0; /* Optional: change background color on hover */
+}

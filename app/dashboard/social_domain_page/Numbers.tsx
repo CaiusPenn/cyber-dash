@@ -35,11 +35,7 @@ const Numbers = ({ num, label, val, colour }: Props) => {
         value={val}
         height="8px"
         borderRadius="4px"
-        sx={{
-          "& .chakra-progress__filled": {
-            bg: colour, // Custom filled color
-          },
-        }}
+        colorScheme={colour}
       />
     </Stack>
   );

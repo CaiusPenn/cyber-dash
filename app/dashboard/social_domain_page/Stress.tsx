@@ -22,7 +22,13 @@ const Stress = () => {
           2024-08-13 ~ 2024-09-13 | Last 7 days
         </Text>
       </GridItem>
-      <GridItem area={"graph"} paddingLeft="28%">
+      <GridItem
+        area={"graph"}
+        paddingLeft="20%"
+        maxWidth={"100%"}
+        maxHeight={"90%"}
+        paddingTop="10%"
+      >
         <DoughnutCustom />
       </GridItem>
     </Grid>

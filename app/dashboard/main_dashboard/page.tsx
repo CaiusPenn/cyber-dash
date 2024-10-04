@@ -30,7 +30,12 @@ const Page = () => {
         borderRadius={"10px"}
         width={"98%"}
       >
-        <Text color={"#FFFFFF"} padding="24px" fontSize={"20px"}>
+        <Text
+          color={"#FFFFFF"}
+          padding="50px"
+          fontSize={"32px"}
+          fontWeight={"800"}
+        >
           Views Overview
         </Text>
       </GridItem>
@@ -38,10 +43,7 @@ const Page = () => {
       <GridItem area={"info"} width={"98%"}>
         <Flex justify={"space-between"}>
           <Text fontSize="20px"> Program Traffic Tracking </Text>
-          <HStack>
-            <Text> Refresh </Text>
-            <Text> Refresh Icon </Text>
-          </HStack>
+          <HStack></HStack>
         </Flex>
       </GridItem>
 

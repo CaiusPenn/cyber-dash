@@ -12,26 +12,39 @@ interface Props {
 }
 
 export const DoughnutCustom = () => {
+  const labels = ["Project 1", "Project 2", "Project 3"];
+
+  const dataValues = [24.95, 23.61, 19.96];
+
+  const dynamicLabels = labels.map(
+    (label, index) => `${label}: ${dataValues[index]}%`
+  );
+  const options = {
+    plugins: {
+      legend: {
+        display: true,
+        position: "bottom" as const, // Explicitly casting to the expected type
+        labels: {
+          usePointStyle: true,
+          pointStyle: "circle",
+          padding: 30,
+          color: "#334681",
+          align: "start", // Align the legends to the top, stacking them
+        },
+      },
+    },
+  };
   const data = {
-    labels: ["Project 1", "Project 2", "Project 3"],
+    labels: dynamicLabels,
     datasets: [
       {
         label: "Employee Stress Chart",
-        data: [85.9, 20.8, 14.9],
+        data: dataValues,
         backgroundColor: ["#3E7EF5", "#23B899", "#FE7C4B"],
         hoverOffset: 4,
       },
     ],
   };
 
-  return (
-    <Flex
-      justifyContent="center"
-      alignItems="center"
-      height={"65%"}
-      width={"65%"}
-    >
-      <DoughnutChart data={data} />
-    </Flex>
-  );
+  return <DoughnutChart data={data} options={options} />;
 };

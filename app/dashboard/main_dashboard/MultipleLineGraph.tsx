@@ -10,6 +10,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { position } from "@chakra-ui/react";
 
 // Register the required components
 Chart.register(
@@ -66,6 +67,24 @@ export const MultipleLineGraph = () => {
     plugins: {
       legend: {
         display: true, // Show the legend
+        position: "bottom" as const,
+        labels: {
+          usePointStyle: true, // Use circle style for legend markers
+          boxWidth: 10, // Adjust the size of the legend color markers
+          padding: 20, // Add padding between labels
+          generateLabels: (chart: { data: { datasets: any } }) => {
+            const datasets = chart.data.datasets;
+            return datasets.map(
+              (dataset: { label: any; borderColor: any }, i: any) => ({
+                text: dataset.label,
+                fillStyle: dataset.borderColor, // Set the legend marker to use the same color as the dataset's border
+                strokeStyle: dataset.borderColor, // Ensure it's the same as the dataset's border color
+                pointStyle: "circle", // Use circles in the legend
+                datasetIndex: i, // Keep track of the dataset
+              })
+            );
+          },
+        },
       },
     },
     maintainAspectRatio: false, // Allow graph to scale with container
@@ -91,6 +110,12 @@ export const MultipleLineGraph = () => {
         label: "Dataset 3",
         data: [80, 30, 40, 50, 70, 40, 100],
         borderColor: colorScheme[2],
+        fill: false,
+      },
+      {
+        label: "Dataset 4",
+        data: [10, 20, 30, 40, 70, 40, 80],
+        borderColor: colorScheme[3],
         fill: false,
       },
     ],

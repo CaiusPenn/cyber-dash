@@ -22,7 +22,7 @@ const TrainingEffectiveness = () => {
         </Text>
       </GridItem>
 
-      <GridItem area="stats">
+      <GridItem area="stats" paddingLeft="3%" paddingTop="3%">
         <MultipleLineGraph />
       </GridItem>
     </Grid>

@@ -38,13 +38,16 @@ const LoginForm = () => {
       templateColumns="repeat(2, 1fr)"
       gap={0}
     >
-      <GridItem rowSpan={4} colSpan={1} bg="#7D9CB7"></GridItem>
+      <GridItem rowSpan={4} colSpan={1} bg="#1C61FF"></GridItem>
 
-      <GridItem rowSpan={4} colSpan={1} bg="#EEEEEE">
-        <Stack paddingTop={200}>
-          <Stack paddingLeft={375} paddingBottom={10}>
-            <Text fontSize="6xl" fontWeight={600}>
+      <GridItem rowSpan={4} colSpan={1} bg="#FFFFFF">
+        <Stack paddingTop={200} spacing="0">
+          <Stack paddingLeft={375} paddingBottom={10} spacing="0">
+            <Text fontSize="70px" fontWeight={600} color="#1C62FF">
               Log in
+            </Text>
+            <Text fontSize="24px" fontWeight={400} color="#334681">
+              Phishing Phighters
             </Text>
           </Stack>
 
@@ -86,7 +89,7 @@ const LoginForm = () => {
               <Checkbox {...register("rememberMe")} color={"#8CA4AC"}>
                 Remember Me
               </Checkbox>
-              <Text color="red">
+              <Text color="#DD6E42">
                 <Link href="/reset-pass/reset-request">reset password</Link>
               </Text>
             </HStack>
@@ -95,7 +98,7 @@ const LoginForm = () => {
               <Button
                 borderRadius="none"
                 mt={4}
-                bg="#8CA4AC"
+                bg="#1C61FF"
                 type="submit"
                 textColor="white"
                 height={["40px", "50px", "60px"]} // Responsive height

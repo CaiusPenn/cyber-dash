@@ -22,7 +22,6 @@ const PhishingResults = () => {
       h="full"
       gap="10"
       gridTemplateRows={"80px 5px 5px 5px"}
-      color={"#334681"}
       fontWeight={"bold"}
       gridTemplateColumns={"repeat(1, 1fr)"}
     >
@@ -34,25 +33,15 @@ const PhishingResults = () => {
       </GridItem>
 
       <GridItem area={"reported"} width={"90%"} paddingLeft={"7%"}>
-        <Numbers
-          num="1"
-          label="Reported"
-          val={91.54}
-          colour={colorSchema[2]}
-        ></Numbers>
+        <Numbers num="1" label="Reported" val={91.54} colour={"blue"}></Numbers>
       </GridItem>
 
       <GridItem area={"un-reported"} width={"90%"} paddingLeft={"7%"}>
-        <Numbers
-          num="2"
-          label="Un-reported"
-          val={40.63}
-          colour={colorSchema[3]}
-        />
+        <Numbers num="2" label="Un-reported" val={40.63} colour={"green"} />
       </GridItem>
 
       <GridItem area={"failed"} width={"90%"} paddingLeft={"7%"}>
-        <Numbers num="3" label="Failed" val={14.68} colour={colorSchema[2]} />
+        <Numbers num="3" label="Failed" val={14.68} colour={"orange"} />
       </GridItem>
     </Grid>
   );
