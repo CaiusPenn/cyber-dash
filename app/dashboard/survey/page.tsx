@@ -19,7 +19,7 @@ export default function Survey() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
   const [selectedAnswer, setSelectedAnswer] = useState<number>(0);
-  const [userId, setUserId] = useState<number>(1);
+  const [userId, setUserId] = useState<number>(1001);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -61,7 +61,7 @@ export default function Survey() {
         body: JSON.stringify({ answer: selectedAnswer, questionId, userId }),
       });
 
-      const newAnswers = [...answers, selectedAnswer];
+      const newAnswers = [...answers, selectedAnswer];  
       setAnswers(newAnswers);
 
       if (currentQuestionIndex < questions.length - 1) {
