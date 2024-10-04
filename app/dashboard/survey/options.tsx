@@ -32,7 +32,7 @@ const Options: React.FC<OptionsProps> = ({
       textColor="#928C8C"
     >
       <RadioGroup
-        value={selectedAnswer.toString()} // Convert number to string for controlled input
+        value={selectedAnswer?.toString() || ''}
         onChange={(value) => onAnswerSelect(parseInt(value, 10))} // Convert string to integer
       >
         <HStack spacing="50px">

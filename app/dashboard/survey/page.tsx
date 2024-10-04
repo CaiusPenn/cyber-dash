@@ -48,6 +48,7 @@ export default function Survey() {
 
   const handleAnswerSelect = (answer: number) => {
     setSelectedAnswer(answer);
+    console.log("ANSWER SELECTD: s" + answer);
   };
 
   const handleAnswerSubmit = async () => {
@@ -91,7 +92,7 @@ const handlePrevious = () => {
       </Flex>
       <Flex justifyContent="center" alignContent="center">
         <Text textColor="#4F6D7A" fontSize="2xl">
-          {"Question: " + currentQuestionIndex}
+          {"Question: " + (currentQuestionIndex + 1)}
         </Text>
       </Flex>
       <Flex justifyContent="center" alignContent="center">
