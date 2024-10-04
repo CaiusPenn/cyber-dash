@@ -4,9 +4,10 @@ import React from "react";
 import styles from "../Styles.module.css";
 import Stats from "./Stats";
 import SmallStats from "../main_dashboard/SmallStats";
-import { fetchTechnicalData } from "@/app/lib/data";
+import { fetchTechnicalData,fetchChartData } from "@/app/lib/data";
 import { LineGraph } from "../LineGraph";
 export default async function page() {
+  const {mfa,adminRatio,appControl} = await fetchChartData();
   const {
     patchCoverage,
     patchDeployment,
@@ -21,6 +22,10 @@ export default async function page() {
   const stringOsPatchCoverage = String(osPatchCoverage)+'%';
   const stringOsPatchDeployment = String(osPatchDeployment)+'hrs';
   const stringOsPendingPatch = String(osPendingPatch);
+
+  const stringMfa = String(mfa[mfa.length-1].mfa);
+  const stringAdminRatio = String(adminRatio[adminRatio.length-1].admin_ratio);
+  const stringAppControl = String(appControl[appControl.length-1].app_control_alerts);
   
 
   return (
@@ -102,9 +107,10 @@ export default async function page() {
             <LineGraph
               color="#387DFF"
               grad={["#A7C5FF", "#D3E2FF", "#FFFFFF"]}
+              datapoints={[]}
             />
           }
-          stats="32"
+          stats={stringMfa}
           title="MFA"
           color="#387DFF"
         />
@@ -115,9 +121,10 @@ export default async function page() {
             <LineGraph
               color="#6DD230"
               grad={["#B6E998", "#DBF4CB", "#FFFFFF"]}
+              datapoints={[]}
             />
           }
-          stats="32"
+          stats={stringAdminRatio}
           title="Admin Privileges Ratio"
           color="#6DD230"
         />
@@ -128,9 +135,10 @@ export default async function page() {
             <LineGraph
               color="#FE7C4B"
               grad={["#FFBEA5", "#FFDED2", "#FFFFFF"]}
+              datapoints={[]}
             />
           }
-          stats="32"
+          stats={stringAppControl}
           title="Application Control Alerts"
           color="#FE7C4B"
         />

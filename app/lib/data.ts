@@ -78,18 +78,22 @@ export async function fetchTechnicalData() {
 
 export async function fetchChartData(){
   try {
+    const mfaPromise = sql`SELECT to_char(date,'DD-MM-YYYY'),mfa from technical order by date`;
     const adminRatioPromise = sql`SELECT to_char(date,'DD-MM-YYYY'),admin_ratio from technical order by date`;
     const appContolPromise = sql`select to_char(date,'DD-MM-YYYY'),app_control_alerts from technical order by date`;
     
 
     const data = await Promise.all([
+        mfaPromise,
       adminRatioPromise,
       appContolPromise
     ]);
-        
-    const adminRatio = (data[0].rows?? '0');
-    const appControl = (data[1].rows?? '0');
+    
+    const mfa = (data[0].rows?? '0');
+    const adminRatio = (data[1].rows?? '0');
+    const appControl = (data[2].rows?? '0');
     return {
+        mfa,
       adminRatio,
       appControl
     };

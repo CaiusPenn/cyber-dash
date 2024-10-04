@@ -28,9 +28,10 @@ ChartJS.register(
 interface Props {
   color: string;
   grad: string[];
+  datapoints: Number[];
 }
 
-export const LineGraph = ({ color, grad }: Props) => {
+export const LineGraph = ({ color, grad, datapoints }: Props) => {
   const data = {
     labels: [
       "Jan",
@@ -49,7 +50,7 @@ export const LineGraph = ({ color, grad }: Props) => {
     datasets: [
       {
         label: "Sales", // This is the name that will appear in the legend
-        data: [3, 4, 5, 6, 9, 20, 15, 18, 12, 40, 30, 20, 10, 50], // Your data points
+        data: datapoints,
         backgroundColor: (context: ScriptableContext<"line">) => {
           const ctx = context.chart.ctx;
           const gradient = ctx.createLinearGradient(0, 0, 0, 200);
