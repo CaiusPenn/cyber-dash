@@ -54,13 +54,13 @@ export default function Survey() {
 
   const handleAnswerSelect = (answer: number) => {
     setSelectedAnswer(answer);
-    console.log("ANSWER SELECTD: " + selectedAnswer);
     
   };
 
   const handleAnswerSubmit = async () => {
     console.log("IM IN THIS");
     const q_id = questions[currentQuestionIndex].id; // Assuming each question has an ID
+    console.log("ANSWER SELECTD: " + selectedAnswer);
 
     console.log("q_id: " + q_id);
     console.log("user_id: " + user_id);
