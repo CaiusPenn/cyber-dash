@@ -7,14 +7,12 @@ const pool = new Pool({
 });
 
 export async function POST(request: Request) {
+  console.log("TESTING");
   const { answer, questionId, userId } = await request.json(); // Update to match your data structure
-
+  console.log("TESTING AGAIN");
   const client = await pool.connect();
   console.log('Received data:', { answer, questionId, userId });
   
-
-
-
   try {
     await client.query('BEGIN');
 
