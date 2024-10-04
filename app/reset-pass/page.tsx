@@ -31,7 +31,7 @@ const ResetPassword = () => {
 
   return (
     <Grid
-      h="3000px"
+      h="1000px"
       templateRows="repeat(4, 1fr)"
       templateColumns="repeat(2, 1fr)"
       gap={0}
