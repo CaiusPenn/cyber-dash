@@ -10,6 +10,10 @@ export async function POST(request: Request) {
   const { answer, questionId, userId } = await request.json(); // Update to match your data structure
 
   const client = await pool.connect();
+  console.log('Received data:', { answer, questionId, userId });
+  
+
+
 
   try {
     await client.query('BEGIN');
