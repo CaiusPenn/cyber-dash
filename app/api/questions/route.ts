@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { Pool } from 'pg';
 
+console.log("getting question");
+
 const pool = new Pool({
   connectionString: process.env.POSTGRES_URL,
 });
