@@ -34,12 +34,18 @@ const ResetPassword = () => {
       templateColumns="repeat(2, 1fr)"
       gap={0}
     >
-      <GridItem rowSpan={4} colSpan={1} bg="#7D9CB7"></GridItem>
+      <GridItem rowSpan={4} colSpan={1} bg="#1C61FF"></GridItem>
 
-      <GridItem rowSpan={4} colSpan={1} bg="#EEEEEE">
+      <GridItem rowSpan={4} colSpan={1} bg="#FFFFFF">
         <Stack paddingTop={200}>
           <Stack align="center" paddingBottom={50}>
-            <Text fontSize="6xl" fontWeight={600} paddingLeft={9} margin={0}>
+            <Text
+              fontSize="6xl"
+              fontWeight={600}
+              paddingLeft={9}
+              margin={0}
+              color="#1C61FF"
+            >
               Reset Password
             </Text>
             <Text color="#DD6E42">
@@ -71,7 +77,7 @@ const ResetPassword = () => {
               <Button
                 borderRadius="none"
                 mt={4}
-                bg="#8CA4AC"
+                bg="#1C61FF"
                 type="submit"
                 textColor="white"
               >
