@@ -1,10 +1,11 @@
 import { NextResponse } from 'next/server';
 import { Pool } from 'pg';
-/*wooo*/
-
+/*wooo00*/
+console.log("IM IN THE FETCH");
 const pool = new Pool({
   connectionString: process.env.POSTGRES_URL,
 });
+console.log("POOL CONNNECT");
 
 export async function POST(request: Request) {
   console.log("TESTING");
