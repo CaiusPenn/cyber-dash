@@ -5,7 +5,6 @@ import { Grid,GridItem,Text } from "@chakra-ui/react";
 import styles from '@/app/dashboard/Styles.module.css';
 
 
-
 export default async function Page() {
     const { mfa, adminRatio, appControl} = await fetchChartData();
     const {
@@ -52,19 +51,19 @@ export default async function Page() {
         {<Stats title="Patch Coverage Ratio" stats={patchCoverage} color="#387DFF" /> }
       </GridItem>
       <GridItem area={"b"} className={styles.statsBox}>
-      {<Stats title="Patch Deployment Ratio" stats={patchDeployment} color="#387DFF" /> }
+      {<Stats title="Patch Deployment Ratio" stats={patchDeployment} color="#6DD230" /> }
       </GridItem>
       <GridItem area={"c"} className={styles.statsBox}>
-      {<Stats title="Pending Patch" stats={pendingPatch} color="#387DFF" /> }
+      {<Stats title="Pending Patch" stats={pendingPatch} color="#FE7C4B" /> }
       </GridItem>
       <GridItem area={"d"} className={styles.statsBox}>
-      {<Stats title="OS Patch Coverage Ratio" stats={osPatchCoverage} color="#387DFF"/> }
+      {<Stats title="OS Patch Coverage Ratio" stats={osPatchCoverage} color="#23B899"/> }
       </GridItem>
       <GridItem area={"e"} className={styles.statsBox}>
-      {<Stats title="OS Patch Deployment Ratio" stats={osPatchDeployment} color="#387DFF" /> }
+      {<Stats title="OS Patch Deployment Ratio" stats={osPatchDeployment} color="#8978FF" /> }
       </GridItem>
       <GridItem area={"f"} className={styles.statsBox}>
-      {<Stats title="OS Pending Patch" stats={osPendingPatch} color="#387DFF"/> }
+      {<Stats title="OS Pending Patch" stats={osPendingPatch} color="#D5698A"/> }
       </GridItem>
       <GridItem area={"g"} className={styles.statsBox}>
       {<GraphStats title="MFA" stats={LatestMfa} graph={<MfaChart title="" value={mfa}/>}/>}

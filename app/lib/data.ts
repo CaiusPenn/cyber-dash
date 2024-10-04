@@ -57,9 +57,9 @@ export async function fetchTechnicalData() {
     const patchCoverage = Number(data[0].rows[0].avg ?? '0');
     const patchDeployment = Number(data[1].rows[0].avg ?? '0');
     const pendingPatch = Number(data[2].rows[0].sum ?? '0');
-    const osPatchCoverage = Number(data[0].rows[0].avg ?? '0');
-    const osPatchDeployment = Number(data[1].rows[0].avg ?? '0');
-    const osPendingPatch = Number(data[2].rows[0].sum ?? '0');
+    const osPatchCoverage = Number(data[3].rows[0].avg ?? '0');
+    const osPatchDeployment = Number(data[4].rows[0].avg ?? '0');
+    const osPendingPatch = Number(data[5].rows[0].sum ?? '0');
     
 
     return {

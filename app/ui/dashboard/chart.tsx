@@ -106,8 +106,8 @@ export function AppChart({
   
         if (ctx) {
           const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-          gradient.addColorStop(0, 'rgba(59, 25, 255, 1)');   // Starting color
-          gradient.addColorStop(1, 'rgba(56, 125, 255, 0.3)'); // Fading color
+          gradient.addColorStop(0, 'rgba(128, 255, 202, 1)');   // Starting color
+          gradient.addColorStop(1, 'rgba(69, 146, 255, 0.3)'); // Fading color
           const myChart = new Chart(ctx, {
             type: 'line', 
             data: {

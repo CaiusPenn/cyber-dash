@@ -19,8 +19,8 @@ const GraphStats = ({stats,title,graph}: Props2) =>{
   return(
     <Grid
       templateAreas={`"des des des des des"
-      "stat graph graph graph graph"
-      "info graph graph graph graph"`}
+      "stat stat graph graph graph"
+      "stat stat graph graph graph"`}
       h="full"
       gap="7"
       gridTemplateRows={"40px 40px 40px"}
