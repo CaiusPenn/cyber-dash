@@ -16,13 +16,9 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
-    // Insert answer into the database
-    const result = await pool.query(
-      `INSERT INTO answers (user_id, question_id, answer) VALUES ($1, $2, $3) RETURNING *`,
-      [user_id, q_id, answer]
-    );
+    
 
-    return NextResponse.json({ success: true, data: result.rows[0] });
+   // return NextResponse.json({ success: true, data: result.rows[0] });
   } catch (error) {
     console.error('Error inserting answer:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
