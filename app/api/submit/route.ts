@@ -15,17 +15,14 @@ export async function POST(request: Request) {
 
     await client.query('BEGIN');
 
-    const updateResult = await client.query(
-      'UPDATE answers SET question_id = $1 WHERE user_id = $2 AND answer = $3',
+    await client.query(
+      `INSERT INTO answers (question_id, user_id, answer) 
+       VALUES ($1, $2, $3) 
+       ON CONFLICT (user_id, question_id) 
+       DO UPDATE SET answer = EXCLUDED.answer`,
       [q_id, user_id, answer]
     );
-
-    if (updateResult.rowCount === 0) {
-      await client.query(
-        'INSERT INTO answers (question_id, user_id, answer) VALUES ($1, $2, $3)',
-        [q_id, user_id, answer]
-      );
-    }
+    
 
     await client.query('COMMIT');
     return NextResponse.json({ message: 'Survey submitted successfully!' });
