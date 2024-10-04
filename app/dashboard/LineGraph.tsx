@@ -95,7 +95,7 @@ export const LineGraph = ({ color, grad }: Props) => {
   };
 
   return (
-    <div style={{ width: "250px", height: "130px" }}>
+    <div >
       <Line options={options} data={data} />
     </div>
   );

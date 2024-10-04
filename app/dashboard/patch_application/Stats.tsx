@@ -4,13 +4,47 @@ import styles from "../Styles.module.css";
 import { Gi3dGlasses } from "react-icons/gi";
 
 interface Props {
-  stats: string;
+  stats: Number;
   title: string;
-  icon: string;
   color: string;
 }
 
-const Stats = ({ stats, title, icon, color }: Props) => {
+interface Props2{
+  stats: Number;
+  title: string;
+  graph: any;
+}
+
+const GraphStats = ({stats,title,graph}: Props2) =>{
+  return(
+    <Grid
+      templateAreas={`"des des des des des"
+      "stat graph graph graph graph"
+      "info graph graph graph graph"`}
+      h="full"
+      gap="7"
+      gridTemplateRows={"40px 40px 40px"}
+      color={"#334681"}
+      fontWeight={"bold"}
+      gridTemplateColumns={"repeat(6, 1fr)"}
+      boxShadow={"md"}
+    >
+      <GridItem area={"des"}>
+        <Text className={styles.customText}>{title}</Text>
+      </GridItem>
+      <GridItem area={"stat"}>
+        <Text className={styles.viewsOverviewStat}>
+          {String(stats)}
+        </Text>
+      </GridItem>
+      <GridItem area={"graph"}>
+          {graph}
+      </GridItem>
+    </Grid>
+  );
+};
+
+const Stats = ({ stats, title, color }: Props) => {
   return (
     <Grid
       templateAreas={`"des des des des icon"
@@ -30,7 +64,7 @@ const Stats = ({ stats, title, icon, color }: Props) => {
 
       <GridItem area={"stat"}>
         <Text className={styles.viewsOverviewStat} color={color}>
-          {stats}
+          {String(stats)}
         </Text>
       </GridItem>
 
@@ -48,4 +82,5 @@ const Stats = ({ stats, title, icon, color }: Props) => {
   );
 };
 
-export default Stats;
+export {Stats,GraphStats};
+
