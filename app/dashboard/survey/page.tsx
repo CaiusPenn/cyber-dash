@@ -65,6 +65,7 @@ export default function Survey() {
     console.log("q_id: " + q_id);
     console.log("user_id: " + user_id);
     try {
+      'use server'
       const response = await fetch('/api/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
