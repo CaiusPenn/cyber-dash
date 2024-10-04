@@ -69,7 +69,7 @@ export default function Survey() {
       const response = await fetch('/api/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ q_id, user_id, answer: selectedAnswer }),
+        body: JSON.stringify({ user_id, q_id, answer: selectedAnswer }),
       });
   
       if (!response.ok) {
