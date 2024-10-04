@@ -36,6 +36,7 @@ export async function POST(request: Request) {
   } catch (error) {
     await client.query('ROLLBACK');
     console.error('Database error:', error);
+    console.log("WEIRD");
     return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
   } finally {
     client.release();

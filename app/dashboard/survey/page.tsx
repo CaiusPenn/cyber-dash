@@ -91,7 +91,7 @@ const handlePrevious = () => {
       </Flex>
       <Flex justifyContent="center" alignContent="center">
         <Text textColor="#4F6D7A" fontSize="2xl">
-          Questions
+          {"Question: " + currentQuestionIndex}
         </Text>
       </Flex>
       <Flex justifyContent="center" alignContent="center">
