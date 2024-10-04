@@ -52,15 +52,19 @@ export default function Survey() {
   };
 
   const handleAnswerSubmit = async () => {
-    
+    console.log("IM IN THIS");
     const questionId = questions[currentQuestionIndex].id; // Assuming each question has an ID
 
     try {
+      console.log("FETCHING");
       await fetch('/api/submit-survey', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ answer: selectedAnswer, questionId, userId }),
-      });
+      }
+      );
+
+      console.log("FETCHED");
 
       const newAnswers = [...answers, selectedAnswer];  
       setAnswers(newAnswers);
