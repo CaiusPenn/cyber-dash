@@ -48,7 +48,7 @@ export default function Survey() {
 
   const handleAnswerSelect = (answer: number) => {
     setSelectedAnswer(answer);
-    console.log("ANSWER SELECTD: s" + answer);
+    console.log("ANSWER SELECTD: " + answer);
   };
 
   const handleAnswerSubmit = async () => {
