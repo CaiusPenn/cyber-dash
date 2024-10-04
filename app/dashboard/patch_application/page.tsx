@@ -4,30 +4,9 @@ import React from "react";
 import styles from "../Styles.module.css";
 import Stats from "./Stats";
 import SmallStats from "../main_dashboard/SmallStats";
-import { fetchTechnicalData,fetchChartData } from "@/app/lib/data";
 import { LineGraph } from "../LineGraph";
-export default async function page() {
-  const {mfa,adminRatio,appControl} = await fetchChartData();
-  const {
-    patchCoverage,
-    patchDeployment,
-    pendingPatch,
-    osPatchCoverage,
-    osPatchDeployment,
-    osPendingPatch,
-  } = await fetchTechnicalData();
-  const stringPatchCoverage = String(patchCoverage)+'%';
-  const stringPatchDeployment = String (patchDeployment)+'hrs';
-  const stringPendingPatch = String(pendingPatch);
-  const stringOsPatchCoverage = String(osPatchCoverage)+'%';
-  const stringOsPatchDeployment = String(osPatchDeployment)+'hrs';
-  const stringOsPendingPatch = String(osPendingPatch);
 
-  const stringMfa = String(mfa[mfa.length-1].mfa);
-  const stringAdminRatio = String(adminRatio[adminRatio.length-1].admin_ratio);
-  const stringAppControl = String(appControl[appControl.length-1].app_control_alerts);
-  
-
+const page = () => {
   return (
     <Grid
       templateAreas={`"title title title"
@@ -56,7 +35,7 @@ export default async function page() {
       <GridItem area={"a"} className={styles.statsBox}>
         <Stats
           title="Patch coverage ratio"
-          stats={stringPatchCoverage}
+          stats="88.32"
           color="#387DFF"
           icon="icon"
         ></Stats>
@@ -64,7 +43,7 @@ export default async function page() {
       <GridItem area={"b"} className={styles.statsBox}>
         <Stats
           title="Patch Deployment Time"
-          stats={stringPatchDeployment}
+          stats="88.32"
           color="#6DD230"
           icon="icon"
         ></Stats>
@@ -72,7 +51,7 @@ export default async function page() {
       <GridItem area={"c"} className={styles.statsBox}>
         <Stats
           title="Pending Patches Count"
-          stats={stringPendingPatch}
+          stats="88.32"
           color="#FE7C4B"
           icon="icon"
         ></Stats>
@@ -80,7 +59,7 @@ export default async function page() {
       <GridItem area={"d"} className={styles.statsBox}>
         <Stats
           title="OS Patch Coverage Ratio"
-          stats={stringOsPatchCoverage}
+          stats="88.32"
           color="#23B899"
           icon="icon"
         ></Stats>
@@ -88,7 +67,7 @@ export default async function page() {
       <GridItem area={"e"} className={styles.statsBox}>
         <Stats
           title="OS Patch Deployment Time"
-          stats={stringOsPatchDeployment}
+          stats="88.32"
           color="#8978FF"
           icon="icon"
         ></Stats>
@@ -96,7 +75,7 @@ export default async function page() {
       <GridItem area={"f"} className={styles.statsBox}>
         <Stats
           title="OS Pending Patches Count"
-          stats={stringOsPendingPatch}
+          stats="88.32"
           color="#D5698A"
           icon="icon"
         ></Stats>
@@ -107,10 +86,9 @@ export default async function page() {
             <LineGraph
               color="#387DFF"
               grad={["#A7C5FF", "#D3E2FF", "#FFFFFF"]}
-              datapoints={[]}
             />
           }
-          stats={stringMfa}
+          stats="32"
           title="MFA"
           color="#387DFF"
         />
@@ -121,10 +99,9 @@ export default async function page() {
             <LineGraph
               color="#6DD230"
               grad={["#B6E998", "#DBF4CB", "#FFFFFF"]}
-              datapoints={[]}
             />
           }
-          stats={stringAdminRatio}
+          stats="32"
           title="Admin Privileges Ratio"
           color="#6DD230"
         />
@@ -135,10 +112,9 @@ export default async function page() {
             <LineGraph
               color="#FE7C4B"
               grad={["#FFBEA5", "#FFDED2", "#FFFFFF"]}
-              datapoints={[]}
             />
           }
-          stats={stringAppControl}
+          stats="32"
           title="Application Control Alerts"
           color="#FE7C4B"
         />
@@ -147,3 +123,4 @@ export default async function page() {
   );
 };
 
+export default page;
