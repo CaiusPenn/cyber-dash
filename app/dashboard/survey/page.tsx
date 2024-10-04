@@ -13,6 +13,12 @@ import {
 } from "@chakra-ui/react";
 import ProgressBar from "./ProgressBar";
 import Options from "./options";
+import {
+  FormControl,
+  RadioGroup,
+  Radio,
+  Button,
+} from "@chakra-ui/react";
 
 export default function Survey() {
   const [questions, setQuestions] = useState<any[]>([]);
@@ -48,13 +54,16 @@ export default function Survey() {
 
   const handleAnswerSelect = (answer: number) => {
     setSelectedAnswer(answer);
-    console.log("ANSWER SELECTD: " + answer);
+    console.log("ANSWER SELECTD: " + selectedAnswer);
+    
   };
 
   const handleAnswerSubmit = async () => {
     console.log("IM IN THIS");
     const q_id = questions[currentQuestionIndex].id; // Assuming each question has an ID
 
+    console.log("q_id: " + q_id);
+    console.log("user_id: " + user_id);
     try {
       console.log("FETCHING");
       await fetch('/api/submit-survey', {
