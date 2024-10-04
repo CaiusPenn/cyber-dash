@@ -19,7 +19,7 @@ export default function Survey() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
   const [selectedAnswer, setSelectedAnswer] = useState<number>(0);
-  const [userId, setUserId] = useState<number>(1001);
+  const [user_id, setUserId] = useState<number>(1001);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -53,14 +53,14 @@ export default function Survey() {
 
   const handleAnswerSubmit = async () => {
     console.log("IM IN THIS");
-    const questionId = questions[currentQuestionIndex].id; // Assuming each question has an ID
+    const q_id = questions[currentQuestionIndex].id; // Assuming each question has an ID
 
     try {
       console.log("FETCHING");
       await fetch('/api/submit-survey', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ answer: selectedAnswer, questionId, userId }),
+        body: JSON.stringify({ answer: selectedAnswer, q_id, user_id }),
       }
       );
 
