@@ -65,17 +65,18 @@ export default function Survey() {
     console.log("q_id: " + q_id);
     console.log("user_id: " + user_id);
     try {
-      /*
-      console.log("FETCHING");
-      await fetch('/api/submit', {
+      const response = await fetch('/api/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ answer: selectedAnswer, q_id, user_id }),
+        body: JSON.stringify({ user_id, q_id, answer: selectedAnswer }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Error submitting survey');
       }
-      );
 
       console.log("FETCHED");
-      */
+      
       const newAnswers = [...answers, selectedAnswer];  
       setAnswers(newAnswers);
 
