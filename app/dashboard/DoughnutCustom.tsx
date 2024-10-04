@@ -2,6 +2,7 @@ import React from "react";
 import { Doughnut as DoughnutChart } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Flex } from "@chakra-ui/react";
+//test
 
 // Register the necessary Chart.js components
 ChartJS.register(ArcElement, Tooltip, Legend);
