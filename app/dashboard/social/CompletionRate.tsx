@@ -1,6 +1,6 @@
 import { Grid, GridItem, Text } from "@chakra-ui/react";
 import React from "react";
-import styles from "../Styles.module.css";
+import styles from "@/app/dashboard/Styles.module.css";
 
 const CompletionRate = () => {
   return (

@@ -1,7 +1,7 @@
 import { Grid, GridItem, Text } from "@chakra-ui/react";
 import React from "react";
-import { MultipleLineGraph } from "../main_dashboard/MultipleLineGraph";
-import styles from "../Styles.module.css";
+import { MultipleLineGraph } from "@/app/dashboard/MultipleLineGraph";
+import styles from "@/app/dashboard/Styles.module.css";
 import { DoughnutCustom } from "../DoughnutCustom";
 
 const Stress = () => {

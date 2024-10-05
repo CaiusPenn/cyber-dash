@@ -1,6 +1,6 @@
 import { Flex, Grid, GridItem, HStack, Stack, Text } from "@chakra-ui/react";
-import styles from "../Styles.module.css";
-import { Stats, GraphStats } from "../technical/Stats";
+import styles from "@/app/dashboard/Styles.module.css";
+import { Stats, GraphStats } from "@/app/dashboard/technical/Stats";
 import Scores from "./Scores";
 import { fetchLatestIncidents, fetchIncidentsSeverity } from "@/app/lib/data";
 import { IncidentChart,IncidentSeverityChart } from "@/app/ui/dashboard/chart";
