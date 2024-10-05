@@ -1,16 +1,17 @@
-"use client";
-import { Grid, GridItem, Text } from "@chakra-ui/react";
-import React from "react";
-import styles from "../Styles.module.css";
-import LittleStats from "./LittleStats";
+import { Grid, GridItem, Stat, Text } from "@chakra-ui/react";
 import PolicyViolations from "./PolicyViolations";
-import GroupDistributions from "./GroupDistributions";
-import SmallStats from "../main_dashboard/SmallStats";
-import { LineGraph } from "../LineGraph";
-import TrainingEffectiveness from "./TrainingEffectiveness";
-
-const page = () => {
+import styles from "../Styles.module.css";
+import { GraphStats } from "../patch_application/Stats";
+import { PolicyChart } from "@/app/ui/dashboard/chart";
+import { fetchPolicy,fetchUniqueUsers } from "@/app/lib/data";
+import { Stats } from "../patch_application/Stats";
+export default async function Page(){
+  const policies = await fetchPolicy();
+  const usersCount = await fetchUniqueUsers();
   return (
+    <main>
+      <h1 className={` mb-4 text-xl md:text-2xl`}></h1>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
     <Grid
       templateAreas={`"title title title"
                 "a b c "
@@ -19,7 +20,7 @@ const page = () => {
       h="full"
       gap="10"
       width="98%"
-      gridTemplateRows={"35px 125px 300px 400px"}
+      gridTemplateRows={"40px 125px 300px 400px"}
       color={"#334681"}
       fontWeight={"bold"}
       gridTemplateColumns={"repeat(3, 1fr)"}
@@ -35,50 +36,30 @@ const page = () => {
         </Text>
       </GridItem>
       <GridItem area={"a"} className={styles.statsBox}>
-        <LittleStats
-          stats="432"
-          des="Number of participation"
-          colour="#387DFF"
-        ></LittleStats>
+        <Stats title="Number of partcipants" stats={usersCount[0].count} color="#387DFF"/>
       </GridItem>
       <GridItem area={"b"} className={styles.statsBox}>
-        <LittleStats
-          stats="77  High Awareness"
-          des="Overall Security Culture Awareness Score"
-          colour="#6DD230"
-        ></LittleStats>
+       
       </GridItem>
       <GridItem area={"c"} className={styles.statsBox}>
-        <LittleStats
-          stats="$671,93,432"
-          des="Investment into cyber"
-          colour="#FE7C4B"
-        ></LittleStats>
+       
       </GridItem>
       <GridItem area={"d"} className={styles.statsBox}>
-        <GroupDistributions />
+       
       </GridItem>
       <GridItem area={"e"} className={styles.statsBox}>
-        <SmallStats
-          graph={
-            <LineGraph
-              color="#6DD230"
-              grad={["#B6E998", "#DBF4CB", "#FFFFFF"]}
-            />
-          }
-          stats="32"
-          title="Number of Outdated Policies"
-          color="#6DD230"
-        />
+      {<GraphStats title="Latest Violation" stats={policies[0].date.toDateString().slice(4)}
+      graph={<PolicyChart title="" value={policies}/>}/>}
       </GridItem>
       <GridItem area={"f"} className={styles.statsBox}>
-        <PolicyViolations />
+       <PolicyViolations/>
       </GridItem>
       <GridItem area={"g"} className={styles.statsBox}>
-        <TrainingEffectiveness />
+      
       </GridItem>
     </Grid>
+    </div>
+    </main>
   );
 };
 
-export default page;

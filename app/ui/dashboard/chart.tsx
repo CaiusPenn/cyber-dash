@@ -17,7 +17,6 @@ export function AdminChart({
         dates.push(value[i].to_char);
     }
 
-
   const chartRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -35,6 +34,80 @@ export function AdminChart({
             {
               label: "Number of app control alerts",
               data: adminData, 
+              borderColor: gradient, 
+              borderWidth: 3,
+              tension: 0.4,
+              fill: false,
+              pointRadius: 0,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              display: false,
+            },
+            x: {
+              display:false,
+            }
+          },
+          elements: {
+              line: {
+                borderJoinStyle: 'round',     // Rounded line join
+                borderCapStyle: 'round',      // Rounded line ends
+              },
+            },
+            plugins: {
+              legend: {
+                display: false,              // Disable the legend
+              },
+            },
+          },
+        });
+
+      return () => {
+        myChart.destroy();
+      };
+    }
+  }, [value]); 
+
+  return (
+    <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
+      <div className="flex p-4">
+        <h3 className="ml-2 text-xs font-medium">{title}</h3>
+      </div>
+      <canvas ref={chartRef} id="myChart"></canvas>
+    </div>
+  );
+}
+
+export function PolicyChart({
+  title,
+  value,
+}: {
+  title: string;
+  value: QueryResultRow;
+}) {
+    const policyData: Number[] = [];
+    for (let i=0;i<value.length;i++){
+        policyData.push((value[i].violations));
+    }
+  const chartRef = useRef<HTMLCanvasElement>(null);
+  useEffect(() => {
+    const ctx = chartRef.current?.getContext("2d");
+    if (ctx) {
+      const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+      gradient.addColorStop(0, 'rgba(128, 255, 202, 1)');   // Starting color
+      gradient.addColorStop(1, 'rgba(255, 189, 128, 0.3)'); // Fading color
+      const myChart = new Chart(ctx, {
+        type: 'line', 
+        data: {
+          labels: [2,3,5,6,7],
+          datasets: [
+            {
+              label: "Number of policy violations",
+              data: policyData, 
               borderColor: gradient, 
               borderWidth: 3,
               tension: 0.4,
@@ -245,3 +318,4 @@ export function AppChart({
       </div>
     );
   }
+

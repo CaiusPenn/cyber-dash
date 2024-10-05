@@ -4,13 +4,13 @@ import styles from "../Styles.module.css";
 import { Gi3dGlasses } from "react-icons/gi";
 
 interface Props {
-  stats: Number;
+  stats: Number | string;
   title: string;
   color: string;
 }
 
 interface Props2{
-  stats: Number;
+  stats: Number | string;
   title: string;
   graph: any;
 }
@@ -70,8 +70,7 @@ const Stats = ({ stats, title, color }: Props) => {
 
       <GridItem area={"info"}>
         <HStack>
-          <Text className={styles.dateText}> Ring ratio </Text>
-          <Text className={styles.dateText}> Year on year </Text>
+
         </HStack>
       </GridItem>
 

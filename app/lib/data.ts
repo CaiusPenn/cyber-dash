@@ -30,6 +30,23 @@ export async function fetchLatestIncidents() {
   }
 }
 
+export async function fetchPolicy() {
+  try {
+    const data = await sql<Organisational>`
+      SELECT *
+      FROM organisational
+      ORDER BY date DESC`;
+
+    const latestPolicies = data.rows.map((policy) => ({
+      ...policy,
+    }));
+    return latestPolicies;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch the latest policies.');
+  }
+}
+
 
 
 export async function fetchTechnicalData() {
@@ -82,7 +99,6 @@ export async function fetchChartData(){
     const adminRatioPromise = sql`SELECT to_char(date,'DD-MM-YYYY'),admin_ratio from technical order by date`;
     const appContolPromise = sql`select to_char(date,'DD-MM-YYYY'),app_control_alerts from technical order by date`;
     
-
     const data = await Promise.all([
         mfaPromise,
       adminRatioPromise,
@@ -100,5 +116,19 @@ export async function fetchChartData(){
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch card data.');
+  }
+}
+
+export async function fetchUniqueUsers(){
+  try{
+    const uniqueUsersPromise = sql`SELECT count(DISTINCT user_id) FROM ANSWERS`;
+    const data = await uniqueUsersPromise;
+
+    const uniqueUsers = (data.rows ?? '0');
+    return uniqueUsers;
+
+  } catch(error) {
+    console.error('Databse error: ',error);
+    throw new Error('Failed to fetch unique users');
   }
 }
