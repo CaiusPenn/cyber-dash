@@ -1,10 +1,10 @@
 import { Grid, GridItem, Stat, Text } from "@chakra-ui/react";
 import PolicyViolations from "./PolicyViolations";
 import styles from "../Styles.module.css";
-import { GraphStats } from "../patch_application/Stats";
+import { GraphStats } from "../technical/Stats";
 import { PolicyChart } from "@/app/ui/dashboard/chart";
 import { fetchPolicy,fetchUniqueUsers } from "@/app/lib/data";
-import { Stats } from "../patch_application/Stats";
+import { Stats } from "../technical/Stats";
 export default async function Page(){
   const policies = await fetchPolicy();
   const usersCount = await fetchUniqueUsers();
