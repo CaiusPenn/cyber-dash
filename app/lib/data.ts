@@ -18,7 +18,7 @@ export async function fetchLatestIncidents() {
     const data = await sql<Incident>`
       SELECT *
       FROM incidents
-      ORDER BY severity DESC`;
+      ORDER BY time DESC`;
 
     const latestIncidents = data.rows.map((invoice) => ({
       ...invoice,
@@ -26,9 +26,27 @@ export async function fetchLatestIncidents() {
     return latestIncidents;
   } catch (error) {
     console.error('Database Error:', error);
-    throw new Error('Failed to fetch the latest invcidents.');
+    throw new Error('Failed to fetch the latest incidents.');
   }
 }
+
+export async function fetchIncidentsSeverity() {
+  try {
+    const data = await sql<Incident>`
+      SELECT severity, COUNT(*)
+      FROM incidents
+      GROUP BY severity`;
+
+    const incidentSeverity = data.rows.map((invoice) => ({
+      ...invoice,
+    }));
+    return incidentSeverity;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch the latest incidents.');
+  }
+}
+
 
 export async function fetchPolicy() {
   try {

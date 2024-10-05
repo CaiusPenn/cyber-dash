@@ -97,7 +97,7 @@ export const MultipleLineGraph = () => {
   };
 
   return (
-    <div style={{ width: "95%", height: "100%" }}>
+    <div>
       <Line data={data} options={options} />
     </div>
   );

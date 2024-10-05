@@ -1,14 +1,17 @@
-"use client";
 import { Flex, Grid, GridItem, HStack, Stack, Text } from "@chakra-ui/react";
-import React from "react";
 import styles from "../Styles.module.css";
-import { LineGraph } from "../LineGraph";
-import SmallStats from "./SmallStats";
+import { Stats, GraphStats } from "../patch_application/Stats";
 import Scores from "./Scores";
-import WeeklyIncidents from "./WeeklyIncidents";
+import { fetchLatestIncidents, fetchIncidentsSeverity } from "@/app/lib/data";
+import { IncidentChart,IncidentSeverityChart } from "@/app/ui/dashboard/chart";
 
-const Page = () => {
+export default async function Page(){
+  const incidents = await fetchLatestIncidents();
+  const incidentSeverity = await fetchIncidentsSeverity();
   return (
+    <main>
+    <h1 className={` mb-4 text-xl md:text-2xl`}></h1>
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
     <Grid
       templateAreas={`"overview overview overview"
                       "info info info"
@@ -30,18 +33,20 @@ const Page = () => {
         borderRadius={"10px"}
         width={"98%"}
       >
-        <Text color={"#FFFFFF"} padding="24px" fontSize={"20px"}>
-          Views Overview
+        <Text
+          color={"#FFFFFF"}
+          padding="50px"
+          fontSize={"32px"}
+          fontWeight={"800"}
+        >
+        Overview
         </Text>
       </GridItem>
 
       <GridItem area={"info"} width={"98%"}>
-        <Flex justify={"space-between"}>
+      <Flex justify={"space-between"}>
           <Text fontSize="20px"> Program Traffic Tracking </Text>
-          <HStack>
-            <Text> Refresh </Text>
-            <Text> Refresh Icon </Text>
-          </HStack>
+          <HStack></HStack>
         </Flex>
       </GridItem>
 
@@ -50,50 +55,20 @@ const Page = () => {
         bg="#FFFFFF"
         borderRadius="15px"
         paddingLeft="100x"
-      >
-        <SmallStats
-          stats="32,021"
-          graph={
-            <LineGraph
-              color="#387DFF"
-              grad={["#A7C5FF", "#D3E2FF", "#FFFFFF"]}
-            />
-          }
-          title="Cyber Security Incidents"
-          color="#387DFF"
-        />
+        width="95%">
+      <GraphStats stats={incidents[0].severity} title="Severity of Latest Incident" graph={<IncidentChart value={incidents} title=""/>}/>
       </GridItem>
 
       <GridItem area={"threats"} bg="#FFFFFF" borderRadius="15px">
-        <SmallStats
-          stats="429"
-          graph={
-            <LineGraph
-              color="#6DD230"
-              grad={["#B6E998", "#DBF4CB", "#FFFFFF"]}
-            />
-          }
-          title="Threats Detected"
-          color="#6DD230"
-        />
+        
       </GridItem>
 
       <GridItem area={"maturity"} bg="#FFFFFF" borderRadius="15px" width="95%">
-        <SmallStats
-          stats="Level 4"
-          graph={
-            <LineGraph
-              color="#FE7C4B"
-              grad={["#FFBEA5", "#FFDED2", "#FFFFFF"]}
-            />
-          }
-          title="Current Maturity Level"
-          color="#FE7C4B"
-        />
+        
       </GridItem>
 
       <GridItem area={"scores"} bg="#FFFFFF" borderRadius="15px" height="90%">
-        <Scores />
+       <Scores></Scores>
       </GridItem>
 
       <GridItem
@@ -103,10 +78,11 @@ const Page = () => {
         width="98%"
         height="90%"
       >
-        <WeeklyIncidents />
+        <IncidentSeverityChart value={incidentSeverity} title="Incidents by Severity"/>
       </GridItem>
     </Grid>
+    </div>
+    </main>
   );
 };
 
-export default Page;

@@ -19,7 +19,7 @@ import {
 import React from "react";
 import styles from "../Styles.module.css";
 
-const Scores = () => {
+export default async function Scores(){
   return (
     <Grid
       templateAreas={`"des " 
@@ -35,7 +35,6 @@ const Scores = () => {
           <Flex justifyContent={"space-between"}>
             <Text className={styles.customText}>Scores for company</Text>
             <Text className={styles.customText} fontWeight={"500"}>
-              total
             </Text>
           </Flex>
           <Text className={styles.dateText}>
@@ -78,4 +77,3 @@ const Scores = () => {
   );
 };
 
-export default Scores;
