@@ -1,22 +1,25 @@
 import React from "react";
-import Logo from "../../assets/1.svg";
 import Link from "next/link";
-import { NavLinks } from "../ui/dashboard/nav-links";
-import { BsFileBarGraph } from "react-icons/bs";
 import { Flex, Stack } from "@chakra-ui/react";
+import { BsFileBarGraph } from "react-icons/bs";
 import { MdPeopleAlt } from "react-icons/md";
 import { RiFolder6Fill } from "react-icons/ri";
-import { RxDashboard } from "react-icons/rx";
-import {RxExit} from "react-icons/rx";
+import { RxDashboard,RxExit } from "react-icons/rx";
 import { signOut } from "@/auth";
 import { deleteSession } from "@/app/lib/session";
+import { headers } from "next/headers";
 import clsx from "clsx";
+
+import { IconContext } from "react-icons";
+
+var path = new URL(headers().get('referer') || "").pathname;
+console.log(path);
 
 const NavBar = () => {
   return (
     <Flex justifyContent="center" paddingTop="50px">
-      <Stack spacing="50px" color="black">
-        <Link href={"/dashboard"} ><RxDashboard size="38px" /></Link>
+      <Stack spacing="50px">
+        <Link href={"/dashboard"} ><RxDashboard size="38px"/></Link>
         <Link href={"/dashboard/social"}><MdPeopleAlt size="38px" /></Link>
         <Link href={"/dashboard/organisational"}><BsFileBarGraph size="38px" /></Link>
         <Link href={"/dashboard/technical"}><RiFolder6Fill size="38px" /></Link>
@@ -27,8 +30,8 @@ const NavBar = () => {
             await signOut();
           }}
         >
-          <button>
-            <div className="hidden md:block"><RxExit size="38px"/>Out</div>
+          <button className='text-opacity-0 text-transparent pt-20px'>
+            <div className="hidden md:block text-transparent"><RxExit size="38px"/>OUT</div>
           </button>
         </form>
       </Stack>
