@@ -3,11 +3,14 @@ import PolicyViolations from "./PolicyViolations";
 import styles from "../Styles.module.css";
 import { GraphStats } from "../technical/Stats";
 import { PolicyChart } from "@/app/ui/dashboard/chart";
-import { fetchPolicy,fetchUniqueUsers } from "@/app/lib/data";
+import { fetchPolicy,fetchUniqueUsers,fetchAnswers } from "@/app/lib/data";
 import { Stats } from "../technical/Stats";
+
 export default async function Page(){
   const policies = await fetchPolicy();
   const usersCount = await fetchUniqueUsers();
+  const answers = await fetchAnswers();
+  console.log(answers);
   return (
     <main>
       <h1 className={` mb-4 text-xl md:text-2xl`}></h1>

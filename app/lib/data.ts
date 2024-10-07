@@ -150,3 +150,17 @@ export async function fetchUniqueUsers(){
     throw new Error('Failed to fetch unique users');
   }
 }
+
+export async function fetchAnswers(){
+  try{
+    const answersPromise = sql`SELECT * FROM ANSWERS`;
+    const data = await answersPromise;
+
+    const answers = (data.rows ?? '0');
+    return answers;
+
+  } catch(error) {
+    console.error('Databse error: ',error);
+    throw new Error('Failed to fetch answers');
+  }
+}
