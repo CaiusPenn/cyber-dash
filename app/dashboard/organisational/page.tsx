@@ -10,7 +10,6 @@ export default async function Page(){
   const policies = await fetchPolicy();
   const usersCount = await fetchUniqueUsers();
   const answers = await fetchAnswers();
-  console.log(answers);
   return (
     <main>
       <h1 className={` mb-4 text-xl md:text-2xl`}></h1>

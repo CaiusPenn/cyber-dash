@@ -72,9 +72,9 @@ export async function fetchTechnicalData() {
     const patchCoveragePromise = sql`SELECT AVG(patch_coverage_ratio) from technical`;
     const patchDeploymentPromise = sql`SELECT AVG(patch_deployment_time) from technical`;
     const pendingPatchPromise = sql`SELECT SUM(pending_patch_count) from technical`;
-    const osPatchCoveragePromise = sql`SELECT AVG(patch_coverage_ratio) from technical`;
-    const osPatchDeploymentPromise = sql`SELECT AVG(patch_deployment_time) from technical`;
-    const osPendingPatchPromise = sql`SELECT SUM(pending_patch_count) from technical`;
+    const osPatchCoveragePromise = sql`SELECT AVG(os_patch_coverage_ratio) from technical`;
+    const osPatchDeploymentPromise = sql`SELECT AVG(os_patch_deployment_time) from technical`;
+    const osPendingPatchPromise = sql`SELECT SUM(os_pending_patch_count) from technical`;
     
     
 
@@ -88,6 +88,8 @@ export async function fetchTechnicalData() {
 
 
     ]);
+
+    console.log(data);
 
     const patchCoverage = Number(data[0].rows[0].avg ?? '0');
     const patchDeployment = Number(data[1].rows[0].avg ?? '0');

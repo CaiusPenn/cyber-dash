@@ -12,8 +12,7 @@ import clsx from "clsx";
 
 import { IconContext } from "react-icons";
 
-var path = new URL(headers().get('referer') || "").pathname;
-console.log(path);
+
 
 const NavBar = () => {
   return (
