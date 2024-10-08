@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from "react";
-import Layout from "./layout";
+import { useRouter } from 'next/navigation'
 import {
   Grid,
   GridItem,
@@ -10,6 +10,7 @@ import {
   Center,
   Flex,
   HStack,
+  FormErrorMessage
 } from "@chakra-ui/react";
 import ProgressBar from "./ProgressBar";
 import Options from "./options";
@@ -21,14 +22,17 @@ import {
 } from "@chakra-ui/react";
 
 export default function Survey() {
+  const router = useRouter()
   const [questions, setQuestions] = useState<any[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
   const [selectedAnswer, setSelectedAnswer] = useState<number>(0);
   const [user_id, setUserId] = useState<number>(1001);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    
     // Fetch question from database based on the currentQuestionId
       const fetchQuestions = async () => {
         setLoading(true);
@@ -54,18 +58,16 @@ export default function Survey() {
 
   const handleAnswerSelect = (answer: number) => {
     setSelectedAnswer(answer);
-    
   };
 
   const handleAnswerSubmit = async () => {
-    console.log("IM IN THIS");
-    const q_id = questions[currentQuestionIndex].id; // Assuming each question has an ID
-    console.log("ANSWER SELECTD: " + selectedAnswer);
-
-    console.log("q_id: " + q_id);
-    console.log("user_id: " + user_id);
+    if (selectedAnswer == 0) {
+      setError("Please select an answer to continue."); // Set error message
+      return;
+    }
+    
+    const q_id = questions[currentQuestionIndex].id; 
     try {
-      'use server'
       const response = await fetch('/api/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -75,17 +77,18 @@ export default function Survey() {
       if (!response.ok) {
         throw new Error('Error submitting survey');
       }
+      setError(null);
 
-      console.log("FETCHED");
-      
       const newAnswers = [...answers, selectedAnswer];  
       setAnswers(newAnswers);
 
       if (currentQuestionIndex < questions.length - 1) {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
         setSelectedAnswer(0);
+        
       } else {
         alert('Survey complete! Thank you for your answers.');
+        router.push('/dashboard')
       }
     } catch (error) {
       console.error('Error submitting survey:', error);
@@ -101,28 +104,39 @@ const handlePrevious = () => {
   }
 };
 
-  return (
-    <Stack mt="10" spacing="10">
-      <Flex justifyContent="center" alignContent="center">
-        <ProgressBar />
-      </Flex>
-      <Flex justifyContent="center" alignContent="center">
-        <Text textColor="#4F6D7A" fontSize="2xl">
-          {"Question: " + (currentQuestionIndex + 1)}
-        </Text>
-      </Flex>
-      <Flex justifyContent="center" alignContent="center">
-        <Text fontSize="2xl" width="60%">
-         {questions[currentQuestionIndex].question + "."}
-        </Text>
-      </Flex>
+
+return (
+  <Stack mt="10" spacing="10" align="center"> 
+    <Flex justifyContent="center" alignItems="center" width="100%">
+      <ProgressBar currentQuestionIndex={currentQuestionIndex} totalQuestions={63} />
+    </Flex>
+
+    <Flex justifyContent="center" alignItems="center" width="100%">
+      <Text textColor="#4F6D7A" fontSize="2xl">
+        {"Question: " + (currentQuestionIndex + 1)}
+      </Text>
+    </Flex>
+
+    <Flex justifyContent="center" alignItems="center" width="100%">
+      <Text fontSize="2xl" textAlign="center" width="60%"> 
+        {questions[currentQuestionIndex].question + "."}
+      </Text>
+    </Flex>
+
+    <FormControl isInvalid={!!error} width="100%" textAlign="center"> 
       <Options
         selectedAnswer={selectedAnswer}
         onAnswerSelect={handleAnswerSelect}
         onSubmit={handleAnswerSubmit}
         onPrevious={handlePrevious}
       />
-    </Stack>
-  );
-};
+      {error && (
+        <Flex justifyContent="center" alignItems="center" mt={4}>
+          <FormErrorMessage>{error}</FormErrorMessage> {/* Center error message */}
+        </Flex>
+      )}
+    </FormControl>
+  </Stack>
+);
+}
 

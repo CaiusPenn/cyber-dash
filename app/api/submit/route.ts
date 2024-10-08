@@ -11,12 +11,18 @@ export async function POST(request: Request) {
   try {
     const { q_id, user_id, answer } = await request.json();
 
-    console.log( q_id, user_id, answer);
-
     await client.query('BEGIN');
 
-    await client.query(
+    /*await client.query(
       'INSERT INTO answers (question_id, user_id, answer) VALUES ($1, $2, $3)',
+      [q_id, user_id, answer]
+    );*/
+
+    await client.query(
+      `INSERT INTO answers (question_id, user_id, answer) 
+       VALUES ($1, $2, $3) 
+       ON CONFLICT (question_id, user_id) 
+       DO UPDATE SET answer = EXCLUDED.answer`,
       [q_id, user_id, answer]
     );
     
