@@ -17,7 +17,7 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import React from "react";
-import styles from "@/app/dashboard/Styles.module.css";
+import styles from "@/app/Styles.module.css";
 
 export default async function Scores(){
   return (

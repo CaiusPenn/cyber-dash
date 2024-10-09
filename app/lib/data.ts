@@ -2,6 +2,7 @@ import { sql } from '@vercel/postgres';
 import {Organisational,
   Incident,
 } from './definitions';
+import { number } from 'zod';
 
 export async function fetchPhishing() {
   try {
@@ -141,7 +142,7 @@ export async function fetchChartData(){
 
 export async function fetchUniqueUsers(){
   try{
-    const uniqueUsersPromise = sql`SELECT count(DISTINCT user_id) FROM ANSWERS`;
+    const uniqueUsersPromise = sql`SELECT DISTINCT user_id FROM ANSWERS`;
     const data = await uniqueUsersPromise;
 
     const uniqueUsers = (data.rows ?? '0');
@@ -153,13 +154,40 @@ export async function fetchUniqueUsers(){
   }
 }
 
-export async function fetchAnswers(){
+export async function fetchScores(){
   try{
-    const answersPromise = sql`SELECT * FROM ANSWERS`;
+    const answersPromise = sql`SELECT * FROM answers join questions on questions.id=answers.question_id order by user_id`;
+    const users = await fetchUniqueUsers();
+    let score = new Map;
+    for (let i=0; i<users.length; i++){
+      score.set(users[i].user_id,0);
+    }
     const data = await answersPromise;
-
+    const negScored = [1,2,4,6,7,9,11,12,14,16,18,21,
+      22,24,25,26,30,32,34,37,38,40,41,
+      44,47,50,52,54,55,56,62
+    ];
     const answers = (data.rows ?? '0');
-    return answers;
+    //console.log(answers);
+    for (let j = 0;j < users.length; j++){
+      let user = users[j].user_id;
+      let tempScore = 0;
+      for (let i = 0; i < answers.length; i++) {
+        if (answers[i].user_id == user){
+          if (negScored.includes(Number(answers[i].question_id))){
+            tempScore = tempScore + -1*(Number(answers[i].answer));
+          }
+          else{
+            tempScore = tempScore + Number(answers[i].answer);
+          }
+        }
+      }
+      score.set(user,tempScore);
+    }
+    //console.log(score);
+    //console.log(answers);
+
+    return score;
 
   } catch(error) {
     console.error('Databse error: ',error);

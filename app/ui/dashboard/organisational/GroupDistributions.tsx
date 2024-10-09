@@ -1,7 +1,7 @@
 import { Grid, GridItem, Text } from "@chakra-ui/react";
 import React from "react";
-import styles from "../Styles.module.css";
-import { DoughnutCustom } from "../DoughnutCustom";
+import styles from "@/app/Styles.module.css";
+import { DoughnutCustom } from "../main/DoughnutCustom";
 import { DistributionDoughnut } from "./DistributionDoughnut";
 
 const GroupDistributions = () => {

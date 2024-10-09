@@ -1,9 +1,10 @@
 import { Grid, GridItem, Text } from "@chakra-ui/react";
 import React from "react";
+import { MultipleLineGraph } from "@/app/ui/dashboard/main/MultipleLineGraph";
 import styles from "@/app/dashboard/Styles.module.css";
-import { MultipleLineGraph } from "@/app/dashboard/MultipleLineGraph";
+import { DoughnutCustom } from "@/app/ui/dashboard/main/DoughnutCustom";
 
-const WorkloadData = () => {
+const Stress = () => {
   return (
     <Grid
       templateAreas={`"title" 
@@ -16,16 +17,16 @@ const WorkloadData = () => {
       gridTemplateColumns={"repeat(1, 1fr)"}
     >
       <GridItem area={"title"}>
-        <Text className={styles.customText}>Employee Workload Data</Text>
+        <Text className={styles.customText}>Employee Stress Chart</Text>
         <Text className={styles.dateText}>
           2024-08-13 ~ 2024-09-13 | Last 7 days
         </Text>
       </GridItem>
-      <GridItem area={"graph"} paddingLeft="40px">
-        <MultipleLineGraph />
+      <GridItem area={"graph"} paddingLeft="28%">
+        <DoughnutCustom />
       </GridItem>
     </Grid>
   );
 };
 
-export default WorkloadData;
+export default Stress;

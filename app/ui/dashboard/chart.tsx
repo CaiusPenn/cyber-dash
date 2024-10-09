@@ -3,6 +3,13 @@ import { Chart } from "chart.js/auto";
 import { QueryResultRow } from "pg";
 import { useEffect, useRef } from "react";
 
+export function colorDecide(value:any,threshold:any){
+  if (value > threshold){
+    return ("#23cf1d");
+  }
+  return ("#c71606");
+}
+
 export function AdminChart({
   title,
   value,

@@ -1,6 +1,6 @@
 import { Grid, GridItem, Stack, HStack, Text } from "@chakra-ui/react";
 import React from "react";
-import styles from "../Styles.module.css";
+import styles from "@/app/Styles.module.css";
 import { Gi3dGlasses } from "react-icons/gi";
 
 interface Props {
@@ -13,14 +13,16 @@ interface Props2{
   stats: Number | string;
   title: string;
   graph: any;
+  desc: string;
 }
 
-const GraphStats = ({stats,title,graph}: Props2) =>{
+const GraphStats = ({stats,title,graph,desc}: Props2) =>{
   return(
     <Grid
       templateAreas={`"des des des des des"
       "stat stat graph graph graph"
-      "stat stat graph graph graph"`}
+      "stat stat graph graph graph"
+      "info info info info info"`}
       h="full"
       gap="7"
       gridTemplateRows={"40px 40px 40px"}
@@ -39,6 +41,9 @@ const GraphStats = ({stats,title,graph}: Props2) =>{
       </GridItem>
       <GridItem area={"graph"}>
           {graph}
+      </GridItem>
+      <GridItem area={"info"}>
+          <Text className={styles.dateText}>{desc}</Text>
       </GridItem>
     </Grid>
   );

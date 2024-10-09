@@ -1,7 +1,7 @@
 import { Flex, Grid, GridItem, HStack, Stack, Text } from "@chakra-ui/react";
-import styles from "@/app/dashboard/Styles.module.css";
-import { Stats, GraphStats } from "@/app/dashboard/technical/Stats";
-import Scores from "./Scores";
+import styles from "/Styles.module.css";
+import { Stats, GraphStats } from "@/app/ui/dashboard/technical/Stats";
+import Scores from "../ui/dashboard/main/Scores";
 import { fetchLatestIncidents, fetchIncidentsSeverity } from "@/app/lib/data";
 import { IncidentChart,IncidentSeverityChart } from "@/app/ui/dashboard/chart";
 
@@ -56,7 +56,7 @@ export default async function Page(){
         borderRadius="15px"
         paddingLeft="100x"
         width="95%">
-      <GraphStats stats={incidents[0].severity} title="Severity of Latest Incident" graph={<IncidentChart value={incidents} title=""/>}/>
+      <GraphStats stats={incidents[0].severity} title="Severity of Latest Incident" desc='' graph={<IncidentChart value={incidents} title=""/>}/>
       </GridItem>
 
       <GridItem area={"threats"} bg="#FFFFFF" borderRadius="15px">

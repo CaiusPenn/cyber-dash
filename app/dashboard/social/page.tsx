@@ -2,10 +2,10 @@
 import { Grid, GridItem, Text } from "@chakra-ui/react";
 import React from "react";
 import styles from "@/app/dashboard/Styles.module.css";
-import CompletionRate from "./CompletionRate";
-import PhishingResults from "./PhishingResults";
-import WorkloadData from "./WorkloadData";
-import Stress from "./Stress";
+import CompletionRate from "../../ui/dashboard/social/CompletionRate";
+import PhishingResults from "../../ui/dashboard/social/PhishingResults";
+import WorkloadData from "../../ui/dashboard/social/WorkloadData";
+import Stress from "../../ui/dashboard/social/Stress";
 
 const page = () => {
   return (

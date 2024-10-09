@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import styles from "../Styles.module.css";
 import Numbers from "./Numbers";
-import { colorSchema } from "../ColorScheme";
+import { colorSchema } from "../main/ColorScheme";
 
 const PhishingResults = () => {
   return (

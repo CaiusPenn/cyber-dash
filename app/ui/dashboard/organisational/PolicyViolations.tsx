@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { fetchPolicy } from "@/app/lib/data";
 import React from "react";
-import styles from "../Styles.module.css";
+import styles from "@/app/Styles.module.css";
 
 export default async function PolicyViolations(){
   const data = await fetchPolicy();

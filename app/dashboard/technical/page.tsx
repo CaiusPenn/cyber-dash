@@ -1,4 +1,4 @@
-import {Stats,GraphStats} from "./Stats";
+import {Stats,GraphStats} from "../../ui/dashboard/technical/Stats";
 import { AdminChart,AppChart, MfaChart } from "@/app/ui/dashboard/chart";
 import { fetchTechnicalData,fetchChartData } from "@/app/lib/data";
 import { Grid,GridItem,Text } from "@chakra-ui/react";
