@@ -2,7 +2,7 @@ import {Stats,GraphStats} from "../../ui/dashboard/technical/Stats";
 import { AdminChart,AppChart, MfaChart } from "@/app/ui/dashboard/chart";
 import { fetchTechnicalData,fetchChartData } from "@/app/lib/data";
 import { Grid,GridItem,Text } from "@chakra-ui/react";
-import styles from '@/app/dashboard/Styles.module.css';
+import styles from '@/app/Styles.module.css';
 
 
 export default async function Page() {
@@ -66,13 +66,13 @@ export default async function Page() {
       {<Stats title="OS Pending Patch" stats={osPendingPatch} color="#D5698A"/> }
       </GridItem>
       <GridItem area={"g"} className={styles.statsBox}>
-      {<GraphStats title="MFA" stats={LatestMfa} graph={<MfaChart title="" value={mfa}/>}/>}
+      {<GraphStats title="MFA" stats={LatestMfa} desc='' graph={<MfaChart title="" value={mfa}/>}/>}
       </GridItem>
       <GridItem area={"h"} className={styles.statsBox}>
-      {<GraphStats title="Admin Ratio" stats={LatestAdmin} graph={<AdminChart title="" value={adminRatio}/>}/>}
+      {<GraphStats title="Admin Ratio" stats={LatestAdmin} desc='' graph={<AdminChart title="" value={adminRatio}/>}/>}
       </GridItem>
       <GridItem area={"i"} className={styles.statsBox}>
-        {<GraphStats title="App Control" stats={LatestApp} graph={<AppChart title="" value={appControl}/>}/>}
+        {<GraphStats title="App Control" stats={LatestApp} desc='' graph={<AppChart title="" value={appControl}/>}/>}
       </GridItem>
     </Grid>
               
