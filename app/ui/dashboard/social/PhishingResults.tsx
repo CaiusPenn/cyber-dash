@@ -8,9 +8,9 @@ import {
   Grid,
   GridItem,
 } from "@chakra-ui/react";
-import styles from "../Styles.module.css";
+import styles from "@/app/Styles.module.css";
 import Numbers from "./Numbers";
-import { colorSchema } from "../main/ColorScheme";
+import { colorSchema } from "@/app/ui/dashboard/main/ColorScheme";
 
 const PhishingResults = () => {
   return (

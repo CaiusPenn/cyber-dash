@@ -2,7 +2,7 @@ import { Grid, GridItem, Stat, Text } from "@chakra-ui/react";
 import PolicyViolations from "../../ui/dashboard/organisational/PolicyViolations";
 import styles from "@/app/Styles.module.css";
 import { GraphStats, Stats } from "../../ui/dashboard/technical/Stats";
-import { PolicyChart } from "@/app/ui/dashboard/chart";
+import { PolicyChart, CategoryChart } from "@/app/ui/dashboard/chart";
 import { fetchPolicy,fetchUniqueUsers,fetchScores } from "@/app/lib/data";
 
 function colorDecide(value:any,threshhold:any){
@@ -15,7 +15,10 @@ function colorDecide(value:any,threshhold:any){
 export default async function Page(){
   const policies = await fetchPolicy();
   const usersCount = (await fetchUniqueUsers());
-  const scores = await fetchScores();
+  const fetch = await fetchScores();
+  const scores = fetch.score;
+  const category = fetch.category;
+
   let totalScore = 0;
   for (const x of scores.values()) {
     totalScore += x;
@@ -58,7 +61,8 @@ export default async function Page(){
        <Stats title="Investment into Cyber" stats="$298,020" color="#23cf1d"/>
       </GridItem>
       <GridItem area={"d"} className={styles.statsBox}>
-       
+       {<GraphStats title="Category Scores" desc="Scores For Each Category Surveyed" stats={''}
+      graph={<CategoryChart title='' value={category}/>}/>}
       </GridItem>
       <GridItem area={"e"} className={styles.statsBox}>
       {<GraphStats title="Latest Violation" desc="Trend of policy violations over time" stats={policies[0].date.toDateString().slice(4)}

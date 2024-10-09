@@ -1,6 +1,5 @@
 import { Grid, GridItem, Stack, HStack, Text } from "@chakra-ui/react";
 import React from "react";
-import { LineGraph } from "../LineGraph";
 import styles from "../Styles.module.css";
 
 interface Props {

@@ -2,12 +2,13 @@ import { Flex, Grid, GridItem, HStack, Stack, Text } from "@chakra-ui/react";
 import styles from "/Styles.module.css";
 import { Stats, GraphStats } from "@/app/ui/dashboard/technical/Stats";
 import Scores from "../ui/dashboard/main/Scores";
-import { fetchLatestIncidents, fetchIncidentsSeverity } from "@/app/lib/data";
-import { IncidentChart,IncidentSeverityChart } from "@/app/ui/dashboard/chart";
+import { fetchLatestIncidents, fetchIncidentsSeverity,IncidentsbyDate } from "@/app/lib/data";
+import { IncidentChart,IncidentSeverityChart,IncidentCountChart } from "@/app/ui/dashboard/chart";
 
 export default async function Page(){
   const incidents = await fetchLatestIncidents();
   const incidentSeverity = await fetchIncidentsSeverity();
+  const incidentsCount = await IncidentsbyDate();
   return (
     <main>
     <h1 className={` mb-4 text-xl md:text-2xl`}></h1>
@@ -60,11 +61,11 @@ export default async function Page(){
       </GridItem>
 
       <GridItem area={"threats"} bg="#FFFFFF" borderRadius="15px">
-        
+      <GraphStats stats={incidents.length} title="Number of Incidents" desc='' graph={<IncidentCountChart value={incidentsCount} title=""/>}/>
       </GridItem>
 
       <GridItem area={"maturity"} bg="#FFFFFF" borderRadius="15px" width="95%">
-        
+      <GraphStats stats={4} title="Current Maturity Level" desc='' graph={<IncidentCountChart value={[]} title=""/>}/>
       </GridItem>
 
       <GridItem area={"scores"} bg="#FFFFFF" borderRadius="15px" height="90%">

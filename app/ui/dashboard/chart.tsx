@@ -499,4 +499,167 @@ export function AppChart({
     );
   }
 
+  export function IncidentCountChart({
+    title,
+    value,
+  }: {
+    title: string;
+    value: QueryResultRow;
+  }) {
+      const countData: Number[] = [];
+      const dates: Number[] =[];
+      for (let i=0;i<value.length;i++){
+          countData.push((value[i].count));
+          dates.push(value[i].time);
+      }
+      
+    const chartRef = useRef<HTMLCanvasElement>(null);
+
+    useEffect(() => {
+      const ctx = chartRef.current?.getContext("2d");
+
+      if (ctx) {
+        const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+        gradient.addColorStop(0, 'rgba(35, 140, 67, 1)');   // Starting color
+        gradient.addColorStop(0.5, 'rgba(66, 245, 120, 0.3)'); // Fading color
+        const myChart = new Chart(ctx, {
+          type: 'line', 
+          data: {
+            labels: dates,
+            datasets: [
+              {
+                label: "Severity of Incidents by date",
+                data: countData, 
+                borderColor: gradient, 
+                borderWidth: 3,
+                tension: 0.4,
+                fill: false,
+                pointRadius: 0,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                display: false,
+              },
+              x: {
+                display:false,
+              }
+            },
+            elements: {
+                line: {
+                  borderJoinStyle: 'round',     // Rounded line join
+                  borderCapStyle: 'round',      // Rounded line ends
+                },
+              },
+              plugins: {
+                legend: {
+                  display: false,              // Disable the legend
+                },
+              },
+            },
+          });
+  
+        return () => {
+          myChart.destroy();
+        };
+      }
+    }, [value]); 
+  
+    return (
+      <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
+        <div className="flex p-4">
+          <h3 className="ml-2 text-sm font-medium">{title}</h3>
+        </div>
+        <canvas ref={chartRef} id="myChart"></canvas>
+      </div>
+    );
+  }
+  
+  export function CategoryChart({
+    title,
+    value,
+  }: {
+    title: string;
+    value: Map<String,Number>;
+  }) {
+      const countData: Number[] = [];
+      const cat: String[] =[];
+      for (const x of value.values()) {
+        countData.push(x);
+      }
+      for (const x of value.keys()) {
+        cat.push(x);
+      }
+      
+    const chartRef = useRef<HTMLCanvasElement>(null);
+
+    useEffect(() => {
+      const ctx = chartRef.current?.getContext("2d");
+
+      if (ctx) {
+        const myChart = new Chart(ctx, {
+          type: 'doughnut', 
+          data: {
+            labels: cat,
+            datasets: [
+              {
+                label: "Category Scores",
+                data: countData, 
+                backgroundColor: [
+                  'rgb(255, 0, 132)',
+                  'rgb(54, 162, 235)',
+                  'rgb(255, 205, 0)',
+                  'rgb(247, 133, 0)',
+                  'rgb(128, 0, 201)',
+                  'rgb(0, 213, 255)',
+                  'rgb(0, 255, 64)'
+
+                ],
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                display: false,
+              },
+              x: {
+                display:false,
+              }
+            },
+            elements: {
+                line: {
+                  borderJoinStyle: 'round',     // Rounded line join
+                  borderCapStyle: 'round',      // Rounded line ends
+                },
+              },
+              plugins: {
+                legend: {
+                  display: false,              // Disable the legend
+                },
+              },
+            },
+          });
+  
+        return () => {
+          myChart.destroy();
+        };
+      }
+    }, [value]); 
+  
+    return (
+      <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
+        <div className="flex p-4">
+          <h3 className="ml-2 text-sm font-medium">{title}</h3>
+        </div>
+        <canvas ref={chartRef} id="myChart"></canvas>
+      </div>
+    );
+  }
+  
+
 

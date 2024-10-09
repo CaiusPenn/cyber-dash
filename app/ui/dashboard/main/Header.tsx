@@ -4,6 +4,7 @@ import React from "react";
 // import logo from "../../assets/logo.png"; // Correctly import the logo
 import { GiHeartTower } from "react-icons/gi";
 import { IoMdNotifications } from "react-icons/io";
+import { RxAvatar } from "react-icons/rx";
 
 const name = cookies().get('name')?.value
 
@@ -18,7 +19,7 @@ const Header = () => {
       </HStack>
       <Spacer></Spacer>
       <HStack spacing="20px">
-        <IoMdNotifications size="48px" />
+        <RxAvatar size="48px" />
         <Text>Hello, {name}!</Text>
       </HStack>
     </Flex>

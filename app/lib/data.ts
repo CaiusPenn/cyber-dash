@@ -48,6 +48,21 @@ export async function fetchIncidentsSeverity() {
   }
 }
 
+export async function IncidentsbyDate(){
+  try{
+    const data = await sql`SELECT time,COUNT(*)
+    FROM INCIDENTS
+    GROUP BY TIME
+    ORDER BY TIME`;
+
+    const count = data.rows;
+    return count;
+  }catch(error){
+    console.error('Database error',error);
+    throw new Error ('Failed to fetch incidents by date');
+  }
+}
+
 
 export async function fetchPolicy() {
   try {
@@ -154,11 +169,32 @@ export async function fetchUniqueUsers(){
   }
 }
 
+export async function fetchCategories(){
+  try{
+    const uniqueCategoriesPromise = sql`SELECT DISTINCT category FROM QUESTIONS`;
+    const data = await uniqueCategoriesPromise;
+
+    const uniqueCategories = (data.rows ?? '0');
+    return uniqueCategories;
+
+  } catch(error) {
+    console.error('Databse error: ',error);
+    throw new Error('Failed to fetch unique users');
+  }
+}
+
 export async function fetchScores(){
   try{
     const answersPromise = sql`SELECT * FROM answers join questions on questions.id=answers.question_id order by user_id`;
     const users = await fetchUniqueUsers();
+    const categories = await fetchCategories();
     let score = new Map;
+    let category = new Map;
+
+    for (let i =0; i<categories.length; i++){
+      category.set(categories[i].category,0);
+    }
+
     for (let i=0; i<users.length; i++){
       score.set(users[i].user_id,0);
     }
@@ -168,7 +204,7 @@ export async function fetchScores(){
       44,47,50,52,54,55,56,62
     ];
     const answers = (data.rows ?? '0');
-    //console.log(answers);
+
     for (let j = 0;j < users.length; j++){
       let user = users[j].user_id;
       let tempScore = 0;
@@ -184,10 +220,24 @@ export async function fetchScores(){
       }
       score.set(user,tempScore);
     }
-    //console.log(score);
-    //console.log(answers);
 
-    return score;
+    for (let j = 0;j < categories.length; j++){
+      let cat = categories[j].category;
+      let tempScore = 0;
+      for (let i = 0; i < answers.length; i++) {
+        if (answers[i].category == cat){
+          if (negScored.includes(Number(answers[i].question_id))){
+            tempScore = tempScore + -1*(Number(answers[i].answer));
+          }
+          else{
+            tempScore = tempScore + Number(answers[i].answer);
+          }
+        }
+      }
+      category.set(cat,tempScore);
+    }
+  
+    return {score,category};
 
   } catch(error) {
     console.error('Databse error: ',error);

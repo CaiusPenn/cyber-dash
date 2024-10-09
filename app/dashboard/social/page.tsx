@@ -1,13 +1,15 @@
 "use client";
 import { Grid, GridItem, Text } from "@chakra-ui/react";
 import React from "react";
-import styles from "@/app/dashboard/Styles.module.css";
-import CompletionRate from "../../ui/dashboard/social/CompletionRate";
-import PhishingResults from "../../ui/dashboard/social/PhishingResults";
-import WorkloadData from "../../ui/dashboard/social/WorkloadData";
-import Stress from "../../ui/dashboard/social/Stress";
+import styles from "@/app/Styles.module.css";
+import CompletionRate from "@/app/ui/dashboard/social/CompletionRate";
+import PhishingResults from "@/app/ui/dashboard/social/PhishingResults";
+import WorkloadData from "@/app/ui/dashboard/social/WorkloadData";
+import Stress from "@/app/ui/dashboard/social/Stress";
 
-const page = () => {
+export default async function Page(){
+
+  
   return (
     <Grid
       templateAreas={`"title title title title title "
@@ -46,5 +48,3 @@ const page = () => {
     </Grid>
   );
 };
-
-export default page;
