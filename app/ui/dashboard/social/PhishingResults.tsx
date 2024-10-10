@@ -38,7 +38,7 @@ const PhishingResults = () => {
           num="1"
           label="Reported"
           val={91.54}
-          colour={colorSchema[2]}
+          colour={"#FE7C4B"}
         ></Numbers>
       </GridItem>
 
@@ -47,12 +47,12 @@ const PhishingResults = () => {
           num="2"
           label="Un-reported"
           val={40.63}
-          colour={colorSchema[3]}
+          colour={"#23B899"}
         />
       </GridItem>
 
       <GridItem area={"failed"} width={"90%"} paddingLeft={"7%"}>
-        <Numbers num="3" label="Failed" val={14.68} colour={colorSchema[2]} />
+        <Numbers num="3" label="Failed" val={14.68} colour={"#FE7C4B"} />
       </GridItem>
     </Grid>
   );

@@ -1,5 +1,5 @@
 import LoginForm from '@/app/ui/login-form';
-import '@/global.css'
+import '@/global.css';
 export default function LoginPage() {
   return (
     <main className="flex h-full items-center justify-center sm:h-screen">

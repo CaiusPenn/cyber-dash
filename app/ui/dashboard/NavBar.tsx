@@ -1,27 +1,20 @@
-import React from "react";
-import Link from "next/link";
-import { Flex, Stack } from "@chakra-ui/react";
-import { BsFileBarGraph } from "react-icons/bs";
-import { MdPeopleAlt } from "react-icons/md";
-import { RiFolder6Fill } from "react-icons/ri";
-import { RxDashboard,RxExit } from "react-icons/rx";
-import { signOut } from "@/auth";
-import { deleteSession } from "@/app/lib/session";
-import { headers } from "next/headers";
-import clsx from "clsx";
+import {NavLinks} from '@/app/ui/dashboard/nav-links';
+import { signOut } from '@/auth';
+import { deleteSession } from '@/app/lib/session';
+import { RxExit } from 'react-icons/rx';
 
-import { IconContext } from "react-icons";
+import { Flex,Stack,Button } from '@chakra-ui/react';
 
-
-
-const NavBar = () => {
+export default function SideNav() {
   return (
-    <Flex justifyContent="center" paddingTop="50px">
-      <Stack spacing="50px">
-        <Link href={"/dashboard"} ><RxDashboard size="38px"/></Link>
-        <Link href={"/dashboard/social"}><MdPeopleAlt size="38px" /></Link>
-        <Link href={"/dashboard/organisational"}><BsFileBarGraph size="38px" /></Link>
-        <Link href={"/dashboard/technical"}><RiFolder6Fill size="38px" /></Link>
+    <div className="flex flex-col px-3 py-4 md:px-2">
+      <div className="w-32 text-white md:w-40">
+      </div>
+      <div className="flex grow flex-row justify-between space-x-80 md:flex-col md:space-x-0 md:space-y-2">
+      <Flex justifyContent="center" paddingBottom="50px">
+        <Stack spacing="50px" color="black">
+        <NavLinks />
+        <div className="hidden  w-full grow rounded-md md:block"></div>
         <form
           action={async () => {
             'use server';
@@ -29,14 +22,17 @@ const NavBar = () => {
             await signOut();
           }}
         >
-          <button className='text-opacity-0 text-transparent pt-20px'>
-            <div className="hidden md:block text-transparent"><RxExit size="38px"/>OUT</div>
-          </button>
+          <Button bg='transparent' className='flex h-[55px] w-full grow items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3'  
+          _hover={{
+            textDecoration: "none",   // Remove underline on hover
+            color: "blue.500"}}>
+          <div className="hidden md:block">‎<RxExit size={'38px'} /> ‎ </div>
+            
+          </Button>
         </form>
-      </Stack>
-      
-    </Flex>
+        </Stack>
+        </Flex>
+      </div>
+    </div>
   );
-};
-
-export default NavBar;
+}

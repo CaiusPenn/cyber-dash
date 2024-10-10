@@ -4,7 +4,7 @@ import { Stats, GraphStats } from "@/app/ui/dashboard/technical/Stats";
 import Scores from "../ui/dashboard/main/Scores";
 import { fetchLatestIncidents, fetchIncidentsSeverity,IncidentsbyDate } from "@/app/lib/data";
 import { IncidentChart,IncidentSeverityChart,IncidentCountChart } from "@/app/ui/dashboard/chart";
-
+import '@/global.css';
 export default async function Page(){
   const incidents = await fetchLatestIncidents();
   const incidentSeverity = await fetchIncidentsSeverity();

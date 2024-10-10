@@ -2,6 +2,7 @@ import { Grid, GridItem, HStack, Text } from "@chakra-ui/react";
 import NavBar from "@/app/ui/dashboard/NavBar";
 import Header from "@/app/ui/dashboard/main/Header";
 
+
 interface Props {
   children: React.ReactNode;
 }
@@ -28,7 +29,7 @@ export default function Dashboard({ children }: Props) {
       </GridItem>
 
       <GridItem pl="2" bg="#FFFFFF" area={"nav"}>
-        <NavBar></NavBar>
+        <NavBar/>
       </GridItem>
       <GridItem pl="2" bg="#F7F9FA" area={"main"} paddingLeft="30px">
         {children}

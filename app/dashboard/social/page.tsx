@@ -1,4 +1,3 @@
-"use client";
 import { Grid, GridItem, Text } from "@chakra-ui/react";
 import React from "react";
 import styles from "@/app/Styles.module.css";
@@ -9,7 +8,6 @@ import Stress from "@/app/ui/dashboard/social/Stress";
 
 export default async function Page(){
 
-  
   return (
     <Grid
       templateAreas={`"title title title title title "
@@ -40,7 +38,7 @@ export default async function Page(){
         <PhishingResults />
       </GridItem>
       <GridItem area={"workload"} className={styles.customBox}>
-        <WorkloadData />
+        {/* <WorkloadData />  calling some client component*/} 
       </GridItem>
       <GridItem area={"stress"} className={styles.customBox} width="95%">
         <Stress />
