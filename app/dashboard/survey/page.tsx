@@ -43,7 +43,7 @@ export default function Survey() {
     const fetchQuestions = async () => {
       setLoading(true);
       try {
-        const response = await fetch("/api/questions"); // Adjust API endpoint as needed
+        const response = await fetch("/api/questions"); 
         const data = await response.json();
         setQuestions(data);
       } catch (error) {
