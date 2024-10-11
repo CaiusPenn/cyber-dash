@@ -1,3 +1,4 @@
+'use client'
 import { HStack, Text, Image, Flex, Spacer, Button } from "@chakra-ui/react";
 import { cookies } from "next/headers";
 import React ,{useEffect, useState} from "react";
