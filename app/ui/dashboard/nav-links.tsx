@@ -7,6 +7,7 @@ import { MdPeopleAlt } from "react-icons/md";
 import { RiFolder6Fill } from "react-icons/ri";
 import { BsFileBarGraph } from "react-icons/bs";
 import { RiSurveyFill } from 'react-icons/ri';
+import { FaBuilding } from "react-icons/fa";
 
 
 // Map of links to display in the side navigation.
@@ -15,7 +16,7 @@ const links = [
   { name: 'Home', href: '/dashboard', icon: RxDashboard},
   { name: 'Organisational', href: '/dashboard/social',icon:MdPeopleAlt},
   { name: 'Technical', href: '/dashboard/technical',icon:BsFileBarGraph},
-  {name: 'Social', href: '/dashboard/organisational',icon:RiFolder6Fill},
+  {name: 'Social', href: '/dashboard/organisational',icon:FaBuilding},
   {name: 'Survey', href: '/dashboard/survey', icon:RiSurveyFill},
 ];
 
