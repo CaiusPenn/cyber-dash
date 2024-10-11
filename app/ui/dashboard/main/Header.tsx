@@ -1,13 +1,26 @@
 import { HStack, Text, Image, Flex, Spacer, Button } from "@chakra-ui/react";
 import { cookies } from "next/headers";
-import React from "react";
+import React ,{useEffect, useState} from "react";
 import { GiHeartTower } from "react-icons/gi";
 import { IoMdNotifications } from "react-icons/io";
 import { RxAvatar } from "react-icons/rx";
 
-//const name = cookies().get('name')?.value
 
 const Header = () => {
+  const [userName, setUserName] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchUserName = async () => {
+      const response = await fetch("/api/user_name");
+      const data = await response.json();
+      setUserName(data.name); 
+    };
+
+    fetchUserName();
+
+  }, []);
+
+
   return (
     <Flex paddingLeft="20px" color="black" paddingRight="20px">
       <HStack>
