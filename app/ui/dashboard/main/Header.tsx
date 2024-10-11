@@ -1,8 +1,8 @@
 import { HStack, Text, Image, Flex, Spacer, Button } from "@chakra-ui/react";
 import { cookies } from "next/headers";
 import React from "react";
-import { GiHeartTower } from "react-icons/gi";
-import { IoMdNotifications } from "react-icons/io";
+import { IoFish } from "react-icons/io5";
+
 import { RxAvatar } from "react-icons/rx";
 
 const name = cookies().get('name')?.value
@@ -11,8 +11,8 @@ const Header = () => {
   return (
     <Flex paddingLeft="20px" color="black" paddingRight="20px">
       <HStack>
-        <GiHeartTower size="48px" />
-        <Text fontSize="sm" fontWeight="bold" paddingBottom="0">
+        <IoFish size="48px" />
+        <Text fontSize="md" fontWeight="bold" paddingLeft='20px' paddingBottom="0">
           Phishing Phighters
         </Text>
       </HStack>

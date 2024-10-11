@@ -15,7 +15,7 @@ const CompletionRate = () => {
     >
       <GridItem area={"info"}>
         <Text className={styles.CompletionRateText}>
-          Employee Training Completion Rate
+          Employee Training Completion 
         </Text>
         <Text
           padding="40px"
