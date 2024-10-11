@@ -49,7 +49,7 @@ export default async function Page(){
           className={styles.customText}
           fontSize="20px"
           padding="0px"
-          paddingTop="20px"
+          paddingTop="0px"
         >
           Organisational Domain Page
         </Text>
@@ -64,11 +64,11 @@ export default async function Page(){
        <Stats title="Investment into Cyber" stats="$298,020" color="#23cf1d"/>
       </GridItem>
       <GridItem area={"d"} className={styles.statsBox}>
-       {<GraphStats title="Category Scores" desc="Scores For Each Category Surveyed" stats={''}
+       {<GraphStats title="Category Scores" desc="Survey Scores for Various Categories" stats={''}
       graph={<CategoryChart title='' value={category}/>}/>}
       </GridItem>
       <GridItem area={"e"} className={styles.statsBox}>
-      {<GraphStats title="Latest Violation" desc="Trend of policy violations over time" stats={policies[0].date.toDateString().slice(4)}
+      {<GraphStats title="Latest Violation" desc="Violations of Policy by Date" stats={policies[0].date.toDateString().slice(4)}
       graph={<PolicyChart title="" value={policies}/>}/>}
       </GridItem>
       <GridItem area={"f"} className={styles.statsBox}>
