@@ -24,8 +24,7 @@ const CompletionRate = () => {
           width="80%"
           opacity="70%"
         >
-          The small program starts at 10.663 people and the overall conversion
-          rate is 91.54%
+          The percentage of staff that have completed their relevant training modules.
         </Text>
       </GridItem>
       <GridItem area={"stat"}></GridItem>
@@ -50,10 +49,9 @@ const CompletionRate = () => {
           91.54
         </Text>
         <Text fontSize="lg" color="#FDD446">
-          points
+          percentage
         </Text>
         <Text fontSize="md" color="white" mt={4} textTransform="uppercase">
-          Conversion Rate
         </Text>
       </GridItem>
     </Grid>

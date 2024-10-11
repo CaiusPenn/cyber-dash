@@ -18,13 +18,12 @@ export default async function WorkloadData(){
     >
       <GridItem area={"title"}>
         <Text className={styles.customText}>Employee Workload Data</Text>
-        <Text className={styles.dateText}>
-          2024-08-13 ~ 2024-09-13 | Last 7 days
-        </Text>
+       
       </GridItem>
       <GridItem area={"graph"} paddingLeft="40px">
         <MultipleLineGraph2 />
       </GridItem>
+      
     </Grid>
   );
 };
