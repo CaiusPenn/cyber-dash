@@ -1,9 +1,10 @@
 import { Grid, GridItem, Text } from "@chakra-ui/react";
 import React from "react";
 import styles from "@/app/Styles.module.css";
-import { MultipleLineGraph } from "@/app/ui/dashboard/main/MultipleLineGraph";
+import { MultipleLineGraph2 } from "@/app/ui/dashboard/main/MultipleLineGraph";
 
-const WorkloadData = () => {
+
+export default async function WorkloadData(){
   return (
     <Grid
       templateAreas={`"title" 
@@ -22,10 +23,9 @@ const WorkloadData = () => {
         </Text>
       </GridItem>
       <GridItem area={"graph"} paddingLeft="40px">
-        <MultipleLineGraph />
+        <MultipleLineGraph2 />
       </GridItem>
     </Grid>
   );
 };
 
-export default WorkloadData;

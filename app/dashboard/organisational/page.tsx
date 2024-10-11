@@ -4,6 +4,7 @@ import styles from "@/app/Styles.module.css";
 import { GraphStats, Stats } from "../../ui/dashboard/technical/Stats";
 import { PolicyChart, CategoryChart } from "@/app/ui/dashboard/chart";
 import { fetchPolicy,fetchUniqueUsers,fetchScores } from "@/app/lib/data";
+import TrainingEffectiveness from "@/app/ui/dashboard/organisational/TrainingEffectiveness";
 
 function colorDecide(value:any,threshhold:any){
   if (value > threshhold){
@@ -14,10 +15,12 @@ function colorDecide(value:any,threshhold:any){
 
 export default async function Page(){
   const policies = await fetchPolicy();
-  const usersCount = (await fetchUniqueUsers());
+  const users = await fetchUniqueUsers();
   const fetch = await fetchScores();
   const scores = fetch.score;
   const category = fetch.category;
+
+  let usersCount = users.uniqueUsersCount;
 
   let totalScore = 0;
   for (const x of scores.values()) {
@@ -52,7 +55,7 @@ export default async function Page(){
         </Text>
       </GridItem>
       <GridItem area={"a"} className={styles.statsBox}>
-        <Stats title="Number of partcipants" stats={usersCount.length} color={colorDecide(usersCount.length,10)}/>
+        <Stats title="Number of partcipants" stats={String(usersCount)} color={colorDecide(usersCount,10)}/>
       </GridItem>
       <GridItem area={"b"} className={styles.statsBox}>
        <Stats title="Overall Security Awareness" stats={totalScore} color={colorDecide(totalScore,15)}/>
@@ -72,7 +75,7 @@ export default async function Page(){
        <PolicyViolations/>
       </GridItem>
       <GridItem area={"g"} className={styles.statsBox}>
-      
+        <TrainingEffectiveness/>
       </GridItem>
     </Grid>
     </div>

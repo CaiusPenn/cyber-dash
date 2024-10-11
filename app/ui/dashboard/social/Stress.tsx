@@ -1,10 +1,10 @@
 import { Grid, GridItem, Text } from "@chakra-ui/react";
 import React from "react";
-import { MultipleLineGraph } from "@/app/ui/dashboard/main/MultipleLineGraph";
 import styles from "@/app/Styles.module.css";
 import { DoughnutCustom } from "@/app/ui/dashboard/main/DoughnutCustom";
-
-const Stress = () => {
+import { fetchStress } from "@/app/lib/data";
+export  default async function Stress(){
+  const stressData = await fetchStress();
   return (
     <Grid
       templateAreas={`"title" 
@@ -23,10 +23,9 @@ const Stress = () => {
         </Text>
       </GridItem>
       <GridItem area={"graph"} paddingLeft="28%">
-        <DoughnutCustom />
+        {/* <StrssChart></StrssChart> */}
       </GridItem>
     </Grid>
   );
 };
 
-export default Stress;

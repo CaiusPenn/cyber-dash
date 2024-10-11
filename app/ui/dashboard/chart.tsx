@@ -662,4 +662,85 @@ export function AppChart({
   }
   
 
+  export function StressChart({
+    title,
+    value,
+  }: {
+    title: string;
+    value: Map<String,Number>;
+  }) {
+      const stressData: Number[] = [];
+      const dept: String[] =[];
+      for (const x of value.values()) {
+        stressData.push(x);
+      }
+      for (const x of value.keys()) {
+        dept.push(x);
+      }
+      
+    const chartRef = useRef<HTMLCanvasElement>(null);
 
+    useEffect(() => {
+      const ctx = chartRef.current?.getContext("2d");
+
+      if (ctx) {
+        const myChart = new Chart(ctx, {
+          type: 'doughnut', 
+          data: {
+            labels: dept,
+            datasets: [
+              {
+                label: "Category Scores",
+                data: stressData, 
+                backgroundColor: [
+                  'rgb(255, 0, 132)',
+                  'rgb(54, 162, 235)',
+                  'rgb(255, 205, 0)',
+                  'rgb(247, 133, 0)',
+                  'rgb(128, 0, 201)',
+                  'rgb(0, 213, 255)',
+                  'rgb(0, 255, 64)'
+
+                ],
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                display: false,
+              },
+              x: {
+                display:false,
+              }
+            },
+            elements: {
+                line: {
+                  borderJoinStyle: 'round',     // Rounded line join
+                  borderCapStyle: 'round',      // Rounded line ends
+                },
+              },
+              plugins: {
+                legend: {
+                  display: false,              // Disable the legend
+                },
+              },
+            },
+          });
+  
+        return () => {
+          myChart.destroy();
+        };
+      }
+    }, [value]); 
+  
+    return (
+      <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
+        <div className="flex p-4">
+          <h3 className="ml-2 text-sm font-medium">{title}</h3>
+        </div>
+        <canvas ref={chartRef} id="myChart"></canvas>
+      </div>
+    );
+  }

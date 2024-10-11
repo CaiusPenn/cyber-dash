@@ -159,9 +159,9 @@ export async function fetchUniqueUsers(){
   try{
     const uniqueUsersPromise = sql`SELECT DISTINCT user_id FROM ANSWERS`;
     const data = await uniqueUsersPromise;
-
+    const uniqueUsersCount = (data.rowCount);
     const uniqueUsers = (data.rows ?? '0');
-    return uniqueUsers;
+    return {uniqueUsers,uniqueUsersCount};
 
   } catch(error) {
     console.error('Databse error: ',error);
@@ -186,7 +186,8 @@ export async function fetchCategories(){
 export async function fetchScores(){
   try{
     const answersPromise = sql`SELECT * FROM answers join questions on questions.id=answers.question_id order by user_id`;
-    const users = await fetchUniqueUsers();
+    const usersTemp = await fetchUniqueUsers();
+    const users = (usersTemp.uniqueUsers);
     const categories = await fetchCategories();
     let score = new Map;
     let category = new Map;
@@ -242,5 +243,26 @@ export async function fetchScores(){
   } catch(error) {
     console.error('Databse error: ',error);
     throw new Error('Failed to fetch answers');
+  }
+}
+
+export async function fetchStress(){
+  try{
+    const stressPromise = sql`SELECT avg(answer),department_id 
+    from answers join users on users.id=answers.user_id 
+    where question_id=64 group by(department_id)`;
+    const data = await stressPromise;
+
+    const stress = (data.rows ?? '0');
+    let stressData = new Map();
+    
+    for (let i = 0;i<stress.length; i++){
+      stressData.set(String(stress[i].department_id),Number(stress[i].avg));
+    }
+    return stressData;
+
+  } catch(error) {
+    console.error('Databse error: ',error);
+    throw new Error('Failed to fetch stress');
   }
 }
