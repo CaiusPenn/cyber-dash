@@ -1,3 +1,4 @@
+'use client'
 import { HStack, Text, Image, Flex, Spacer, Button } from "@chakra-ui/react";
 import React, {useEffect, useState} from "react";
 import { GiHeartTower } from "react-icons/gi";
