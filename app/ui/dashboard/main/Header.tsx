@@ -32,7 +32,7 @@ const Header = () => {
       <Spacer></Spacer>
       <HStack spacing="20px">
         <RxAvatar size="48px" />
-        <Text>Hello,  !</Text>
+        <Text>Hello, {userName}!</Text>
       </HStack>
     </Flex>
   );
