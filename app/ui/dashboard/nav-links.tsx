@@ -27,16 +27,16 @@ export function NavLinks() {
       {links.map((link) => {
         const LinkIcon = link.icon;
         return (
-          <Flex justifyContent="center" paddingTop="50px">
+          <Flex key={link.name} justifyContent="center" paddingTop="50px">
             <Stack spacing="50px" color="black">
               <Link
                _hover={{
                 textDecoration: "none",   // Remove underline on hover
-                color: "blue.500",        // Change color on hover
+                color: "#1C61FF",        // Change color on hover
               }}
                 key={link.name}
                 href={link.href}
-                color={pathname === link.href ? "blue.500" : "back.500"}
+                color={pathname === link.href ? "#1C61FF" : "black.500"}
               >
                 <p className="hidden md:block"><LinkIcon size={"38px"} className="w-6" /></p>
               </Link>

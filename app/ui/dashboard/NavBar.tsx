@@ -22,13 +22,10 @@ export default function SideNav() {
             await signOut();
           }}
         >
-          <Button bg='transparent' className='flex h-[55px] w-full grow items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3'  
-          _hover={{
-            textDecoration: "none",   // Remove underline on hover
-            color: "blue.500"}}>
-          <div className="hidden md:block">‎<RxExit size={'38px'} /> ‎ </div>
+          <button className='flex h-[55px] w-full grow items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3'  >
+          <div className="hidden md:block">‎<RxExit size={'38px'} />‎</div>
             
-          </Button>
+          </button>
         </form>
         </Stack>
         </Flex>

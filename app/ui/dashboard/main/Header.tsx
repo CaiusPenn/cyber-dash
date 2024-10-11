@@ -1,7 +1,6 @@
 import { HStack, Text, Image, Flex, Spacer, Button } from "@chakra-ui/react";
 import { cookies } from "next/headers";
 import React from "react";
-// import logo from "../../assets/logo.png"; // Correctly import the logo
 import { GiHeartTower } from "react-icons/gi";
 import { IoMdNotifications } from "react-icons/io";
 import { RxAvatar } from "react-icons/rx";
