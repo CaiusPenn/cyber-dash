@@ -10,7 +10,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   currentQuestionIndex,
   totalQuestions,
 }) => {
-  // Calculate the progress percentage
+  
   const progressValue = ((currentQuestionIndex + 1) / totalQuestions) * 100;
 
   return (
