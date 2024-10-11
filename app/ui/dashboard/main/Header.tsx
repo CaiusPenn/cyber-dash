@@ -5,7 +5,7 @@ import { GiHeartTower } from "react-icons/gi";
 import { IoMdNotifications } from "react-icons/io";
 import { RxAvatar } from "react-icons/rx";
 
-const name = cookies().get('name')?.value
+//const name = cookies().get('name')?.value
 
 const Header = () => {
   return (
@@ -19,7 +19,7 @@ const Header = () => {
       <Spacer></Spacer>
       <HStack spacing="20px">
         <RxAvatar size="48px" />
-        <Text>Hello, {name}!</Text>
+        <Text>Hello, !</Text>
       </HStack>
     </Flex>
   );
