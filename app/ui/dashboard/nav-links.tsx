@@ -14,8 +14,8 @@ import { RiSurveyFill } from 'react-icons/ri';
 const links = [
   { name: 'Home', href: '/dashboard', icon: RxDashboard},
   { name: 'Organisational', href: '/dashboard/social',icon:MdPeopleAlt},
-  { name: 'Technical', href: '/dashboard/technical',icon:RiFolder6Fill},
-  {name: 'Social', href: '/dashboard/organisational',icon:BsFileBarGraph},
+  { name: 'Technical', href: '/dashboard/technical',icon:BsFileBarGraph},
+  {name: 'Social', href: '/dashboard/organisational',icon:RiFolder6Fill},
   {name: 'Survey', href: '/dashboard/survey', icon:RiSurveyFill},
 ];
 
