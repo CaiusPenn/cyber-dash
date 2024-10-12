@@ -15,9 +15,9 @@ export default async function Page(){
       templateAreas={`"title title title title title "
                   "info info info phishing phishing"
                   "workload workload workload stress stress"`}
-      h="full"
+      h="100vh"
       gap="10"
-      gridTemplateRows={"25px 275px 600px"}
+      gridTemplateRows={"25px 275px 350px"}
       color={"#334681"}
       fontWeight={"bold"}
       gridTemplateColumns={"repeat(5, 1fr)"}
@@ -43,7 +43,7 @@ export default async function Page(){
         <WorkloadData/>
       </GridItem>
       <GridItem area={"stress"} className={styles.customBox} width="95%">
-       <GraphStats title="Average Stress Levels by Department" desc="" stats='' graph={<StressChart value={stressData} title=''/>}/>
+       <GraphStats title="Stress Reported by Departments" desc="" stats='' graph={<StressChart value={stressData} title=''/>}/>
       </GridItem>
     </Grid>
   );

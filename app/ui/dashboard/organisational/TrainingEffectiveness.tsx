@@ -10,9 +10,14 @@ const TrainingEffectiveness = () => {
         "stats"`}
       bg="#FFFFFF"
       gridTemplateColumns={"repeat(1, 1fr)"}
-      gridTemplateRows={"25% 75%"}
+      gridTemplateRows={"auto 1fr"} // Auto height for text, remaining space for graph
     >
-      <GridItem area="des">
+       <GridItem 
+        area="des" 
+        padding={0} // Ensure no padding
+        margin={0} // Ensure no margin
+        alignSelf="start" // Align the text at the top
+      >
         <Text className={styles.customText}>
           Cyber Security Training Effectiveness
         </Text>

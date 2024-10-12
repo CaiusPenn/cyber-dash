@@ -25,7 +25,7 @@ const GraphStats = ({stats,title,graph,desc}: Props2) =>{
       "info info info info info"`}
       h="full"
       gap="7"
-      gridTemplateRows={"40px 40px 40px"}
+      gridTemplateRows={"40px 40px 1fr 40px"} // Adjust row heights
       color={"#334681"}
       fontWeight={"bold"}
       gridTemplateColumns={"repeat(6, 1fr)"}
