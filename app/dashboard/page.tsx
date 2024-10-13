@@ -110,7 +110,7 @@ export default async function Page() {
         height="90%"
       >
         <Text className={styles.customText}>Incidents by Severity</Text>
-        <Box height={"85%"} paddingLeft="5%">
+        <Box height={"80%"} paddingLeft="5%">
           <IncidentSeverityChart value={incidentSeverity} />
         </Box>
       </GridItem>

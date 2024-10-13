@@ -35,7 +35,9 @@ const GraphStats = ({ stats, title, graph, desc }: Props2) => {
         <Text className={styles.customText}>{title}</Text>
       </GridItem>
       <GridItem area={"stat"}>
-        <Text className={styles.viewsOverviewStat}>{String(stats)}</Text>
+        <Text fontSize={"16px"} paddingLeft="15%">
+          {String(stats)}
+        </Text>
       </GridItem>
       <GridItem area={"graph"} paddingTop="8">
         {graph}
@@ -143,4 +145,37 @@ const TechnicalStats = ({ stats, title, graph, desc }: Props2) => {
   );
 };
 
-export { Stats, GraphStats, StressStats, TechnicalStats };
+const CategoryStats = ({ stats, title, graph, desc }: Props2) => {
+  return (
+    <Grid
+      templateAreas={`"des des des des des"
+      "graph graph graph graph graph"
+      "graph graph graph graph graph"
+      "info info info info info"`}
+      h="full"
+      gap="7"
+      gridTemplateRows={"40px 40px 1fr 40px"} // Adjust row heights
+      color={"#334681"}
+      fontWeight={"bold"}
+      gridTemplateColumns={"repeat(6, 1fr)"}
+      boxShadow={"md"}
+    >
+      <GridItem area={"des"}>
+        <Stack spacing={"0"}>
+          <Text className={styles.customText}>{title}</Text>
+          <Text fontSize="12px" paddingLeft="15px" textColor={"grey"}>
+            {desc}
+          </Text>
+        </Stack>
+      </GridItem>
+      <GridItem area={"stat"}>
+        <Text fontSize={"16px"}>{String(stats)}</Text>
+      </GridItem>
+      <GridItem area={"graph"} height="100%" width="100%" paddingLeft="30%">
+        {graph}
+      </GridItem>
+    </Grid>
+  );
+};
+
+export { Stats, GraphStats, StressStats, TechnicalStats, CategoryStats };
