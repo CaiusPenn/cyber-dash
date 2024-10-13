@@ -1,29 +1,28 @@
-import {Stats,GraphStats} from "../../ui/dashboard/technical/Stats";
-import { AdminChart,AppChart, MfaChart } from "@/app/ui/dashboard/chart";
-import { fetchTechnicalData,fetchChartData } from "@/app/lib/data";
-import { Grid,GridItem,Text } from "@chakra-ui/react";
-import styles from '@/app/Styles.module.css';
-
+import {
+  Stats,
+  GraphStats,
+  TechnicalStats,
+} from "../../ui/dashboard/technical/Stats";
+import { AdminChart, AppChart, MfaChart } from "@/app/ui/dashboard/chart";
+import { fetchTechnicalData, fetchChartData } from "@/app/lib/data";
+import { Grid, GridItem, Text } from "@chakra-ui/react";
+import styles from "@/app/Styles.module.css";
 
 export default async function Page() {
-    const { mfa, adminRatio, appControl} = await fetchChartData();
-    const {
-      patchCoverage,
-      patchDeployment,
-      pendingPatch,
-      osPatchCoverage,
-      osPatchDeployment,
-      osPendingPatch
-      } = await fetchTechnicalData();
-      const LatestMfa = mfa[0].mfa;
-      const LatestApp = appControl[0].app_control_alerts;
-      const LatestAdmin = adminRatio[0].admin_ratio;
-      return(
-        <main>
-        <h1 className={` mb-4 text-xl md:text-2xl`}>
-        </h1>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <Grid
+  const { mfa, adminRatio, appControl } = await fetchChartData();
+  const {
+    patchCoverage,
+    patchDeployment,
+    pendingPatch,
+    osPatchCoverage,
+    osPatchDeployment,
+    osPendingPatch,
+  } = await fetchTechnicalData();
+  const LatestMfa = mfa[0].mfa;
+  const LatestApp = appControl[0].app_control_alerts;
+  const LatestAdmin = adminRatio[0].admin_ratio;
+  return (
+    <Grid
       templateAreas={`"title title title"
                   "a b c "
                   "d e f  "
@@ -48,43 +47,83 @@ export default async function Page() {
         </Text>
       </GridItem>
       <GridItem area={"a"} className={styles.statsBox}>
-        {<Stats title="Patch Coverage Ratio" stats={patchCoverage} color="#387DFF" /> }
+        {
+          <Stats
+            title="Patch Coverage Ratio"
+            stats={patchCoverage}
+            color="#387DFF"
+          />
+        }
       </GridItem>
       <GridItem area={"b"} className={styles.statsBox}>
-      {<Stats title="Patch Deployment Ratio" stats={patchDeployment} color="#6DD230" /> }
+        {
+          <Stats
+            title="Patch Deployment Ratio"
+            stats={patchDeployment}
+            color="#6DD230"
+          />
+        }
       </GridItem>
       <GridItem area={"c"} className={styles.statsBox}>
-      {<Stats title="Pending Patch" stats={pendingPatch} color="#FE7C4B" /> }
+        {<Stats title="Pending Patch" stats={pendingPatch} color="#FE7C4B" />}
       </GridItem>
       <GridItem area={"d"} className={styles.statsBox}>
-      {<Stats title="OS Patch Coverage Ratio" stats={osPatchCoverage} color="#23B899"/> }
+        {
+          <Stats
+            title="OS Patch Coverage Ratio"
+            stats={osPatchCoverage}
+            color="#23B899"
+          />
+        }
       </GridItem>
       <GridItem area={"e"} className={styles.statsBox}>
-      {<Stats title="OS Patch Deployment Ratio" stats={osPatchDeployment} color="#8978FF" /> }
+        {
+          <Stats
+            title="OS Patch Deployment Ratio"
+            stats={osPatchDeployment}
+            color="#8978FF"
+          />
+        }
       </GridItem>
       <GridItem area={"f"} className={styles.statsBox}>
-      {<Stats title="OS Pending Patch" stats={osPendingPatch} color="#D5698A"/> }
+        {
+          <Stats
+            title="OS Pending Patch"
+            stats={osPendingPatch}
+            color="#D5698A"
+          />
+        }
       </GridItem>
       <GridItem area={"g"} className={styles.statsBox}>
-      {<GraphStats title="MFA" stats={LatestMfa} desc='' graph={<MfaChart title="" value={mfa}/>}/>}
+        {
+          <GraphStats
+            title="MFA"
+            stats={LatestMfa}
+            desc=""
+            graph={<MfaChart title="" value={mfa} />}
+          />
+        }
       </GridItem>
       <GridItem area={"h"} className={styles.statsBox}>
-      {<GraphStats title="Admin Ratio" stats={LatestAdmin} desc='' graph={<AdminChart title="" value={adminRatio}/>}/>}
+        {
+          <GraphStats
+            title="Admin Ratio"
+            stats={LatestAdmin}
+            desc=""
+            graph={<AdminChart title="" value={adminRatio} />}
+          />
+        }
       </GridItem>
       <GridItem area={"i"} className={styles.statsBox}>
-        {<GraphStats title="App Control" stats={LatestApp} desc='' graph={<AppChart title="" value={appControl}/>}/>}
+        {
+          <TechnicalStats
+            title="App Control"
+            stats={LatestApp}
+            desc=""
+            graph={<AppChart title="" value={appControl} />}
+          />
+        }
       </GridItem>
     </Grid>
-              
-          
-          
-        </div>
-        <div className="grid gap-6 pt-10 sm:grid-cols-2 lg:grid-cols-2">
-        </div>
-        <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-8">
-        </div>
-      </main>
-    );
+  );
 }
-  
-  

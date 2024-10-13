@@ -112,4 +112,35 @@ const Stats = ({ stats, title, color }: Props) => {
   );
 };
 
-export { Stats, GraphStats, StressStats };
+const TechnicalStats = ({ stats, title, graph, desc }: Props2) => {
+  return (
+    <Grid
+      templateAreas={`"des des des des des"
+      "stat stat graph graph graph"
+      "stat stat graph graph graph"
+      "info info info info info"`}
+      h="full"
+      gap="7"
+      gridTemplateRows={"40px 40px 1fr 40px"} // Adjust row heights
+      color={"#334681"}
+      fontWeight={"bold"}
+      gridTemplateColumns={"repeat(6, 1fr)"}
+      boxShadow={"md"}
+    >
+      <GridItem area={"des"}>
+        <Text className={styles.customText}>{title}</Text>
+      </GridItem>
+      <GridItem area={"stat"}>
+        <Text className={styles.viewsOverviewStat}>{String(stats)}</Text>
+      </GridItem>
+      <GridItem area={"graph"} height="50%">
+        {graph}
+      </GridItem>
+      <GridItem area={"info"}>
+        <Text className={styles.dateText}>{desc}</Text>
+      </GridItem>
+    </Grid>
+  );
+};
+
+export { Stats, GraphStats, StressStats, TechnicalStats };
