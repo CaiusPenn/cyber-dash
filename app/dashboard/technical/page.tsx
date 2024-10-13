@@ -114,6 +114,7 @@ export default async function Page() {
           />
         }
       </GridItem>
+
       <GridItem area={"i"} className={styles.statsBox}>
         {
           <TechnicalStats
