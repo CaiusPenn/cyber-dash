@@ -1,25 +1,39 @@
-import { Flex, Grid, GridItem, HStack, Stack, Text } from "@chakra-ui/react";
-import styles from "/Styles.module.css";
+import {
+  Box,
+  Flex,
+  Grid,
+  GridItem,
+  HStack,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
+import styles from "@/app/Styles.module.css";
 import { Stats, GraphStats } from "@/app/ui/dashboard/technical/Stats";
 import Scores from "../ui/dashboard/main/Scores";
-import { fetchLatestIncidents, fetchIncidentsSeverity,IncidentsbyDate } from "@/app/lib/data";
-import { IncidentChart,IncidentSeverityChart,IncidentCountChart } from "@/app/ui/dashboard/chart";
-import '@/global.css';
-export default async function Page(){
+
+import {
+  fetchLatestIncidents,
+  fetchIncidentsSeverity,
+  IncidentsbyDate,
+} from "@/app/lib/data";
+import {
+  IncidentChart,
+  IncidentSeverityChart,
+  IncidentCountChart,
+} from "@/app/ui/dashboard/chart";
+import "@/global.css";
+export default async function Page() {
   const incidents = await fetchLatestIncidents();
   const incidentSeverity = await fetchIncidentsSeverity();
   const incidentsCount = await IncidentsbyDate();
   return (
-    <main>
-    <h1 className={` mb-4 text-xl md:text-2xl`}></h1>
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
     <Grid
       templateAreas={`"overview overview overview"
                       "info info info"
                       "incidents threats maturity"
                       "scores week week"`}
       h="full"
-      gap="30"
+      gap="25"
       gridTemplateRows={"150px 20px 240px 500px "}
       color={"#334681"}
       fontWeight={"bold"}
@@ -40,12 +54,12 @@ export default async function Page(){
           fontSize={"32px"}
           fontWeight={"800"}
         >
-        Overview
+          Overview
         </Text>
       </GridItem>
 
       <GridItem area={"info"} width={"98%"}>
-      <Flex justify={"space-between"}>
+        <Flex justify={"space-between"}>
           <Text fontSize="20px"> Program Traffic Tracking </Text>
           <HStack></HStack>
         </Flex>
@@ -56,20 +70,36 @@ export default async function Page(){
         bg="#FFFFFF"
         borderRadius="15px"
         paddingLeft="100x"
-        width="95%">
-      <GraphStats stats={incidents[0].severity} title="Severity of Latest Incident" desc='' graph={<IncidentChart value={incidents} title=""/>}/>
+        width="95%"
+      >
+        <GraphStats
+          stats={incidents[0].severity}
+          title="Severity of Latest Incident"
+          desc=""
+          graph={<IncidentChart value={incidents} title="" />}
+        />
       </GridItem>
 
       <GridItem area={"threats"} bg="#FFFFFF" borderRadius="15px">
-      <GraphStats stats={incidents.length} title="Number of Incidents" desc='' graph={<IncidentCountChart value={incidentsCount} title=""/>}/>
+        <GraphStats
+          stats={incidents.length}
+          title="Number of Incidents"
+          desc=""
+          graph={<IncidentCountChart value={incidentsCount} title="" />}
+        />
       </GridItem>
 
       <GridItem area={"maturity"} bg="#FFFFFF" borderRadius="15px" width="95%">
-      <GraphStats stats={4} title="Current Maturity Level" desc='' graph={<IncidentCountChart value={[]} title=""/>}/>
+        <GraphStats
+          stats={4}
+          title="Current Maturity Level"
+          desc=""
+          graph={<IncidentCountChart value={[]} title="" />}
+        />
       </GridItem>
 
       <GridItem area={"scores"} bg="#FFFFFF" borderRadius="15px" height="90%">
-       <Scores></Scores>
+        <Scores />
       </GridItem>
 
       <GridItem
@@ -79,11 +109,11 @@ export default async function Page(){
         width="98%"
         height="90%"
       >
-        <IncidentSeverityChart value={incidentSeverity} title="Incidents by Severity"/>
+        <Text className={styles.customText}>Incidents by Severity</Text>
+        <Box height={"85%"} paddingLeft="5%">
+          <IncidentSeverityChart value={incidentSeverity} />
+        </Box>
       </GridItem>
     </Grid>
-    </div>
-    </main>
   );
-};
-
+}

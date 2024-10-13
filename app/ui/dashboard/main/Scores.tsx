@@ -19,7 +19,7 @@ import {
 import React from "react";
 import styles from "@/app/Styles.module.css";
 
-export default async function Scores(){
+export default async function Scores() {
   return (
     <Grid
       templateAreas={`"des " 
@@ -33,9 +33,14 @@ export default async function Scores(){
       <GridItem area={"des"} width="90%">
         <Stack spacing="0">
           <Flex justifyContent={"space-between"}>
-            <Text className={styles.customText}>Scores for company</Text>
-            <Text className={styles.customText} fontWeight={"500"}>
+            <Text
+              className={styles.customText}
+              paddingLeft="10"
+              paddingTop="10"
+            >
+              Scores for company
             </Text>
+            <Text className={styles.customText} fontWeight={"500"}></Text>
           </Flex>
           <Text className={styles.dateText}>
             2024-08-13 ~ 2024-09-13 | Last 7 days
@@ -75,5 +80,4 @@ export default async function Scores(){
       </GridItem>
     </Grid>
   );
-};
-
+}

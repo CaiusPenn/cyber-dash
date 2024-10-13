@@ -9,15 +9,15 @@ interface Props {
   color: string;
 }
 
-interface Props2{
+interface Props2 {
   stats: Number | string;
   title: string;
   graph: any;
   desc: string;
 }
 
-const GraphStats = ({stats,title,graph,desc}: Props2) =>{
-  return(
+const GraphStats = ({ stats, title, graph, desc }: Props2) => {
+  return (
     <Grid
       templateAreas={`"des des des des des"
       "stat stat graph graph graph"
@@ -35,15 +35,13 @@ const GraphStats = ({stats,title,graph,desc}: Props2) =>{
         <Text className={styles.customText}>{title}</Text>
       </GridItem>
       <GridItem area={"stat"}>
-        <Text className={styles.viewsOverviewStat}>
-          {String(stats)}
-        </Text>
+        <Text className={styles.viewsOverviewStat}>{String(stats)}</Text>
       </GridItem>
-      <GridItem area={"graph"}>
-          {graph}
+      <GridItem area={"graph"} paddingTop="8">
+        {graph}
       </GridItem>
       <GridItem area={"info"}>
-          <Text className={styles.dateText}>{desc}</Text>
+        <Text className={styles.dateText}>{desc}</Text>
       </GridItem>
     </Grid>
   );
@@ -74,9 +72,7 @@ const Stats = ({ stats, title, color }: Props) => {
       </GridItem>
 
       <GridItem area={"info"}>
-        <HStack>
-
-        </HStack>
+        <HStack></HStack>
       </GridItem>
 
       <GridItem area="icon" paddingTop={"100%"} paddingLeft={"100%"}>
@@ -86,5 +82,4 @@ const Stats = ({ stats, title, color }: Props) => {
   );
 };
 
-export {Stats,GraphStats};
-
+export { Stats, GraphStats };
