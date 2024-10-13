@@ -42,9 +42,6 @@ export default async function Scores() {
             </Text>
             <Text className={styles.customText} fontWeight={"500"}></Text>
           </Flex>
-          <Text className={styles.dateText}>
-            2024-08-13 ~ 2024-09-13 | Last 7 days
-          </Text>
         </Stack>
       </GridItem>
 

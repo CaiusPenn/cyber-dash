@@ -47,6 +47,36 @@ const GraphStats = ({ stats, title, graph, desc }: Props2) => {
   );
 };
 
+const StressStats = ({ stats, title, graph, desc }: Props2) => {
+  return (
+    <Grid
+      templateAreas={`"des"
+        "graph"`}
+      h="full"
+      gap="7"
+      gridTemplateRows={"60px 100px"} // Adjust row heights
+      color={"#334681"}
+      fontWeight={"bold"}
+      gridTemplateColumns={"repeat(1, 1fr)"}
+      boxShadow={"md"}
+    >
+      <GridItem area={"des"}>
+        <Text className={styles.customText}>{title}</Text>
+      </GridItem>
+
+      <GridItem
+        area={"graph"}
+        // paddingTop="15"
+        height="70%"
+        width="70%"
+        paddingLeft="30%"
+      >
+        {graph}
+      </GridItem>
+    </Grid>
+  );
+};
+
 const Stats = ({ stats, title, color }: Props) => {
   return (
     <Grid
@@ -82,4 +112,4 @@ const Stats = ({ stats, title, color }: Props) => {
   );
 };
 
-export { Stats, GraphStats };
+export { Stats, GraphStats, StressStats };
