@@ -12,7 +12,7 @@ import { FaBuilding } from "react-icons/fa";
 
 // Map of links to display in the side navigation.
 // Depending on the size of the application, this would be stored in a database.
-const links = [
+var links = [
   { name: 'Home', href: '/dashboard', icon: RxDashboard},
   { name: 'Organisational', href: '/dashboard/social',icon:MdPeopleAlt},
   { name: 'Technical', href: '/dashboard/technical',icon:BsFileBarGraph},
@@ -20,9 +20,16 @@ const links = [
   {name: 'Survey', href: '/dashboard/survey', icon:RiSurveyFill},
 ];
 
-export function NavLinks() {
+
+export function NavLinks(props:any) {
   const pathname = usePathname();
-  
+  const role = props.role;
+  if (role != 'manager'){
+    links = [
+      { name: 'Home', href: '/dashboard', icon: RxDashboard},
+      {name: 'Survey', href: '/dashboard/survey', icon:RiSurveyFill},
+    ];
+  }
   return (
     <main className='flex-col justify-items-between'>
       {links.map((link) => {
