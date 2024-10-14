@@ -1,7 +1,7 @@
 import { Grid, GridItem, Text } from "@chakra-ui/react";
 import React from "react";
 import styles from "@/app/Styles.module.css";
-import CompletionRate from "@/app/ui/dashboard/social/CompletionRate";
+import {CompletionRate} from "@/app/ui/dashboard/social/CompletionRate";
 import PhishingResults from "@/app/ui/dashboard/social/PhishingResults";
 import WorkloadData from "@/app/ui/dashboard/social/WorkloadData";
 import { GraphStats, StressStats } from "@/app/ui/dashboard/technical/Stats";

@@ -266,3 +266,20 @@ export async function fetchStress(){
     throw new Error('Failed to fetch stress');
   }
 }
+
+export async function fetchUserStress(userId:any){
+  try{
+    const stressPromise = sql`SELECT (answer)
+    from answers join users on users.id=answers.user_id 
+    where question_id=64 and users.id = ${userId}`;
+    const data = await stressPromise;
+
+    const stress = (data.rows[0] ?? '0');
+    
+    return stress.answer;
+
+  } catch(error) {
+    console.error('Databse error: ',error);
+    throw new Error('Failed to fetch stress');
+  }
+}

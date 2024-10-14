@@ -19,6 +19,7 @@ import {
     IncidentChart,
     IncidentSeverityChart,
     IncidentCountChart,
+    GaugeChart
   } from "@/app/ui/dashboard/chart";
 import "@/global.css";
 
@@ -94,7 +95,7 @@ export default async function managerDash() {
             stats={4}
             title="Current Maturity Level"
             desc=""
-            graph={<IncidentCountChart value={[]} title="" />}
+            graph={<GaugeChart value={4} gValue={16}/>}
           />
         </GridItem>
   
