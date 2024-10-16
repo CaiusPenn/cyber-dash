@@ -79,7 +79,7 @@ export default async function Page() {
               color="#23cf1d"
             />
           </GridItem>
-          <GridItem area={"d"} className={styles.statsBox}>
+          <GridItem area={"d"} className={styles.statsBox} width="95%">
             {
               <CategoryStats
                 title="Category Scores"
@@ -95,6 +95,8 @@ export default async function Page() {
                 title="Latest Violation"
                 desc="Policy Violations by Date"
                 stats={policies[0].date.toDateString().slice(4)}
+                tSize="12px"
+                tColor="grey"
                 graph={<PolicyChart title="" value={policies} />}
               />
             }

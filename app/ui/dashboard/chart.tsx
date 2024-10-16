@@ -5,7 +5,7 @@ import { getRandomValues } from "crypto";
 import { QueryResultRow } from "pg";
 import { useEffect, useRef } from "react";
 import { number } from "zod";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -734,13 +734,7 @@ export function StressChart({
   );
 }
 
-export function GaugeChart({
-  value,
-  gValue
-}: {
-  value: any;
-  gValue:any;
-}) {
+export function GaugeChart({ value, gValue }: { value: any; gValue: any }) {
   const gaugeValue = value; // Value for the gauge (percentage or actual value)
   const maxValue = gValue; // Max value for the gauge (100% or max value)
 
@@ -756,14 +750,10 @@ export function GaugeChart({
           datasets: [
             {
               label: "Value ",
-              data: [value,gValue-value],
-              backgroundColor: [
-                "rgb(15, 120, 11)",
-                "rgb(255,255,255,0.0)"
-              ],
+              data: [value, gValue - value],
+              backgroundColor: ["rgb(15, 120, 11)", "rgb(255,255,255,0.0)"],
               circumference: 180,
             },
-            
           ],
         },
         options: {
@@ -777,17 +767,15 @@ export function GaugeChart({
             },
           },
           elements: {
-            line: {
-            },
+            line: {},
           },
           plugins: {
             legend: {
               display: false, // Disable the legend
             },
-            
           },
           rotation: 270,
-          layout:{
+          layout: {
             padding: 0,
           },
         },
@@ -799,9 +787,5 @@ export function GaugeChart({
     }
   }, [value]);
 
-  return (
-    <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
-      <canvas ref={chartRef} id="myChart"></canvas>
-    </div>
-  );
+  return <canvas ref={chartRef} id="myChart"></canvas>;
 }
