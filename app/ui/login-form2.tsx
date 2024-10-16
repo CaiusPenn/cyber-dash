@@ -6,8 +6,9 @@ import {
   FormControl,
   FormLabel,
   Box,
-  Heading,
   Text,
+  Stack,
+  Flex,
 } from "@chakra-ui/react";
 import { MdArrowRightAlt } from "react-icons/md";
 
@@ -18,55 +19,74 @@ export default function LoginForm() {
   );
 
   return (
-    <Box
+    <Flex
       as="form"
       action={formAction}
-      className="space-y-3"
-      bg="gray.50"
+      bg="#FFFFFF"
       p={8}
-      rounded="lg"
+      height="100vh" // Occupies full viewport height
+      width="100vw" // Occupies full viewport width
+      align="center" // Center content vertically
+      justify="center" // Center content horizontally
     >
-      <Heading textAlign="center" mb={6} fontSize="44px">
-        Log In
-      </Heading>
+      <Stack>
+        <Stack paddingBottom={10} spacing="0">
+          <Text fontSize="70px" fontWeight={600} color="#1C62FF">
+            Log in
+          </Text>
+          <Text fontSize="24px" fontWeight={400} color="#334681">
+            Phishing Phighters
+          </Text>
+        </Stack>
 
-      <FormControl id="email" mb={4}>
-        <FormLabel>Email</FormLabel>
-        <Input
-          type="email"
-          name="email"
-          placeholder="Enter your email address"
-          required
-          bg="white"
-          borderColor="gray.200"
-          _placeholder={{ color: "gray.500" }}
-        />
-      </FormControl>
+        <Stack>
+          <FormControl id="email" mb={4}>
+            <FormLabel>Email</FormLabel>
+            <Input
+              type="email"
+              name="email"
+              placeholder="Enter your email address"
+              required
+              bg="white"
+              borderColor="gray.200"
+              width="100%"
+              _placeholder={{ color: "gray.500" }}
+            />
+          </FormControl>
 
-      <FormControl id="password" mb={6}>
-        <FormLabel>Password</FormLabel>
-        <Input
-          type="password"
-          name="password"
-          placeholder="Enter password"
-          required
-          minLength={5}
-          bg="white"
-          borderColor="gray.200"
-          _placeholder={{ color: "gray.500" }}
-        />
-      </FormControl>
+          <FormControl id="password" mb={6}>
+            <FormLabel>Password</FormLabel>
+            <Input
+              type="password"
+              name="password"
+              placeholder="Enter password"
+              required
+              minLength={5}
+              bg="white"
+              borderColor="gray.200"
+              _placeholder={{ color: "gray.500" }}
+            />
+          </FormControl>
+        </Stack>
 
-      <Button bg="#1C61FF" color="#000000" isLoading={isPending} type="submit">
-        Log in
-        <MdArrowRightAlt />
-      </Button>
+        <Stack>
+          <Button
+            bg="#1C61FF"
+            color="#000000"
+            isLoading={isPending}
+            type="submit"
+          >
+            Log in
+            <MdArrowRightAlt />
+          </Button>
+        </Stack>
 
-      {errorMessage && (
-        <Text color="red.500" mt={2}>
-          {errorMessage}
-        </Text>
-      )}
-    </Box>
+        {errorMessage && (
+          <Text color="red.500" mt={2}>
+            {errorMessage}
+          </Text>
+        )}
+      </Stack>
+    </Flex>
   );
 }

@@ -95,6 +95,8 @@ export default async function Page() {
                 title="Latest Violation"
                 desc="Policy Violations by Date"
                 stats={policies[0].date.toDateString().slice(4)}
+                tSize="12px"
+                tColor="grey"
                 graph={<PolicyChart title="" value={policies} />}
               />
             }

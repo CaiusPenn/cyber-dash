@@ -14,9 +14,18 @@ interface Props2 {
   title: string;
   graph: any;
   desc: string;
+  tSize?: string; // Optional prop for text size
+  tColor?: string;
 }
 
-const GraphStats = ({ stats, title, graph, desc }: Props2) => {
+const GraphStats = ({
+  stats,
+  title,
+  graph,
+  desc,
+  tSize = "150%",
+  tColor = "#334681",
+}: Props2) => {
   return (
     <Grid
       templateAreas={`"des des des des des"
@@ -25,7 +34,7 @@ const GraphStats = ({ stats, title, graph, desc }: Props2) => {
       "info info info info info"`}
       h="full"
       gap="7"
-      gridTemplateRows={"40px 40px 1fr 40px"} // Adjust row heights
+      gridTemplateRows={"25px 40px 1fr 40px"} // Adjust row heights
       color={"#334681"}
       fontWeight={"bold"}
       gridTemplateColumns={"repeat(6, 1fr)"}
@@ -35,7 +44,12 @@ const GraphStats = ({ stats, title, graph, desc }: Props2) => {
         <Text className={styles.customText}>{title}</Text>
       </GridItem>
       <GridItem area={"stat"}>
-        <Text fontSize={"150%"} paddingLeft="15%" paddingRight={0}>
+        <Text
+          fontSize={tSize}
+          paddingLeft="15%"
+          paddingRight={0}
+          textColor={tColor}
+        >
           {String(stats)}
         </Text>
       </GridItem>
@@ -195,9 +209,6 @@ const CategoryStats = ({ stats, title, graph, desc }: Props2) => {
       <GridItem area={"des"}>
         <Stack spacing={"0"}>
           <Text className={styles.customText}>{title}</Text>
-          <Text fontSize="12px" paddingLeft="15px" textColor={"grey"}>
-            {desc}
-          </Text>
         </Stack>
       </GridItem>
       <GridItem area={"stat"}>
@@ -205,6 +216,12 @@ const CategoryStats = ({ stats, title, graph, desc }: Props2) => {
       </GridItem>
       <GridItem area={"graph"} height="100%" width="100%" paddingLeft="30%">
         {graph}
+      </GridItem>
+
+      <GridItem area="info" paddingTop="75px">
+        <Text fontSize="12px" paddingLeft="15px" textColor={"#8590B3"}>
+          {desc}
+        </Text>
       </GridItem>
     </Grid>
   );
