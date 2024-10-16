@@ -1,4 +1,4 @@
-import { Grid, GridItem, Stack, HStack, Text } from "@chakra-ui/react";
+import { Grid, GridItem, Stack, HStack, Text, Flex } from "@chakra-ui/react";
 import React from "react";
 import styles from "@/app/Styles.module.css";
 import { Gi3dGlasses } from "react-icons/gi";
@@ -35,11 +35,43 @@ const GraphStats = ({ stats, title, graph, desc }: Props2) => {
         <Text className={styles.customText}>{title}</Text>
       </GridItem>
       <GridItem area={"stat"}>
-        <Text fontSize={"16px"} paddingLeft="15%">
+        <Text fontSize={"150%"} paddingLeft="15%" paddingRight={0}>
           {String(stats)}
         </Text>
       </GridItem>
-      <GridItem area={"graph"} paddingTop="8">
+      <GridItem area={"graph"} padding={0}>
+        {graph}
+      </GridItem>
+      <GridItem area={"info"}>
+        <Text className={styles.dateText}>{desc}</Text>
+      </GridItem>
+    </Grid>
+  );
+};
+const GaugeStats = ({ stats, title, graph, desc }: Props2) => {
+  return (
+    <Grid
+      templateAreas={`"des des des des des des"
+      "stat stat graph graph graph graph"
+      "stat stat graph graph graph graph"
+      "info info info info info info"`}
+      h="full"
+      gap="7"
+      gridTemplateRows={"40px 40px 35px 20px"} // Adjust row heights
+      color={"#334681"}
+      fontWeight={"bold"}
+      gridTemplateColumns={"repeat(6, 1fr)"}
+      boxShadow={"md"}
+    >
+      <GridItem area={"des"}>
+        <Text className={styles.customText}>{title}</Text>
+      </GridItem>
+      <GridItem area={"stat"}>
+        <Text fontSize={"150%"} paddingLeft="22%" paddingRight={0}>
+          {String(stats)}
+        </Text>
+      </GridItem>
+      <GridItem area={"graph"} padding={0} height="150%" width="150%">
         {graph}
       </GridItem>
       <GridItem area={"info"}>
@@ -178,4 +210,11 @@ const CategoryStats = ({ stats, title, graph, desc }: Props2) => {
   );
 };
 
-export { Stats, GraphStats, StressStats, TechnicalStats, CategoryStats };
+export {
+  Stats,
+  GraphStats,
+  StressStats,
+  TechnicalStats,
+  CategoryStats,
+  GaugeStats,
+};

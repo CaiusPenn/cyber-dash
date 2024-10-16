@@ -1,15 +1,17 @@
 import { Grid, GridItem, Text } from "@chakra-ui/react";
 import React from "react";
 import styles from "@/app/Styles.module.css";
-import {CompletionRate} from "@/app/ui/dashboard/social/CompletionRate";
+import {UserCompletionRate} from "@/app/ui/dashboard/social/CompletionRate";
 import PhishingResults from "@/app/ui/dashboard/social/PhishingResults";
 import WorkloadData from "@/app/ui/dashboard/social/WorkloadData";
-import { GraphStats, StressStats } from "@/app/ui/dashboard/technical/Stats";
-import { StressChart } from "@/app/ui/dashboard/chart";
-import { fetchStress } from "@/app/lib/data";
+import { GraphStats, Stats, StressStats } from "@/app/ui/dashboard/technical/Stats";
+import { GaugeChart,StressChart } from "@/app/ui/dashboard/chart";
+import { fetchUserStress } from "@/app/lib/data";
+import { cookies } from "next/headers";
 
-export default async function Page() {
-  const stressData = await fetchStress();
+export default async function userDash() {
+  const stressData = await fetchUserStress(cookies().get('id')?.value);
+  
   return (
     <Grid
       templateAreas={`"title title title title title "
@@ -29,12 +31,12 @@ export default async function Page() {
           padding="12px"
           paddingTop="20px"
         >
-          Social Domain Page
+          Employee Dashboard
         </Text>
       </GridItem>
 
       <GridItem area={"info"} className={styles.customBox} bg="#387DFF">
-        <CompletionRate />
+        <UserCompletionRate />
       </GridItem>
       <GridItem area={"phishing"} className={styles.customBox} width="95%">
         <PhishingResults />
@@ -43,12 +45,7 @@ export default async function Page() {
         <WorkloadData />
       </GridItem>
       <GridItem area={"stress"} className={styles.customBox} width="95%">
-        <StressStats
-          title="Stress Reported by Departments"
-          desc=""
-          stats=""
-          graph={<StressChart value={stressData} title="" />}
-        />
+        <GraphStats title={'Stress Reported'} stats={stressData} graph={<GaugeChart value={stressData} gValue={7}/>} desc='Stress reported by user on a scale of 1-7'/>
       </GridItem>
     </Grid>
   );
