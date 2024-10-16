@@ -5,7 +5,6 @@ interface ProgressBarProps {
   currentQuestionIndex: number; 
   totalQuestions: number; 
 }
-
 const ProgressBar: React.FC<ProgressBarProps> = ({
   currentQuestionIndex,
   totalQuestions,
