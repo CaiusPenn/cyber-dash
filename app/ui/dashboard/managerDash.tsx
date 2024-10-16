@@ -82,7 +82,7 @@ export default async function managerDash() {
           />
         </GridItem>
   
-        <GridItem area={"threats"} bg="#FFFFFF" borderRadius="15px">
+        <GridItem area={"threats"} bg="#FFFFFF" borderRadius="15px" width="95%" paddingLeft="100x">
           <GraphStats
             stats={incidents.length}
             title="Number of Incidents"
@@ -91,7 +91,7 @@ export default async function managerDash() {
           />
         </GridItem>
   
-        <GridItem area={"maturity"} bg="#FFFFFF" borderRadius="15px">
+        <GridItem area={"maturity"} bg="#FFFFFF" borderRadius="15px" width="95%" paddingLeft="100x">
           <GraphStats
             stats={maturityLevel}
             title="Current Maturity Level"
