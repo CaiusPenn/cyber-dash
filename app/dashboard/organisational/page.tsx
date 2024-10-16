@@ -79,7 +79,7 @@ export default async function Page() {
               color="#23cf1d"
             />
           </GridItem>
-          <GridItem area={"d"} className={styles.statsBox}>
+          <GridItem area={"d"} className={styles.statsBox} width="95%">
             {
               <CategoryStats
                 title="Category Scores"
