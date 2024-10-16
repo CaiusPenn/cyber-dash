@@ -1,4 +1,4 @@
-import {NavLinks} from '@/app/ui/dashboard/nav-links';
+import {NavLinksManager,NavLinksUser} from '@/app/ui/dashboard/nav-links';
 import { signOut } from '@/auth';
 import { deleteSession } from '@/app/lib/session';
 import { RxExit } from 'react-icons/rx';
@@ -16,7 +16,11 @@ export default function SideNav() {
       <div className="flex grow flex-row justify-between space-x-80 md:flex-col md:space-x-0 md:space-y-2">
       <Flex justifyContent="center" paddingBottom="50px">
         <Stack spacing="50px" color="black">
-        <NavLinks role={role}/>
+        {role === 'manager' ? (
+              <NavLinksManager />
+            ) : (
+              <NavLinksUser />
+            )}
         <div className="hidden  w-full grow rounded-md md:block"></div>
         <form
           action={async () => {

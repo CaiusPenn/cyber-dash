@@ -27,6 +27,7 @@ export default async function managerDash() {
     const incidents = await fetchLatestIncidents();
     const incidentSeverity = await fetchIncidentsSeverity();
     const incidentsCount = await IncidentsbyDate();
+    const maturityLevel = 1;
     return (
       <Grid
         templateAreas={`"overview overview overview"
@@ -76,7 +77,7 @@ export default async function managerDash() {
           <GraphStats
             stats={incidents[0].severity}
             title="Severity of Latest Incident"
-            desc=""
+            desc="Severity of Incidents Over Time"
             graph={<IncidentChart value={incidents} title="" />}
           />
         </GridItem>
@@ -85,17 +86,17 @@ export default async function managerDash() {
           <GraphStats
             stats={incidents.length}
             title="Number of Incidents"
-            desc=""
+            desc="Number of Incidents Over Time"
             graph={<IncidentCountChart value={incidentsCount} title="" />}
           />
         </GridItem>
   
-        <GridItem area={"maturity"} bg="#FFFFFF" borderRadius="15px" width="95%">
+        <GridItem area={"maturity"} bg="#FFFFFF" borderRadius="15px">
           <GraphStats
-            stats={4}
+            stats={maturityLevel}
             title="Current Maturity Level"
-            desc=""
-            graph={<GaugeChart value={4} gValue={8}/>}
+            desc="Maturity Level for your Organisation"
+            graph={<GaugeChart value={maturityLevel+1} gValue={4}/>}
           />
         </GridItem>
   

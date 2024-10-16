@@ -23,7 +23,7 @@ export async function createSession(id:string,user: string,job_type:string) {
     path: '/',
   })
   cookies().set('role', role, {
-    httpOnly: true,
+    httpOnly: false,
     secure: true,
     expires: expiresAt,
     sameSite: 'lax',
@@ -35,4 +35,8 @@ export function deleteSession() {
   cookies().delete('id');
   cookies().delete('name');
   cookies().delete('role');
+}
+
+export function checkRole(){
+  return cookies().get('role')?.value == 'manager';
 }

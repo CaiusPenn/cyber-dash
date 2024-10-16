@@ -787,6 +787,9 @@ export function GaugeChart({
             
           },
           rotation: 270,
+          layout:{
+            padding: 0,
+          },
         },
       });
 
@@ -798,8 +801,6 @@ export function GaugeChart({
 
   return (
     <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
-      <div className="flex p-4">
-      </div>
       <canvas ref={chartRef} id="myChart"></canvas>
     </div>
   );

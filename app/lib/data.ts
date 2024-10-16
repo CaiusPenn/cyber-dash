@@ -105,7 +105,6 @@ export async function fetchTechnicalData() {
 
     ]);
 
-    console.log(data);
 
     const patchCoverage = Number(data[0].rows[0].avg ?? '0');
     const patchDeployment = Number(data[1].rows[0].avg ?? '0');
