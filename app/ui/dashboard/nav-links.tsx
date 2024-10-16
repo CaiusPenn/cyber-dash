@@ -12,7 +12,7 @@ import { FaBuilding } from "react-icons/fa";
 
 // Map of links to display in the side navigation.
 // Depending on the size of the application, this would be stored in a database.
-const links = [
+const linksManager = [
   { name: 'Home', href: '/dashboard', icon: RxDashboard},
   { name: 'Organisational', href: '/dashboard/social',icon:MdPeopleAlt},
   { name: 'Technical', href: '/dashboard/technical',icon:BsFileBarGraph},
@@ -20,12 +20,46 @@ const links = [
   {name: 'Survey', href: '/dashboard/survey', icon:RiSurveyFill},
 ];
 
-export function NavLinks() {
+const linksUser = [
+  { name: 'Home', href: '/dashboard', icon: RxDashboard},
+  {name: 'Survey', href: '/dashboard/survey', icon:RiSurveyFill},
+];
+
+
+export function NavLinksManager() {
   const pathname = usePathname();
-  
   return (
     <main className='flex-col justify-items-between'>
-      {links.map((link) => {
+      {linksManager.map((link) => {
+        const LinkIcon = link.icon;
+        return (
+          <Flex key={link.name} justifyContent="center" paddingTop="50px">
+            <Stack spacing="50px" color="black">
+              <Link
+               _hover={{
+                textDecoration: "none",   // Remove underline on hover
+                color: "#1C61FF",        // Change color on hover
+              }}
+                key={link.name}
+                href={link.href}
+                color={pathname === link.href ? "#1C61FF" : "black.500"}
+              >
+                <p className="hidden md:block"><LinkIcon size={"38px"} className="w-6" /></p>
+              </Link>
+          </Stack>
+          </Flex>
+        );
+      })}
+     
+    </main>
+  );
+}
+
+export function NavLinksUser() {
+  const pathname = usePathname();
+  return (
+    <main className='flex-col justify-items-between'>
+      {linksUser.map((link) => {
         const LinkIcon = link.icon;
         return (
           <Flex key={link.name} justifyContent="center" paddingTop="50px">

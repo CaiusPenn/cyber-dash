@@ -105,7 +105,6 @@ export async function fetchTechnicalData() {
 
     ]);
 
-    console.log(data);
 
     const patchCoverage = Number(data[0].rows[0].avg ?? '0');
     const patchDeployment = Number(data[1].rows[0].avg ?? '0');
@@ -260,6 +259,23 @@ export async function fetchStress(){
       stressData.set(String(stress[i].department_id),Number(stress[i].avg));
     }
     return stressData;
+
+  } catch(error) {
+    console.error('Databse error: ',error);
+    throw new Error('Failed to fetch stress');
+  }
+}
+
+export async function fetchUserStress(userId:any){
+  try{
+    const stressPromise = sql`SELECT (answer)
+    from answers join users on users.id=answers.user_id 
+    where question_id=64 and users.id = ${userId}`;
+    const data = await stressPromise;
+
+    const stress = (data.rows[0] ?? '0');
+    
+    return stress.answer;
 
   } catch(error) {
     console.error('Databse error: ',error);

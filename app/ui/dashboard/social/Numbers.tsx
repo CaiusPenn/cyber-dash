@@ -10,7 +10,6 @@ interface Props {
 }
 
 const Numbers = ({ num, label, val, colour }: Props) => {
-  console.log(colour); // Debugging: Check the value of colour
   return (
     <Stack spacing="1">
       <Flex align="center">

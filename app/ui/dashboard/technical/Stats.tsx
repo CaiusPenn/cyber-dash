@@ -35,11 +35,11 @@ const GraphStats = ({ stats, title, graph, desc }: Props2) => {
         <Text className={styles.customText}>{title}</Text>
       </GridItem>
       <GridItem area={"stat"}>
-        <Text fontSize={"16px"} paddingLeft="15%">
+        <Text fontSize={"150%"} paddingLeft="15%"  paddingRight={0}>
           {String(stats)}
         </Text>
       </GridItem>
-      <GridItem area={"graph"} paddingTop="8">
+      <GridItem area={"graph"}  padding={0}>
         {graph}
       </GridItem>
       <GridItem area={"info"}>

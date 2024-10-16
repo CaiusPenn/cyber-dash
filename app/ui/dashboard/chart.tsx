@@ -1,8 +1,14 @@
 "use client";
 import { Box } from "@chakra-ui/react";
 import { Chart } from "chart.js/auto";
+import { getRandomValues } from "crypto";
 import { QueryResultRow } from "pg";
 import { useEffect, useRef } from "react";
+import { number } from "zod";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Doughnut } from "react-chartjs-2";
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 export function colorDecide(value: any, threshold: any) {
   if (value > threshold) {
@@ -723,6 +729,78 @@ export function StressChart({
       <div className="flex p-4">
         <h3 className="ml-2 text-sm font-medium">{title}</h3>
       </div>
+      <canvas ref={chartRef} id="myChart"></canvas>
+    </div>
+  );
+}
+
+export function GaugeChart({
+  value,
+  gValue
+}: {
+  value: any;
+  gValue:any;
+}) {
+  const gaugeValue = value; // Value for the gauge (percentage or actual value)
+  const maxValue = gValue; // Max value for the gauge (100% or max value)
+
+  const chartRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const ctx = chartRef.current?.getContext("2d");
+
+    if (ctx) {
+      const myChart = new Chart(ctx, {
+        type: "doughnut",
+        data: {
+          datasets: [
+            {
+              label: "Value ",
+              data: [value,gValue-value],
+              backgroundColor: [
+                "rgb(15, 120, 11)",
+                "rgb(255,255,255,0.0)"
+              ],
+              circumference: 180,
+            },
+            
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              display: false,
+            },
+            x: {
+              display: false,
+            },
+          },
+          elements: {
+            line: {
+            },
+          },
+          plugins: {
+            legend: {
+              display: false, // Disable the legend
+            },
+            
+          },
+          rotation: 270,
+          layout:{
+            padding: 0,
+          },
+        },
+      });
+
+      return () => {
+        myChart.destroy();
+      };
+    }
+  }, [value]);
+
+  return (
+    <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
       <canvas ref={chartRef} id="myChart"></canvas>
     </div>
   );
