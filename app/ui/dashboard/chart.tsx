@@ -755,13 +755,15 @@ export function GaugeChart({
         data: {
           datasets: [
             {
-              label: "Category Scores",
-              data: [value,maxValue-value],
+              label: "Value ",
+              data: [value,gValue-value],
               backgroundColor: [
                 "rgb(15, 120, 11)",
-                "rgb(255, 255, 255)",
+                "rgb(255,255,255,0.0)"
               ],
+              circumference: 180,
             },
+            
           ],
         },
         options: {
@@ -776,14 +778,13 @@ export function GaugeChart({
           },
           elements: {
             line: {
-              borderJoinStyle: "round", // Rounded line join
-              borderCapStyle: "round", // Rounded line ends
             },
           },
           plugins: {
             legend: {
               display: false, // Disable the legend
             },
+            
           },
           rotation: 270,
         },

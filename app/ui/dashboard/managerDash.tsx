@@ -95,7 +95,7 @@ export default async function managerDash() {
             stats={4}
             title="Current Maturity Level"
             desc=""
-            graph={<GaugeChart value={4} gValue={16}/>}
+            graph={<GaugeChart value={4} gValue={8}/>}
           />
         </GridItem>
   

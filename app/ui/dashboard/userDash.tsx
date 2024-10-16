@@ -45,7 +45,7 @@ export default async function userDash() {
         <WorkloadData />
       </GridItem>
       <GridItem area={"stress"} className={styles.customBox} width="95%">
-        <GraphStats title={'Stress Reported'} stats={stressData} graph={<GaugeChart value={stressData} gValue={14}/>} desc='Stress reported by user on a scale of 1-7'/>
+        <GraphStats title={'Stress Reported'} stats={stressData} graph={<GaugeChart value={stressData} gValue={7}/>} desc='Stress reported by user on a scale of 1-7'/>
       </GridItem>
     </Grid>
   );
