@@ -61,7 +61,7 @@ export default function LoginForm() {
           p={8}
           align="center" // Center content vertically
           // justify="center" // Center content horizontally
-          paddingLeft="10%"
+          paddingLeft="15%"
         >
           <Stack width="1250px">
             <Stack>
