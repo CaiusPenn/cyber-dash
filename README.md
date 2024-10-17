@@ -6,9 +6,9 @@ The website is currently deployed on Vercel at the following link:
 ## Access the dashboards 
 
 To access the manager and user dashboards use the following credentials respectively:
-Manager: user5@nextmail.com - Password: 123456
-User: user4@nextmail.com - Password: 12345
-
+Manager Email: user5@nextmail.com
+User Email: user4@nextmail.com
+Password: 123456
 
 ## Getting Started
 
