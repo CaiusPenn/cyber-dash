@@ -22,6 +22,27 @@ const users = [
       department_id: 521,
       username: 'Jane Doe'
     },
+    {
+      id: 2001,
+      email: 'user2@nextmail.com',
+      password: '123456',
+      department_id: 521,
+      username: 'Jerry Doe'
+    },
+    {
+      id: 3001,
+      email: 'user3@nextmail.com',
+      password: '123456',
+      department_id: 521,
+      username: 'Michael Doe'
+    },
+    {
+      id: 6001,
+      email: 'user6@nextmail.com',
+      password: '123456',
+      department_id: 521,
+      username: 'Glen Doe'
+    },
   ];
   
   const departments = [
