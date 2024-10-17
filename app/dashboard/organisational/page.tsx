@@ -74,10 +74,12 @@ export default async function Page() {
       </GridItem>
       <GridItem area={"d"} className={styles.statsBox} width="95%">
         {
-          <CategoryStats
-            title="Category Scores"
+          <GraphStats
+            title="Security Awareness Scores"
             desc="Survey Scores for Each Category"
             stats={""}
+            tSize="12px"
+            tColor="grey"
             graph={<CategoryChart title="" value={category} />}
           />
         }
