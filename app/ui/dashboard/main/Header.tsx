@@ -4,7 +4,7 @@ import React, {useEffect, useState} from "react";
 import { IoFish } from "react-icons/io5";
 import { RxAvatar } from "react-icons/rx";
 
-//const name = cookies().get('name')?.value
+
 
 const Header = () => {
 
