@@ -200,7 +200,7 @@ const CategoryStats = ({ stats, title, graph, desc }: Props2) => {
       "info info info info info"`}
       h="full"
       gap="7"
-      gridTemplateRows={"40px 40px 1fr 40px"} // Adjust row heights
+      gridTemplateRows={"40px 40px 40px 40px"} // Adjust row heights
       color={"#334681"}
       fontWeight={"bold"}
       gridTemplateColumns={"repeat(6, 1fr)"}
@@ -214,7 +214,7 @@ const CategoryStats = ({ stats, title, graph, desc }: Props2) => {
       <GridItem area={"stat"}>
         <Text fontSize={"16px"}>{String(stats)}</Text>
       </GridItem>
-      <GridItem area={"graph"} height="100%" width="100%" paddingLeft="30%">
+      <GridItem area={"graph"} height="95%" width="95%" paddingLeft="40%">
         {graph}
       </GridItem>
 

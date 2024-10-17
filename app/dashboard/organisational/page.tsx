@@ -32,83 +32,74 @@ export default async function Page() {
   }
   totalScore = Math.floor(totalScore / scores.size);
   return (
-    <main>
-      <h1 className={` mb-4 text-xl md:text-2xl`}></h1>
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <Grid
-          templateAreas={`"title title title"
+    <Grid
+      templateAreas={`"title title title"
                 "a b c "
                 "d e f "
                 "g g f"`}
-          h="full"
-          gap="10"
-          width="98%"
-          gridTemplateRows={"35px 125px 300px 400px"}
-          color={"#334681"}
-          fontWeight={"bold"}
-          gridTemplateColumns={"repeat(3, 1fr)"}
+      h="full"
+      gap="10"
+      width="98%"
+      gridTemplateRows={"35px 125px 300px 400px"}
+      color={"#334681"}
+      fontWeight={"bold"}
+      gridTemplateColumns={"repeat(3, 1fr)"}
+    >
+      <GridItem area={"title"}>
+        <Text
+          className={styles.customText}
+          fontSize="20px"
+          padding="0px"
+          paddingTop="0px"
         >
-          <GridItem area={"title"}>
-            <Text
-              className={styles.customText}
-              fontSize="20px"
-              padding="0px"
-              paddingTop="0px"
-            >
-              Organisational Domain Page
-            </Text>
-          </GridItem>
-          <GridItem area={"a"} className={styles.statsBox}>
-            <Stats
-              title="Number of partcipants"
-              stats={String(usersCount)}
-              color={colorDecide(usersCount, 10)}
-            />
-          </GridItem>
-          <GridItem area={"b"} className={styles.statsBox}>
-            <Stats
-              title="Overall Security Awareness"
-              stats={totalScore}
-              color={colorDecide(totalScore, 15)}
-            />
-          </GridItem>
-          <GridItem area={"c"} className={styles.statsBox}>
-            <Stats
-              title="Investment into Cyber"
-              stats="$298,020"
-              color="#23cf1d"
-            />
-          </GridItem>
-          <GridItem area={"d"} className={styles.statsBox} width="95%">
-            {
-              <CategoryStats
-                title="Category Scores"
-                desc="Survey Scores for Each Category"
-                stats={""}
-                graph={<CategoryChart title="" value={category} />}
-              />
-            }
-          </GridItem>
-          <GridItem area={"e"} className={styles.statsBox}>
-            {
-              <GraphStats
-                title="Latest Violation"
-                desc="Policy Violations by Date"
-                stats={policies[0].date.toDateString().slice(4)}
-                tSize="12px"
-                tColor="grey"
-                graph={<PolicyChart title="" value={policies} />}
-              />
-            }
-          </GridItem>
-          <GridItem area={"f"} className={styles.statsBox}>
-            <PolicyViolations />
-          </GridItem>
-          <GridItem area={"g"} className={styles.statsBox}>
-            <TrainingEffectiveness />
-          </GridItem>
-        </Grid>
-      </div>
-    </main>
+          Organisational Domain Page
+        </Text>
+      </GridItem>
+      <GridItem area={"a"} className={styles.statsBox}>
+        <Stats
+          title="Number of partcipants"
+          stats={String(usersCount)}
+          color={colorDecide(usersCount, 10)}
+        />
+      </GridItem>
+      <GridItem area={"b"} className={styles.statsBox}>
+        <Stats
+          title="Overall Security Awareness"
+          stats={totalScore}
+          color={colorDecide(totalScore, 15)}
+        />
+      </GridItem>
+      <GridItem area={"c"} className={styles.statsBox}>
+        <Stats title="Investment into Cyber" stats="$298,020" color="#23cf1d" />
+      </GridItem>
+      <GridItem area={"d"} className={styles.statsBox} width="95%">
+        {
+          <CategoryStats
+            title="Category Scores"
+            desc="Survey Scores for Each Category"
+            stats={""}
+            graph={<CategoryChart title="" value={category} />}
+          />
+        }
+      </GridItem>
+      <GridItem area={"e"} className={styles.statsBox}>
+        {
+          <GraphStats
+            title="Latest Violation"
+            desc="Policy Violations by Date"
+            stats={policies[0].date.toDateString().slice(4)}
+            tSize="12px"
+            tColor="grey"
+            graph={<PolicyChart title="" value={policies} />}
+          />
+        }
+      </GridItem>
+      <GridItem area={"f"} className={styles.statsBox}>
+        <PolicyViolations />
+      </GridItem>
+      <GridItem area={"g"} className={styles.statsBox}>
+        <TrainingEffectiveness />
+      </GridItem>
+    </Grid>
   );
 }
