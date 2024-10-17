@@ -1,7 +1,7 @@
 import { Grid, GridItem, Text } from "@chakra-ui/react";
 import React from "react";
 import styles from "@/app/Styles.module.css";
-import { MultipleLineGraph } from "@/app/ui/dashboard/main/MultipleLineGraph";
+import { MultiLineChart } from "@/app/ui/dashboard/main/MultipleLineGraph";
 
 const TrainingEffectiveness = () => {
   return (
@@ -27,7 +27,7 @@ const TrainingEffectiveness = () => {
       </GridItem>
 
       <GridItem area="stats">
-        <MultipleLineGraph />
+        <MultiLineChart title="" />
       </GridItem>
     </Grid>
   );

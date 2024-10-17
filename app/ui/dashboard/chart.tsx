@@ -773,6 +773,9 @@ export function GaugeChart({ value, gValue }: { value: any; gValue: any }) {
             legend: {
               display: false, // Disable the legend
             },
+            tooltip: {
+              enabled: false,
+            }
           },
           rotation: 270,
           layout: {
