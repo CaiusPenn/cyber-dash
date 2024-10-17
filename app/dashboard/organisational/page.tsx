@@ -16,7 +16,7 @@ function colorDecide(value: any, threshhold: any) {
   }
   return "#f23e2e";
 }
-
+//
 export default async function Page() {
   const policies = await fetchPolicy();
   const users = await fetchUniqueUsers();
