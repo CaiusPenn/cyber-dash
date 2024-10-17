@@ -309,6 +309,7 @@ export function MfaChart({
               display: false, // Disable the legend
             },
           },
+          
         },
       });
 
@@ -388,6 +389,8 @@ export function IncidentChart({
               display: false, // Disable the legend
             },
           },
+          maintainAspectRatio: false, // Allow graph to scale with container
+          responsive: true, // Make the chart responsive
         },
       });
 
@@ -479,6 +482,8 @@ export function IncidentSeverityChart({ value }: { value: QueryResultRow }) {
               display: true,
             },
           },
+          maintainAspectRatio: false, // Allow graph to scale with container
+          responsive: true, // Make the chart responsive
         },
       });
 
@@ -551,6 +556,8 @@ export function IncidentCountChart({
               display: false, // Disable the legend
             },
           },
+          maintainAspectRatio: false, // Allow graph to scale with container
+          responsive: true, // Make the chart responsive
         },
       });
 
