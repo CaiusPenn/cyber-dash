@@ -450,6 +450,11 @@ export function IncidentSeverityChart({ value }: { value: QueryResultRow }) {
           ],
         },
         options: {
+          layout: {
+            padding: {
+                top: 10,
+            }
+        },
           scales: {
             y: {
               title: { display: true, text: "Count of Incidents" },
@@ -536,6 +541,11 @@ export function IncidentCountChart({
           ],
         },
         options: {
+          layout: {
+            padding: {
+                top: 10,
+            }
+        },
           scales: {
             y: {
               beginAtZero: true,
@@ -559,6 +569,7 @@ export function IncidentCountChart({
           maintainAspectRatio: false, // Allow graph to scale with container
           responsive: true, // Make the chart responsive
         },
+        
       });
 
       return () => {

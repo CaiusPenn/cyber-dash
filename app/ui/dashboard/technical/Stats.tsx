@@ -16,6 +16,9 @@ interface Props2 {
   desc: string;
   tSize?: string; // Optional prop for text size
   tColor?: string;
+  paddingT?: string,
+  h?: string,
+  w?: string,
 }
 
 const GraphStats = ({
@@ -25,6 +28,9 @@ const GraphStats = ({
   desc,
   tSize = "150%",
   tColor = "#334681",
+  paddingT = "1",
+  h="100%",
+  w="120%",
 }: Props2) => {
   return (
     <Grid
@@ -53,7 +59,7 @@ const GraphStats = ({
           {String(stats)}
         </Text>
       </GridItem>
-      <GridItem area={"graph"} padding={0}>
+      <GridItem area={"graph"} padding={paddingT} height={h} width={w}>
         {graph}
       </GridItem>
       <GridItem area={"info"}>

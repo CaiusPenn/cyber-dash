@@ -71,12 +71,13 @@ export default async function managerDash() {
         </Flex>
       </GridItem>
 
-      <GridItem area={"incidents"} bg="#FFFFFF" borderRadius="15px" width="95%">
+      <GridItem area={"incidents"} bg="#FFFFFF" borderRadius="15px" width={"95%"}>
         <GraphStats
           stats={incidents[0].severity}
           title="Severity of Latest Incident"
           desc="Severity of Incidents Over Time"
-          graph={<IncidentChart value={incidents} title="" />}
+          graph={<IncidentChart value={incidents} title="" 
+          />}
         />
       </GridItem>
 
