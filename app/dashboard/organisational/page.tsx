@@ -16,7 +16,7 @@ function colorDecide(value: any, threshhold: any) {
   }
   return "#f23e2e";
 }
-//
+
 export default async function Page() {
   const policies = await fetchPolicy();
   const users = await fetchUniqueUsers();
@@ -74,12 +74,10 @@ export default async function Page() {
       </GridItem>
       <GridItem area={"d"} className={styles.statsBox} width="95%">
         {
-          <GraphStats
-            title="Security Awareness Scores"
+          <CategoryStats
+            title="Security Awarness Scores"
             desc="Survey Scores for Each Category"
             stats={""}
-            tSize="12px"
-            tColor="grey"
             graph={<CategoryChart title="" value={category} />}
           />
         }
