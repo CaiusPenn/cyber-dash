@@ -22,10 +22,8 @@
 .dateText {
   color: #8590B3;
   font-size: 12px;
-  padding-left: 40px;
   font-weight: 600;
-  padding-top: 5%;
-  padding-left: 5%;
+  padding: 5%;
 }
 
 .viewsOverviewToday{

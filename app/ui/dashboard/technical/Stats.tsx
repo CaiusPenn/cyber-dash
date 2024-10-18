@@ -109,7 +109,7 @@ const StressStats = ({ stats, title, graph, desc }: Props2) => {
         "info"`}
       h="full"
       gap="7"
-      gridTemplateRows={"60px 1fr 60px"} // Adjust row heights
+      gridTemplateRows={"60px 1fr auto"} // Adjust row heights
       color={"#334681"}
       fontWeight={"bold"}
       gridTemplateColumns={"repeat(1, 1fr)"}

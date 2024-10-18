@@ -21,6 +21,7 @@ export default async function Page() {
       color={"#334681"}
       fontWeight={"bold"}
       gridTemplateColumns={"repeat(5, 1fr)"}
+      width={"95%"}
     >
       <GridItem area={"title"}>
         <Text
@@ -42,7 +43,7 @@ export default async function Page() {
       <GridItem area={"workload"} className={styles.customBox}>
         <WorkloadData />
       </GridItem>
-      <GridItem area={"stress"} className={styles.customBox} width="95%">
+      <GridItem area={"stress"} className={styles.customBox} >
         <StressStats
           title="Stress Reported by Departments"
           desc="Average Stress Levels Reported by Each Department"
