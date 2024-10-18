@@ -137,7 +137,6 @@ export default function Survey() {
         {error && (
           <Flex justifyContent="center" alignItems="center" mt={4}>
             <FormErrorMessage>{error}</FormErrorMessage>{" "}
-            {/* Center error message */}
           </Flex>
         )}
       </FormControl>
