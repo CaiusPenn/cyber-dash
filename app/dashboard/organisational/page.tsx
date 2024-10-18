@@ -66,7 +66,7 @@ export default async function Page() {
         <Stats
           title="Overall Security Awareness"
           stats={totalScore}
-          color={colorDecide(totalScore, 15)}
+          color={colorDecide(totalScore, 9)}
         />
       </GridItem>
       <GridItem area={"c"} className={styles.statsBox}>

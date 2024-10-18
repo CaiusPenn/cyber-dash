@@ -7,10 +7,12 @@ const TrainingEffectiveness = () => {
   return (
     <Grid
       templateAreas={`"des"
-        "stats"`}
+        "stats"
+        "info"`}
       bg="#FFFFFF"
       gridTemplateColumns={"repeat(1, 1fr)"}
-      gridTemplateRows={"auto 1fr"} // Auto height for text, remaining space for graph
+      gridTemplateRows={"auto 1fr 10px"} // Auto height for text, remaining space for graph
+      width={"95%"}
     >
        <GridItem 
         area="des" 
@@ -26,8 +28,11 @@ const TrainingEffectiveness = () => {
         </Text>
       </GridItem>
 
-      <GridItem area="stats">
+      <GridItem area="stats" width={"96%"} padding={'10px'}>
         <MultiLineChart title="" />
+      </GridItem>
+      <GridItem area="info">
+      <Text className={styles.dateText}>{"Mapping of Training Completion to Incidents"}</Text>
       </GridItem>
     </Grid>
   );

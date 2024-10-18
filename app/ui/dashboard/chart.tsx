@@ -651,7 +651,10 @@ export function CategoryChart({
               display: false, // Disable the legend
             },
           },
+          maintainAspectRatio: true, // Allow graph to scale with container
+          responsive: true, // Make the chart responsive
         },
+
       });
 
       return () => {
@@ -698,7 +701,7 @@ export function StressChart({
           labels: dept,
           datasets: [
             {
-              label: "Category Scores",
+              label: "Stress",
               data: stressData,
               backgroundColor: [
                 "rgb(255, 0, 132)",
@@ -733,6 +736,8 @@ export function StressChart({
               display: false, // Disable the legend
             },
           },
+          maintainAspectRatio: true, // Allow graph to scale with container
+          responsive: true, // Make the chart responsive
         },
       });
 

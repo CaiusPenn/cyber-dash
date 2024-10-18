@@ -130,11 +130,12 @@ export function MultiLineChart({
   });
 
   return (
-    <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
+    <div className="rounded-xl bg-gray-50 p-2 shadow-sm h-100 w-100">
       <div className="flex p-4">
         <h3 className="ml-2 text-sm font-medium">{title}</h3>
-      </div>
+      
       <canvas ref={chartRef} id="myChart"></canvas>
+      </div>
     </div>
   );
 }
@@ -225,7 +226,7 @@ export function MultiLineChart2({
   });
 
   return (
-    <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
+    <div className="rounded-xl bg-gray-50 p-2 shadow-sm h-100 w-100">
       <div className="flex p-4">
         <h3 className="ml-2 text-sm font-medium">{title}</h3>
       </div>

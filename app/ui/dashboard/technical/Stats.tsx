@@ -105,10 +105,11 @@ const StressStats = ({ stats, title, graph, desc }: Props2) => {
   return (
     <Grid
       templateAreas={`"des"
-        "graph"`}
+        "graph"
+        "info"`}
       h="full"
       gap="7"
-      gridTemplateRows={"60px 100px"} // Adjust row heights
+      gridTemplateRows={"60px 1fr 60px"} // Adjust row heights
       color={"#334681"}
       fontWeight={"bold"}
       gridTemplateColumns={"repeat(1, 1fr)"}
@@ -126,6 +127,9 @@ const StressStats = ({ stats, title, graph, desc }: Props2) => {
         paddingLeft="30%"
       >
         {graph}
+      </GridItem>
+      <GridItem area={"info"}>
+        <Text className={styles.dateText}>{desc}</Text>
       </GridItem>
     </Grid>
   );

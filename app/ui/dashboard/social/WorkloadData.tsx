@@ -8,19 +8,28 @@ export default async function WorkloadData(){
   return (
     <Grid
       templateAreas={`"title" 
-        "graph"`}
+        "graph"
+        "info"`}
       h="full"
       gap="10"
-      gridTemplateRows={"80px 430px"}
+      gridTemplateRows={"auto 1fr 120px"}
       color={"#334681"}
       fontWeight={"bold"}
       gridTemplateColumns={"repeat(1, 1fr)"}
+      width={"95%"}
     >
-      <GridItem area={"title"}>
+      <GridItem area={"title"}
+        padding={0} // Ensure no padding
+        margin={0} // Ensure no margin
+        alignSelf="start" // Align the text at the top
+        >
         <Text className={styles.customText}>Employee Workload Data</Text>
       </GridItem>
-      <GridItem area={"graph"} paddingLeft="40px">
+      <GridItem area={"graph"} width={"96%"} padding={'10px'}>
         <MultiLineChart2 title="" />
+      </GridItem>
+      <GridItem area={"info"}>
+        <Text className={styles.dateText}>{""}</Text>
       </GridItem>
     </Grid>
   );
