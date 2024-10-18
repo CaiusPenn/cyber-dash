@@ -46,7 +46,7 @@ export default async function Page() {
       <GridItem area={"stress"} className={styles.customBox} >
         <StressStats
           title="Stress Reported by Departments"
-          desc="Average Stress Levels Reported by Each Department"
+          desc=""
           stats=""
           graph={<StressChart value={stressData} title="" />}
         />
